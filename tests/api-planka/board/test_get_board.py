@@ -6,11 +6,11 @@ from src.assertions.status_code import assert_status_code_200, assert_status_cod
 from src.resources.schemas.project_schema import SCHEMA_BOARD_OUTPUT2
 from src.assertions.assertion_general import assert_response_time
 
-@pytest.mark.project_management
-@pytest.mark.e2e
+@pytest.mark.board
+@pytest.mark.smoke
 @pytest.mark.functional_positive
 @pytest.mark.headers_validation
-def test_TC001_get_board_valid_token(get_token):
+def test_TC013_get_board_with_valid_token(get_token):
     TOKEN_PLANKA = get_token
     url = f"{BASE_URI}/boards/{ID_BOARD2}"
     headers = {
@@ -20,10 +20,10 @@ def test_TC001_get_board_valid_token(get_token):
     assert_status_code_200(response)
 
 
-@pytest.mark.project_management
+@pytest.mark.board
 @pytest.mark.functional_negative
 @pytest.mark.headers_validation
-def test_TC002_get_board_invalid_token():
+def test_TC014_get_board_with_invalid_token():
     url = f"{BASE_URI}/boards/{ID_BOARD2}"
     headers = {
     'Authorization': f'Bearer {TOKEN_INVALID}'
@@ -31,10 +31,10 @@ def test_TC002_get_board_invalid_token():
     response = requests.get(url, headers=headers)
     assert_status_code_401(response)
 
-@pytest.mark.project_management
+@pytest.mark.board
 @pytest.mark.functional_positive
 @pytest.mark.schema_validation
-def test_TC003_get_board_validation_schema_output(get_token):
+def test_TC015_validate_board_response_schema(get_token):
     url = f"{BASE_URI}/boards/{ID_BOARD2}"
     TOKEN_PLANKA = get_token
     headers = {
@@ -49,10 +49,10 @@ def test_TC003_get_board_validation_schema_output(get_token):
         pytest.fail(f"JSON schema doesn't match: {error}")
 
    
-@pytest.mark.project_management
+@pytest.mark.board
 @pytest.mark.smoke
 @pytest.mark.response_time
-def test_TC004_get_board_validation_schema_response_time(get_token):
+def test_TC016_validate_board_response_time(get_token):
     url = f"{BASE_URI}/boards/{ID_BOARD2}"
     TOKEN_PLANKA = get_token
     headers = {

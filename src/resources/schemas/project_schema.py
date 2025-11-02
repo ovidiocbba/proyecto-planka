@@ -434,12 +434,6 @@ SCHEMA_BOARD_OUTPUT2 = {
               "id": {
                 "type": "string"
               },
-              "createdAt": {
-                "type": "string"
-              },
-              "updatedAt": {
-                "type": "string"
-              },
               "email": {
                 "type": "string"
               },
@@ -449,75 +443,26 @@ SCHEMA_BOARD_OUTPUT2 = {
               "name": {
                 "type": "string"
               },
-              "username": {
-                "type": "string"
-              },
-              "phone": {
-                "type": "string"
-              },
-              "organization": {
-                "type": "string"
-              },
-              "language": {},
-              "subscribeToOwnCards": {
-                "type": "boolean"
-              },
-              "subscribeToCardWhenCommenting": {
-                "type": "boolean"
-              },
-              "turnOffRecentCardHighlighting": {
-                "type": "boolean"
-              },
-              "enableFavoritesByDefault": {
-                "type": "boolean"
-              },
-              "defaultEditorMode": {
-                "type": "string"
-              },
-              "defaultHomeView": {
-                "type": "string"
-              },
-              "defaultProjectsOrder": {
-                "type": "string"
-              },
+              
               "isSsoUser": {
                 "type": "boolean"
               },
               "isDeactivated": {
                 "type": "boolean"
               },
-              "avatar": {},
+              
               "isDefaultAdmin": {
                 "type": "boolean"
-              },
-              "lockedFieldNames": {
-                "type": "array",
-                "items": {}
               }
             },
             "required": [
-              "id",
-              "createdAt",
-              "updatedAt",
-              "email",
-              "role",
-              "name",
-              "username",
-              "phone",
-              "organization",
-              "language",
-              "subscribeToOwnCards",
-              "subscribeToCardWhenCommenting",
-              "turnOffRecentCardHighlighting",
-              "enableFavoritesByDefault",
-              "defaultEditorMode",
-              "defaultHomeView",
-              "defaultProjectsOrder",
-              "isSsoUser",
-              "isDeactivated",
-              "avatar",
-              "isDefaultAdmin",
-              "lockedFieldNames"
+                "id",
+                "email",
+                "role",
+                "name",
+                "isSsoUser",
+                "isDeactivated",
+                "isDefaultAdmin"
             ]
           }
         },

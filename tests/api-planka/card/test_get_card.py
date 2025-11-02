@@ -8,11 +8,11 @@ from src.resources.schemas.project_schema import SCHEMA_CARD_WITHOUT_STOPWATCH,S
 
 
 
-@pytest.mark.project_management
-@pytest.mark.e2e
+@pytest.mark.card
+@pytest.mark.smoke
 @pytest.mark.functional_positive
 @pytest.mark.headers_validation
-def test_TC001_get_card_valid_token(get_token):
+def test_TC038_get_card_with_valid_token(get_token):
     url = f"{BASE_URI}/cards/{ID_CARD1}"
     TOKEN_PLANKA = get_token
     headers = {
@@ -23,10 +23,10 @@ def test_TC001_get_card_valid_token(get_token):
     assert_status_code_200(response)
 
 
-@pytest.mark.project_management
+@pytest.mark.card
 @pytest.mark.functional_negative
 @pytest.mark.headers_validation
-def test_TC002_get_card_invalid_token():
+def test_TC039_get_card_with_invalid_token():
     url = f"{BASE_URI}/cards/{ID_CARD1}"
     headers = {
     'Authorization': f'Bearer {TOKEN_INVALID}'
@@ -35,11 +35,10 @@ def test_TC002_get_card_invalid_token():
     response = requests.get(url, headers=headers)
     assert_status_code_401(response)
 
-@pytest.mark.project_management
-@pytest.mark.smoke
+@pytest.mark.card
 @pytest.mark.functional_positive
 @pytest.mark.headers_validation
-def test_TC003_get_card_validate_time_response(get_token):
+def test_TC040_validate_card_response_time(get_token):
     url = f"{BASE_URI}/cards/{ID_CARD1}"
     TOKEN_PLANKA = get_token
     headers = {
@@ -50,11 +49,10 @@ def test_TC003_get_card_validate_time_response(get_token):
     assert_response_time(response)
 
 
-@pytest.mark.project_management
-@pytest.mark.smoke
+@pytest.mark.card
 @pytest.mark.functional_positive
 @pytest.mark.schema_validation
-def test_TC004_get_card_validate_schema_output(get_token):
+def test_TC041_validate_card_response_schema(get_token):
     url = f"{BASE_URI}/cards/{ID_CARD1}"
     TOKEN_PLANKA = get_token
     headers = {

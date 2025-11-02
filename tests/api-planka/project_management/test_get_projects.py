@@ -8,10 +8,9 @@ from src.resources.schemas.project_schema import SCHEMA_OUTPUT_GET_PROJECTS
 
 
 @pytest.mark.project_management
-@pytest.mark.e2e
 @pytest.mark.functional_positive
 @pytest.mark.headers_validation
-def test_TC001_get_project_valid_token(get_token):
+def test_TC083_get_project_with_valid_token(get_token):
     url = f"{BASE_URI}/projects"
     TOKEN_PLANKA = get_token
     headers = {
@@ -25,7 +24,7 @@ def test_TC001_get_project_valid_token(get_token):
 @pytest.mark.project_management
 @pytest.mark.functional_negative
 @pytest.mark.headers_validation
-def test_TC002_get_project_invalid_token():
+def test_TC084_get_project_with_invalid_token():
     url = f"{BASE_URI}/projects"
     headers = {
     'Authorization': f'Bearer {TOKEN_INVALID}'
@@ -36,9 +35,9 @@ def test_TC002_get_project_invalid_token():
 
 
 @pytest.mark.project_management
-@pytest.mark.smoke
+@pytest.mark.functional_positive
 @pytest.mark.schema_validation
-def test_TC003_get_project_validate_schema_output(get_token):
+def test_TC085_get_project_validate_schema_output(get_token):
     url = f"{BASE_URI}/projects"
     TOKEN_PLANKA = get_token
     headers = {
@@ -58,7 +57,7 @@ def test_TC003_get_project_validate_schema_output(get_token):
 @pytest.mark.project_management
 @pytest.mark.smoke
 @pytest.mark.response_time
-def test_TC004_get_project_validate_response_time(get_token):
+def test_TC086_get_project_validate_response_time(get_token):
       url = f"{BASE_URI}/projects"
       TOKEN_PLANKA = get_token
       headers = {

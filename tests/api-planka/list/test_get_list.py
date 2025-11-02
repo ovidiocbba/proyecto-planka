@@ -7,12 +7,11 @@ from src.assertions.assertion_general import assert_response_time
 from src.resources.schemas.project_schema import SCHEMA_ITEM_LIST , SCHEMA_INCLUDED_LIST
 
 
-@pytest.mark.project_management
-@pytest.mark.e2e
+@pytest.mark.list
 @pytest.mark.smoke
 @pytest.mark.functional_positive
 @pytest.mark.headers_validation
-def test_TC001_get_list_valid_token(get_token):    
+def test_TC064_get_list_with_valid_token(get_token):    
     url = f"{BASE_URI}/lists/{ID_LIST1}"
     TOKEN_PLANKA = get_token
 
@@ -25,10 +24,10 @@ def test_TC001_get_list_valid_token(get_token):
 
 
 
-@pytest.mark.project_management
+@pytest.mark.list
 @pytest.mark.functional_negative
 @pytest.mark.headers_validation
-def test_TC002_get_list_invalid_token():    
+def test_TC065_get_list_with_invalid_token():    
     url = f"{BASE_URI}/lists/{ID_LIST1}"
     headers = {
     'Authorization': f'Bearer {TOKEN_INVALID}'
@@ -38,10 +37,10 @@ def test_TC002_get_list_invalid_token():
     assert_status_code_401(response)
 
 
-@pytest.mark.project_management
+@pytest.mark.list
 @pytest.mark.smoke
 @pytest.mark.response_time 
-def test_TC003_get_list_time_response(get_token):   
+def test_TC066_validate_list_response_time(get_token):   
     TOKEN_PLANKA = get_token 
     url = f"{BASE_URI}/lists/{ID_LIST1}"
     headers = {
@@ -53,10 +52,10 @@ def test_TC003_get_list_time_response(get_token):
 
 
 
-@pytest.mark.project_management
-@pytest.mark.smoke
+@pytest.mark.list
+@pytest.mark.functional_positive
 @pytest.mark.schema_validation
-def test_TC004_get_list_validate_schema_output(get_token):   
+def test_TC067_validate_list_response_schema(get_token):   
     TOKEN_PLANKA = get_token 
     url = f"{BASE_URI}/lists/{ID_LIST1}"
     headers = {

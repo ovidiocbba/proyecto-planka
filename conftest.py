@@ -2,6 +2,8 @@ import pytest
 import requests
 import json
 from config import BASE_URI, USER_EMAIL, USER_PASSWORD
+from faker import Faker
+
 
 
 @pytest.fixture(scope="session")
@@ -21,6 +23,7 @@ def get_token():
     access_token = response_json['item']
     
     return access_token
+
 
 
 
