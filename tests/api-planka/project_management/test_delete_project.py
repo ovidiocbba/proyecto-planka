@@ -38,6 +38,7 @@ def test_TC016_delete_project_with_invalid_token(create_test_project):
 
 @pytest.mark.project_management
 @pytest.mark.functional_negative
+@pytest.mark.regression
 @pytest.mark.equivalence_partition
 def test_TC017_delete_project_for_id_not_exists(get_token):
    TOKEN_PLANKA = get_token
@@ -52,6 +53,7 @@ def test_TC017_delete_project_for_id_not_exists(get_token):
 
 @pytest.mark.project_management
 @pytest.mark.functional_negative
+@pytest.mark.regression
 @pytest.mark.equivalence_partition
 def test_TC018_delete_project_for_id_invalid_empty(get_token):
    TOKEN_PLANKA = get_token
@@ -67,6 +69,7 @@ def test_TC018_delete_project_for_id_invalid_empty(get_token):
 
 @pytest.mark.project_management
 @pytest.mark.functional_negative
+@pytest.mark.regression
 @pytest.mark.equivalence_partition
 def test_TC019_delete_project_for_id_invalid_string(get_token):
    TOKEN_PLANKA = get_token

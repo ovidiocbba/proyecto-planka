@@ -10,6 +10,7 @@ from src.routes.endpoint import EndpointPlanka
 
 
 @pytest.mark.card
+@pytest.mark.smoke
 @pytest.mark.functional_positive
 @pytest.mark.headers_validation
 def test_TC001_create_card_with_valid_token(get_token):
@@ -39,6 +40,7 @@ def test_TC002_create_card_with_invalid_token():
     
 @pytest.mark.card
 @pytest.mark.functional_positive
+@pytest.mark.regression
 @pytest.mark.payload_validation
 def test_TC003_validate_card_creation_request_payload(get_token):
     url = EndpointPlanka.BASE_CARDS.value
@@ -60,6 +62,7 @@ def test_TC003_validate_card_creation_request_payload(get_token):
 
 @pytest.mark.card
 @pytest.mark.functional_positive
+@pytest.mark.regression
 @pytest.mark.payload_validation
 @pytest.mark.equivalence_partition
 def test_TC004_post_card_validate_attribute_with_type_project(get_token):
@@ -74,6 +77,7 @@ def test_TC004_post_card_validate_attribute_with_type_project(get_token):
 
 @pytest.mark.card
 @pytest.mark.functional_positive
+@pytest.mark.regression
 @pytest.mark.payload_validation
 @pytest.mark.equivalence_partition
 def test_TC005_post_card_validate_attribute_with_type_story(get_token):
@@ -89,6 +93,7 @@ def test_TC005_post_card_validate_attribute_with_type_story(get_token):
 
 @pytest.mark.card
 @pytest.mark.functional_negative
+@pytest.mark.regression
 @pytest.mark.payload_validation
 @pytest.mark.equivalence_partition
 def test_TC006_post_card_validate_attribute_with_type_empty(get_token):
@@ -105,6 +110,7 @@ def test_TC006_post_card_validate_attribute_with_type_empty(get_token):
 
 @pytest.mark.card
 @pytest.mark.functional_negative
+@pytest.mark.regression
 @pytest.mark.payload_validation
 @pytest.mark.equivalence_partition
 def test_TC007_post_card_validate_attribute_with_type_invalid(get_token):
@@ -120,6 +126,7 @@ def test_TC007_post_card_validate_attribute_with_type_invalid(get_token):
 
 @pytest.mark.card
 @pytest.mark.functional_negative
+@pytest.mark.regression
 @pytest.mark.payload_validation
 @pytest.mark.equivalence_partition
 def test_TC008_post_card_validate_attribute_with_position_empty(get_token):
@@ -136,6 +143,7 @@ def test_TC008_post_card_validate_attribute_with_position_empty(get_token):
 @pytest.mark.xfail(reason=" BUG005: La atributo position  permite entradas de cadena ",run=True)
 @pytest.mark.card
 @pytest.mark.functional_negative
+@pytest.mark.regression
 @pytest.mark.payload_validation
 @pytest.mark.equivalence_partition
 def test_TC009_post_card_validate_attribute_with_position_invalid_type(get_token):
@@ -152,6 +160,7 @@ def test_TC009_post_card_validate_attribute_with_position_invalid_type(get_token
 
 @pytest.mark.card
 @pytest.mark.functional_negative
+@pytest.mark.regression
 @pytest.mark.payload_validation
 @pytest.mark.equivalence_partition
 def test_TC010_post_card_validate_attribute_with_position_value_negative(get_token):
@@ -168,6 +177,7 @@ def test_TC010_post_card_validate_attribute_with_position_value_negative(get_tok
 @pytest.mark.xfail(reason="BG006: El atributo position no tiene un valor limite de cantidad de digitos ",run=True)
 @pytest.mark.card
 @pytest.mark.functional_negative
+@pytest.mark.regression
 @pytest.mark.payload_validation
 @pytest.mark.equivalence_partition
 def test_TC011_post_card_validate_position_attribute_exceeding_digit(get_token):
@@ -184,6 +194,7 @@ def test_TC011_post_card_validate_position_attribute_exceeding_digit(get_token):
 
 @pytest.mark.card
 @pytest.mark.functional_negative
+@pytest.mark.regression
 @pytest.mark.payload_validation
 @pytest.mark.equivalence_partition
 def test_TC012_post_card_validate_attribute_with_name_empty(get_token):
@@ -199,6 +210,7 @@ def test_TC012_post_card_validate_attribute_with_name_empty(get_token):
 @pytest.mark.xfail(reason=" BUG007: La atributo name  permite entradas de valor numerico ",run=True)
 @pytest.mark.card
 @pytest.mark.functional_negative
+@pytest.mark.regression
 @pytest.mark.payload_validation
 @pytest.mark.equivalence_partition
 def test_TC013_post_card_validate_attribute_with_name_invalid(get_token):
@@ -214,6 +226,7 @@ def test_TC013_post_card_validate_attribute_with_name_invalid(get_token):
 
 @pytest.mark.card
 @pytest.mark.functional_negative
+@pytest.mark.regression
 @pytest.mark.equivalence_partition
 def test_TC014_post_card_with_nonexistent_list_id(get_token):
     url = EndpointPlanka.BASE_CARD_WITH_ID_LIST_NOT_EXISTS.value
@@ -228,6 +241,7 @@ def test_TC014_post_card_with_nonexistent_list_id(get_token):
 
 @pytest.mark.card
 @pytest.mark.functional_negative
+@pytest.mark.regression
 @pytest.mark.equivalence_partition
 def test_TC015_post_card_with_empty_list_id(get_token):
     url = EndpointPlanka.BASE_CARD_WITH_ID_LIST_EMPTY.value
@@ -242,6 +256,7 @@ def test_TC015_post_card_with_empty_list_id(get_token):
 
 @pytest.mark.card
 @pytest.mark.functional_negative
+@pytest.mark.regression
 @pytest.mark.equivalence_partition
 def test_TC016_post_card_with_invalid_list_id(get_token):
     url = EndpointPlanka.BASE_CARD_WITH_ID_LIST_INVALID.value

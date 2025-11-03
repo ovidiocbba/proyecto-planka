@@ -37,6 +37,7 @@ def test_TC026_delete_list_with_invalid_token(create_test_list):
 
 @pytest.mark.list
 @pytest.mark.functional_negative
+@pytest.mark.regression
 @pytest.mark.equivalence_partition
 def test_TC027_delete_list_with_id_list_not_exists():
     url = f"{EndpointPlanka.BASE_LIST_MAJOR.value}/{ID_LIST_NOT_EXISTS}"
@@ -50,6 +51,7 @@ def test_TC027_delete_list_with_id_list_not_exists():
 
 @pytest.mark.list
 @pytest.mark.functional_negative
+@pytest.mark.regression
 @pytest.mark.equivalence_partition
 def test_TC028_delete_list_with_id_list_empty():
     url = f"{EndpointPlanka.BASE_LIST_MAJOR.value}/{ID_LIST_EMPTY}"
@@ -63,6 +65,7 @@ def test_TC028_delete_list_with_id_list_empty():
 
 @pytest.mark.list
 @pytest.mark.functional_negative
+@pytest.mark.regression
 @pytest.mark.equivalence_partition
 def test_TC029_delete_list_with_id_list_invalid():
     url = f"{EndpointPlanka.BASE_LIST_MAJOR.value}/{ID_LIST_INVALID_STRING}"

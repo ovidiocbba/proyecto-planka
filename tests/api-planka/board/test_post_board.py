@@ -42,6 +42,7 @@ def test_TC002_create_board_with_invalid_token():
 
 @pytest.mark.board
 @pytest.mark.functional_negative
+@pytest.mark.regression
 @pytest.mark.equivalence_partition
 @pytest.mark.payload_validation
 def test_TC003_create_board_with_empty_name(get_token):
@@ -57,6 +58,7 @@ def test_TC003_create_board_with_empty_name(get_token):
 @pytest.mark.xfail(reason=" BUG001: El atributo name  permite entradas de valor numerico ",run=True)
 @pytest.mark.board
 @pytest.mark.functional_negative
+@pytest.mark.regression
 @pytest.mark.equivalence_partition
 @pytest.mark.payload_validation
 def test_TC004_create_board_with_numeric_name(get_token):
@@ -72,6 +74,7 @@ def test_TC004_create_board_with_numeric_name(get_token):
 
 @pytest.mark.board
 @pytest.mark.functional_negative
+@pytest.mark.regression
 @pytest.mark.equivalence_partition
 @pytest.mark.payload_validation
 def test_TC005_create_board_with_empty_position(get_token):
@@ -87,6 +90,7 @@ def test_TC005_create_board_with_empty_position(get_token):
 
 @pytest.mark.board
 @pytest.mark.functional_negative
+@pytest.mark.regression
 @pytest.mark.equivalence_partition
 @pytest.mark.payload_validation
 def test_TC006_create_board_with_negative_position(get_token):
@@ -104,6 +108,7 @@ def test_TC006_create_board_with_negative_position(get_token):
 @pytest.mark.xfail(reason=" BUG002: El atributo position  permite entradas de valor cadena ",run=True)
 @pytest.mark.board
 @pytest.mark.functional_negative
+@pytest.mark.regression
 @pytest.mark.equivalence_partition
 @pytest.mark.payload_validation
 def test_TC007_create_board_with_invalid_position_type(get_token):
@@ -121,6 +126,7 @@ def test_TC007_create_board_with_invalid_position_type(get_token):
 @pytest.mark.xfail(reason=" BUG003: El atributo position no tiene un valor limite de cantidad de digitos ",run=True)
 @pytest.mark.board
 @pytest.mark.functional_negative
+@pytest.mark.regression
 @pytest.mark.equivalence_partition
 @pytest.mark.payload_validation
 def test_TC008_create_board_with_position_attribute_exceeding_digit(get_token):
@@ -137,6 +143,7 @@ def test_TC008_create_board_with_position_attribute_exceeding_digit(get_token):
 
 @pytest.mark.board
 @pytest.mark.functional_negative
+@pytest.mark.regression
 @pytest.mark.schema_validation
 def test_TC009_validate_board_response_schema(get_token):
     TOKEN_PLANKA = get_token
@@ -157,6 +164,7 @@ def test_TC009_validate_board_response_schema(get_token):
 
 @pytest.mark.board
 @pytest.mark.functional_negative
+@pytest.mark.regression
 @pytest.mark.equivalence_partition
 def test_TC010_post_board_with_nonexistent_project_id(get_token):
     url = EndpointPlanka.BASE_BOARDS_WITH_ID_PROJECT_NOT_EXISTS.value
@@ -171,6 +179,7 @@ def test_TC010_post_board_with_nonexistent_project_id(get_token):
 
 @pytest.mark.board
 @pytest.mark.functional_negative
+@pytest.mark.regression
 @pytest.mark.equivalence_partition
 def test_TC011_post_board_with_empty_project_id(get_token):
     url = EndpointPlanka.BASE_BOARDS_WITH_ID_PROJECT_EMPTY.value
@@ -185,6 +194,7 @@ def test_TC011_post_board_with_empty_project_id(get_token):
 
 @pytest.mark.board
 @pytest.mark.functional_negative
+@pytest.mark.regression
 @pytest.mark.equivalence_partition
 def test_TC012_post_board_with_invalid_project_id_type(get_token):
     url = EndpointPlanka.BASE_BOARDS_WITH_ID_PROJECT_INVALID.value

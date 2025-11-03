@@ -34,6 +34,7 @@ def test_TC014_get_board_with_invalid_token():
 
 @pytest.mark.board
 @pytest.mark.functional_positive
+@pytest.mark.regression
 @pytest.mark.schema_validation
 def test_TC015_validate_board_response_schema(get_token):
     url = EndpointPlanka.BASE_BOARDS_WITH_ID_BOARD.value
@@ -51,8 +52,8 @@ def test_TC015_validate_board_response_schema(get_token):
 
    
 @pytest.mark.board
-@pytest.mark.smoke
-@pytest.mark.response_time
+@pytest.mark.functional_positive
+@pytest.mark.performance
 def test_TC016_validate_board_response_time(get_token):
     url = EndpointPlanka.BASE_BOARDS_WITH_ID_BOARD.value
     TOKEN_PLANKA = get_token
@@ -65,8 +66,9 @@ def test_TC016_validate_board_response_time(get_token):
 
 
 @pytest.mark.board
-@pytest.mark.smoke
 @pytest.mark.functional_negative
+@pytest.mark.regression
+@pytest.mark.equivalence_partition
 def test_TC017_get_board_with_nonexistent_board_id(get_token):
     TOKEN_PLANKA = get_token
     url = EndpointPlanka.BASE_BOARDS_WITH_ID_BOARD_NOT_EXISTS.value
@@ -79,6 +81,8 @@ def test_TC017_get_board_with_nonexistent_board_id(get_token):
 @pytest.mark.xfail(reason=" BUG004: La app muestra una pagina web con el texto : Necesitas habilitar JavaScript para ejecutar esta aplicación y con codigo 200 . Deberia retornar otro codigo ",run=True)
 @pytest.mark.board
 @pytest.mark.functional_negative
+@pytest.mark.regression
+@pytest.mark.equivalence_partition
 def test_TC018_get_board_with_empty_board_id(get_token):
     TOKEN_PLANKA = get_token
     url = EndpointPlanka.BASE_BOARDS_WITH_ID_BOARD_EMPTY.value
@@ -91,6 +95,8 @@ def test_TC018_get_board_with_empty_board_id(get_token):
 
 @pytest.mark.board
 @pytest.mark.functional_negative
+@pytest.mark.regression
+@pytest.mark.equivalence_partition
 def test_TC019_get_board_with_invalid_board_id_type(get_token):
     TOKEN_PLANKA = get_token
     url = EndpointPlanka.BASE_BOARDS_WITH_ID_BOARD_INVALID.value

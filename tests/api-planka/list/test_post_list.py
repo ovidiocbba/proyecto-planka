@@ -43,6 +43,7 @@ def test_TC002_create_list_with_invalid_token():
 
 @pytest.mark.list
 @pytest.mark.functional_positive
+@pytest.mark.regression
 @pytest.mark.payload_validation
 @pytest.mark.equivalence_partition
 def test_TC003_post_list_with_attribute_type_active(get_token):
@@ -60,6 +61,7 @@ def test_TC003_post_list_with_attribute_type_active(get_token):
 
 @pytest.mark.list
 @pytest.mark.functional_positive
+@pytest.mark.regression
 @pytest.mark.payload_validation
 @pytest.mark.equivalence_partition
 def test_TC004_post_list_with_attribute_type_closed(get_token):
@@ -76,6 +78,7 @@ def test_TC004_post_list_with_attribute_type_closed(get_token):
 
 @pytest.mark.list
 @pytest.mark.functional_negative
+@pytest.mark.regression
 @pytest.mark.payload_validation
 @pytest.mark.equivalence_partition
 def test_TC005_post_list_attribute_with_type_empty(get_token):
@@ -91,6 +94,7 @@ def test_TC005_post_list_attribute_with_type_empty(get_token):
 
 @pytest.mark.list
 @pytest.mark.functional_negative
+@pytest.mark.regression
 @pytest.mark.payload_validation
 @pytest.mark.equivalence_partition
 def test_TC006_post_list_attribute_with_type_invalid(get_token):
@@ -108,6 +112,7 @@ def test_TC006_post_list_attribute_with_type_invalid(get_token):
 
 @pytest.mark.list
 @pytest.mark.functional_negative
+@pytest.mark.regression
 @pytest.mark.payload_validation
 @pytest.mark.equivalence_partition
 def test_TC007_post_list_attribute_with_position_empty(get_token):
@@ -125,6 +130,7 @@ def test_TC007_post_list_attribute_with_position_empty(get_token):
 @pytest.mark.xfail(reason=" BUG009: La atributo position  permite entradas de cadena ",run=True)
 @pytest.mark.list
 @pytest.mark.functional_negative
+@pytest.mark.regression
 @pytest.mark.payload_validation
 @pytest.mark.equivalence_partition
 def test_TC008_post_list_attribute_with_position_invalid(get_token):
@@ -141,6 +147,7 @@ def test_TC008_post_list_attribute_with_position_invalid(get_token):
 
 @pytest.mark.list
 @pytest.mark.functional_negative
+@pytest.mark.regression
 @pytest.mark.payload_validation
 @pytest.mark.equivalence_partition
 def test_TC009_post_list_attribute_position_with_value_negative(get_token):
@@ -158,6 +165,7 @@ def test_TC009_post_list_attribute_position_with_value_negative(get_token):
 @pytest.mark.xfail(reason=" BUG010: El atributo position no tiene un valor limite de cantidad de digitos  ",run=True)
 @pytest.mark.list
 @pytest.mark.functional_negative
+@pytest.mark.regression
 @pytest.mark.payload_validation
 @pytest.mark.equivalence_partition
 def test_TC010_post_list_with_position_value_exceeding(get_token):
@@ -174,6 +182,7 @@ def test_TC010_post_list_with_position_value_exceeding(get_token):
 
 @pytest.mark.list
 @pytest.mark.functional_negative
+@pytest.mark.regression
 @pytest.mark.payload_validation
 @pytest.mark.equivalence_partition
 def test_TC011_post_list_attribute_with_name_empty(get_token):
@@ -192,6 +201,7 @@ def test_TC011_post_list_attribute_with_name_empty(get_token):
 @pytest.mark.xfail(reason=" BUG011: La atributo name permite entradas de valor numerico ",run=True)
 @pytest.mark.list
 @pytest.mark.functional_negative
+@pytest.mark.regression
 @pytest.mark.payload_validation
 @pytest.mark.equivalence_partition
 def test_TC012_post_list_attribute_with_name_invalid(get_token):
@@ -209,6 +219,7 @@ def test_TC012_post_list_attribute_with_name_invalid(get_token):
 
 @pytest.mark.list
 @pytest.mark.functional_positive
+@pytest.mark.regression
 @pytest.mark.schema_validation
 def test_TC013_validate_list_creation_response_schema(get_token):
     url = EndpointPlanka.BASE_LISTS.value
@@ -228,8 +239,8 @@ def test_TC013_validate_list_creation_response_schema(get_token):
 
 @pytest.mark.list
 @pytest.mark.functional_positive
+@pytest.mark.regression
 @pytest.mark.schema_validation
-
 def test_TC014_validate_list_creation_request_payload(get_token):
     url = EndpointPlanka.BASE_LISTS.value
     TOKEN_PLANKA = get_token
@@ -249,6 +260,7 @@ def test_TC014_validate_list_creation_request_payload(get_token):
 
 @pytest.mark.list
 @pytest.mark.functional_negative
+@pytest.mark.regression
 @pytest.mark.equivalence_partition
 def test_TC015_post_list_with_id_board_not_exists(get_token):
     url = EndpointPlanka.BASE_LISTS_WITH_ID_BOARD_NOT_EXISTS.value
@@ -264,6 +276,7 @@ def test_TC015_post_list_with_id_board_not_exists(get_token):
 
 @pytest.mark.list
 @pytest.mark.functional_negative
+@pytest.mark.regression
 @pytest.mark.equivalence_partition
 def test_TC016_post_list_with_id_board_empty(get_token):
     url = EndpointPlanka.BASE_LISTS_WITH_ID_BOARD_EMPTY.value
@@ -279,6 +292,7 @@ def test_TC016_post_list_with_id_board_empty(get_token):
 
 @pytest.mark.list
 @pytest.mark.functional_negative
+@pytest.mark.regression
 @pytest.mark.equivalence_partition
 def test_TC017_post_list_with_id_board_invalid(get_token):
     url = EndpointPlanka.BASE_LISTS_WITH_ID_BOARD_INVALID.value

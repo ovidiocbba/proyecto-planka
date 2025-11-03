@@ -38,7 +38,7 @@ def test_TC018_get_card_with_invalid_token():
 
 @pytest.mark.card
 @pytest.mark.functional_positive
-@pytest.mark.headers_validation
+@pytest.mark.performance
 def test_TC019_validate_card_response_time(get_token):
     url = EndpointPlanka.BASE_CARDS_WITH_ID_CARD.value
     TOKEN_PLANKA = get_token
@@ -52,6 +52,7 @@ def test_TC019_validate_card_response_time(get_token):
 
 @pytest.mark.card
 @pytest.mark.functional_positive
+@pytest.mark.regression
 @pytest.mark.schema_validation
 def test_TC020_validate_card_response_schema(get_token):
     url = EndpointPlanka.BASE_CARDS_WITH_ID_CARD.value
@@ -73,7 +74,7 @@ def test_TC020_validate_card_response_schema(get_token):
 
 @pytest.mark.card
 @pytest.mark.functional_negative
-@pytest.mark.headers_validation
+@pytest.mark.regression
 def test_TC021_get_card_with_nonexistent_card_id(get_token):
     url = EndpointPlanka.BASE_CARDS_WITH_ID_CARD_NOT_EXISTS.value
     TOKEN_PLANKA = get_token
@@ -89,7 +90,7 @@ def test_TC021_get_card_with_nonexistent_card_id(get_token):
 @pytest.mark.xfail(reason=" BUG008: La app muestra una pagina web con el texto : Necesitas habilitar JavaScript para ejecutar esta aplicación y con codigo 200 . Deberia retornar otro codigo ",run=True)
 @pytest.mark.card
 @pytest.mark.functional_negative
-@pytest.mark.headers_validation
+@pytest.mark.regression
 def test_TC022_get_card_with_empty_card_id(get_token):
     url = EndpointPlanka.BASE_CARDS_WITH_ID_CARD_VALUE_EMPTY.value
     TOKEN_PLANKA = get_token
@@ -103,7 +104,7 @@ def test_TC022_get_card_with_empty_card_id(get_token):
 
 @pytest.mark.card
 @pytest.mark.functional_negative
-@pytest.mark.headers_validation
+@pytest.mark.regression
 def test_TC023_get_card_with_invalid_card_id_type(get_token):
     url = EndpointPlanka.BASE_CARDS_WITH_ID_CARD_VALUE_INVALID.value
     TOKEN_PLANKA = get_token

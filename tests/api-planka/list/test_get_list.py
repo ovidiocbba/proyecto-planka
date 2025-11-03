@@ -39,8 +39,9 @@ def test_TC019_get_list_with_invalid_token():
 
 
 @pytest.mark.list
-@pytest.mark.smoke
-@pytest.mark.response_time 
+@pytest.mark.functional_positive
+@pytest.mark.performance
+
 def test_TC020_validate_list_response_time(get_token):   
     TOKEN_PLANKA = get_token 
     url = EndpointPlanka.BASE_LISTS_WITH_ID_LIST.value
@@ -55,6 +56,7 @@ def test_TC020_validate_list_response_time(get_token):
 
 @pytest.mark.list
 @pytest.mark.functional_positive
+@pytest.mark.regression
 @pytest.mark.schema_validation
 def test_TC021_validate_list_response_schema(get_token):   
     TOKEN_PLANKA = get_token 
@@ -83,6 +85,8 @@ def test_TC021_validate_list_response_schema(get_token):
 
 @pytest.mark.list
 @pytest.mark.functional_negative
+@pytest.mark.regression
+@pytest.mark.equivalence_partition
 def test_TC022_get_list_with_nonexistent_list_id(get_token):  
     url = EndpointPlanka.BASE_LIST_WITH_ID_LIST_NOT_EXISTS.value
     TOKEN_PLANKA = get_token
@@ -98,6 +102,8 @@ def test_TC022_get_list_with_nonexistent_list_id(get_token):
 @pytest.mark.xfail(reason=" BUG0012: La app muestra una pagina web con el texto : Necesitas habilitar JavaScript para ejecutar esta aplicación y con codigo 200 . Deberia retornar otro codigo ",run=True)
 @pytest.mark.list
 @pytest.mark.functional_negative
+@pytest.mark.regression
+@pytest.mark.equivalence_partition
 def test_TC023_get_list_with_empty_list_id(get_token):  
     url = EndpointPlanka.BASE_LISTS_WITH_ID_LIST_EMPTY.value
     TOKEN_PLANKA = get_token
@@ -112,6 +118,8 @@ def test_TC023_get_list_with_empty_list_id(get_token):
 
 @pytest.mark.list
 @pytest.mark.functional_negative
+@pytest.mark.regression
+@pytest.mark.equivalence_partition
 def test_TC024_get_list_with_invalid_list_id_type(get_token):  
     url = EndpointPlanka.BASE_LISTS_WITH_ID_LIST_INVALID.value
     TOKEN_PLANKA = get_token

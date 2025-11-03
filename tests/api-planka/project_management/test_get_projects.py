@@ -9,6 +9,7 @@ from src.resources.schemas.project_schema import SCHEMA_OUTPUT_GET_PROJECTS
 
 
 @pytest.mark.project_management
+@pytest.mark.smoke
 @pytest.mark.functional_positive
 @pytest.mark.headers_validation
 def test_TC011_get_project_with_valid_token(get_token):
@@ -37,6 +38,7 @@ def test_TC012_get_project_with_invalid_token():
 
 @pytest.mark.project_management
 @pytest.mark.functional_positive
+@pytest.mark.regression
 @pytest.mark.schema_validation
 def test_TC013_get_project_validate_schema_output(get_token):
     url = EndpointPlanka.BASE_PROJECTS.value
@@ -56,8 +58,8 @@ def test_TC013_get_project_validate_schema_output(get_token):
 
 
 @pytest.mark.project_management
-@pytest.mark.smoke
-@pytest.mark.response_time
+@pytest.mark.functional_positive
+@pytest.mark.performance
 def test_TC014_get_project_validate_response_time(get_token):
       url = EndpointPlanka.BASE_PROJECTS.value
       TOKEN_PLANKA = get_token

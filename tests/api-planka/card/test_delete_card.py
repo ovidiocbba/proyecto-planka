@@ -6,6 +6,7 @@ import pytest
 
 
 @pytest.mark.card
+@pytest.mark.smoke
 @pytest.mark.functional_positive
 @pytest.mark.headers_validation
 def test_TC024_delete_card_with_valid_token(get_token,post_card):
@@ -36,6 +37,7 @@ def test_TC025_delete_card_with_invalid_token(post_card):
 
 @pytest.mark.card
 @pytest.mark.functional_negative
+@pytest.mark.regression
 @pytest.mark.headers_validation
 def test_TC026_delete_card_with_nonexistent_id(get_token): 
   TOKEN_PLANKA = get_token
@@ -50,7 +52,7 @@ def test_TC026_delete_card_with_nonexistent_id(get_token):
 
 @pytest.mark.card
 @pytest.mark.functional_negative
-@pytest.mark.headers_validation
+@pytest.mark.regression
 def test_TC027_delete_card_with_empty_id(get_token): 
   TOKEN_PLANKA = get_token
   url = f"{EndpointPlanka.BASE_CARD_MAJOR.value}/{ID_CARD_EMPTY}"
@@ -64,7 +66,7 @@ def test_TC027_delete_card_with_empty_id(get_token):
 
 @pytest.mark.card
 @pytest.mark.functional_negative
-@pytest.mark.headers_validation
+@pytest.mark.regression
 def test_TC028_delete_card_with_invalid_id(get_token): 
   TOKEN_PLANKA = get_token
   url = f"{EndpointPlanka.BASE_CARD_MAJOR.value}/{ID_CARD_INVALID_STRING}"

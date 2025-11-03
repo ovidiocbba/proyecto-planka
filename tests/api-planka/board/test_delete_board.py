@@ -35,7 +35,8 @@ def test_TC021_delete_board_with_invalid_token():
 
 @pytest.mark.board
 @pytest.mark.functional_negative
-@pytest.mark.headers_validation
+@pytest.mark.regression
+@pytest.mark.equivalence_partition
 def test_TC022_delete_board_with_nonexistent_id(get_token):
     TOKEN_PLANKA = get_token
     url = f"{EndpointPlanka.BASE_BOARD_MAJOR.value}/{ID_BOARD_NOT_EXISTS}"
@@ -48,7 +49,8 @@ def test_TC022_delete_board_with_nonexistent_id(get_token):
 
 @pytest.mark.board
 @pytest.mark.functional_negative
-@pytest.mark.headers_validation
+@pytest.mark.regression
+@pytest.mark.equivalence_partition
 def test_TC023_delete_board_with_empty_id(get_token):
     TOKEN_PLANKA = get_token
     url = f"{EndpointPlanka.BASE_BOARD_MAJOR.value}/{ID_BOARD_EMPTY}"
@@ -61,7 +63,8 @@ def test_TC023_delete_board_with_empty_id(get_token):
 
 @pytest.mark.board
 @pytest.mark.functional_negative
-@pytest.mark.headers_validation
+@pytest.mark.regression
+@pytest.mark.equivalence_partition
 def test_TC024_delete_board_with_invalid_id_type(get_token):
     TOKEN_PLANKA = get_token
     url = f"{EndpointPlanka.BASE_BOARD_MAJOR.value}/{ID_BOARD_INVALID_STRING}"
