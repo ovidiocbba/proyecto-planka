@@ -1,6 +1,7 @@
 import requests
 import pytest
-from config import BASE_URI , TOKEN_INVALID , ID_BOARD2 , ID_BOARD_NOT_EXISTS , ID_BOARD_EMPTY ,ID_BOARD_INVALID_STRING
+from config import TOKEN_INVALID , ID_BOARD2 , ID_BOARD_NOT_EXISTS , ID_BOARD_EMPTY ,ID_BOARD_INVALID_STRING
+from src.routes.endpoint import EndpointPlanka
 from src.assertions.status_code import assert_status_code_200, assert_status_code_400,assert_status_code_401 , assert_status_code_404
 
 
@@ -8,10 +9,10 @@ from src.assertions.status_code import assert_status_code_200, assert_status_cod
 @pytest.mark.smoke
 @pytest.mark.functional_positive
 @pytest.mark.headers_validation
-def test_TC017_delete_board_with_valid_token(get_token,post_test_board):
+def test_TC020_delete_board_with_valid_token(get_token,post_test_board):
     TOKEN_PLANKA = get_token
     ID_BOARD =  post_test_board
-    url = f"{BASE_URI}/boards/{ID_BOARD}"
+    url = f"{EndpointPlanka.BASE_BOARD_MAJOR.value}/{ID_BOARD}"
     headers = {
     'Authorization': f'Bearer {TOKEN_PLANKA} '
     }
@@ -23,8 +24,8 @@ def test_TC017_delete_board_with_valid_token(get_token,post_test_board):
 @pytest.mark.board
 @pytest.mark.functional_negative
 @pytest.mark.headers_validation
-def test_TC018_delete_board_with_invalid_token():
-    url = f"{BASE_URI}/boards/{ID_BOARD2}"
+def test_TC021_delete_board_with_invalid_token():
+    url = f"{EndpointPlanka.BASE_BOARD_MAJOR.value}/{ID_BOARD2}"
     headers = {
     'Authorization': f'Bearer {TOKEN_INVALID} '
     }
@@ -35,9 +36,9 @@ def test_TC018_delete_board_with_invalid_token():
 @pytest.mark.board
 @pytest.mark.functional_negative
 @pytest.mark.headers_validation
-def test_TC019_delete_board_with_nonexistent_id(get_token):
+def test_TC022_delete_board_with_nonexistent_id(get_token):
     TOKEN_PLANKA = get_token
-    url = f"{BASE_URI}/boards/{ID_BOARD_NOT_EXISTS}"
+    url = f"{EndpointPlanka.BASE_BOARD_MAJOR.value}/{ID_BOARD_NOT_EXISTS}"
     headers = {
     'Authorization': f'Bearer {TOKEN_PLANKA} '
     }
@@ -48,9 +49,9 @@ def test_TC019_delete_board_with_nonexistent_id(get_token):
 @pytest.mark.board
 @pytest.mark.functional_negative
 @pytest.mark.headers_validation
-def test_TC020_delete_board_with_empty_id(get_token):
+def test_TC023_delete_board_with_empty_id(get_token):
     TOKEN_PLANKA = get_token
-    url = f"{BASE_URI}/boards/{ID_BOARD_EMPTY}"
+    url = f"{EndpointPlanka.BASE_BOARD_MAJOR.value}/{ID_BOARD_EMPTY}"
     headers = {
     'Authorization': f'Bearer {TOKEN_PLANKA} '
     }
@@ -61,9 +62,9 @@ def test_TC020_delete_board_with_empty_id(get_token):
 @pytest.mark.board
 @pytest.mark.functional_negative
 @pytest.mark.headers_validation
-def test_TC021_delete_board_with_invalid_id_type(get_token):
+def test_TC024_delete_board_with_invalid_id_type(get_token):
     TOKEN_PLANKA = get_token
-    url = f"{BASE_URI}/boards/{ID_BOARD_INVALID_STRING}"
+    url = f"{EndpointPlanka.BASE_BOARD_MAJOR.value}/{ID_BOARD_INVALID_STRING}"
     headers = {
     'Authorization': f'Bearer {TOKEN_PLANKA} '
     }

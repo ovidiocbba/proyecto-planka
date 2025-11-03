@@ -1,13 +1,14 @@
 import requests
 import json
 import pytest
-from config import BASE_URI, ID_LIST2
+from config import BASE_URI
 from src.resources.payloads.card_payloads import PAYLOAD_CREATE_CARD
+from src.routes.endpoint import EndpointPlanka
 
 
 @pytest.fixture(scope="module")
 def post_card(get_token):
-    url = f"{BASE_URI}/lists/{ID_LIST2}/cards"
+    url = EndpointPlanka.BASE_CARDS.value
     TOKEN_PLANKA = get_token
     payload = json.dumps(PAYLOAD_CREATE_CARD)
     headers = {

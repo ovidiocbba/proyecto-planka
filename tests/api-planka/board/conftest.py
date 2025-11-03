@@ -2,13 +2,14 @@ import requests
 import json
 import pytest
 from config import BASE_URI , ID_PROJECT1
+from src.routes.endpoint import EndpointPlanka
 from src.assertions.status_code import assert_status_code_200 
 from src.resources.payloads.board_payloads import PAYLOAD_BOARD_CREATE 
 
 
 @pytest.fixture(scope="module")
 def post_test_board(get_token):
-    url = f"{BASE_URI}/projects/{ID_PROJECT1}/boards"
+    url = EndpointPlanka.BASE_BOARDS.value
     TOKEN_PLANKA = get_token
     payload = json.dumps(PAYLOAD_BOARD_CREATE)
     headers = {

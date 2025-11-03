@@ -1,6 +1,7 @@
 import requests
 import pytest
-from config import BASE_URI , TOKEN_INVALID , ID_PROJECT_INVALID_STRING,ID_PROJECT_NOT_EXISTS,ID_PROJECT_EMPTY 
+from config import TOKEN_INVALID , ID_PROJECT_INVALID_STRING,ID_PROJECT_NOT_EXISTS,ID_PROJECT_EMPTY 
+from src.routes.endpoint import EndpointPlanka
 from src.assertions.status_code import assert_status_code_200 , assert_status_code_400,assert_status_code_404, assert_status_code_401,assert_status_code_400_or_404
 
 
@@ -9,9 +10,9 @@ from src.assertions.status_code import assert_status_code_200 , assert_status_co
 @pytest.mark.smoke
 @pytest.mark.headers_validation
 @pytest.mark.equivalence_partition
-def test_TC087_delete_project_with_valid_token(get_token, create_test_project):
+def test_TC015_delete_project_with_valid_token(get_token, create_test_project):
     ID_PROJECT = create_test_project
-    url = f"{BASE_URI}/projects/{ID_PROJECT}"
+    url = f"{EndpointPlanka.BASE_PROJECTS.value}/{ID_PROJECT}"
     TOKEN_PLANKA = get_token
     headers = {
     'Authorization': f'Bearer {TOKEN_PLANKA}'
@@ -24,9 +25,9 @@ def test_TC087_delete_project_with_valid_token(get_token, create_test_project):
 @pytest.mark.project_management
 @pytest.mark.functional_negative
 @pytest.mark.headers_validation
-def test_TC088_delete_project_with_invalid_token(create_test_project):
+def test_TC016_delete_project_with_invalid_token(create_test_project):
    ID_PROJECT = create_test_project
-   url = f"{BASE_URI}/projects/{ID_PROJECT}"
+   url = f"{EndpointPlanka.BASE_PROJECTS.value}/{ID_PROJECT}"
    headers = {
     'Authorization': f'Bearer {TOKEN_INVALID}'
     }
@@ -38,9 +39,9 @@ def test_TC088_delete_project_with_invalid_token(create_test_project):
 @pytest.mark.project_management
 @pytest.mark.functional_negative
 @pytest.mark.equivalence_partition
-def test_TC089_delete_project_for_id_not_exists(get_token):
+def test_TC017_delete_project_for_id_not_exists(get_token):
    TOKEN_PLANKA = get_token
-   url = f"{BASE_URI}/projects/{ID_PROJECT_NOT_EXISTS}"
+   url = f"{EndpointPlanka.BASE_PROJECTS.value}/{ID_PROJECT_NOT_EXISTS}"
    headers = {
     'Authorization': f'Bearer {TOKEN_PLANKA}'
     }
@@ -52,9 +53,9 @@ def test_TC089_delete_project_for_id_not_exists(get_token):
 @pytest.mark.project_management
 @pytest.mark.functional_negative
 @pytest.mark.equivalence_partition
-def test_TC090_delete_project_for_id_invalid_empty(get_token):
+def test_TC018_delete_project_for_id_invalid_empty(get_token):
    TOKEN_PLANKA = get_token
-   url = f"{BASE_URI}/projects/{ID_PROJECT_EMPTY}"
+   url = f"{EndpointPlanka.BASE_PROJECTS.value}/{ID_PROJECT_EMPTY}"
    headers = {
     'Authorization': f'Bearer {TOKEN_PLANKA}'
     }
@@ -67,9 +68,9 @@ def test_TC090_delete_project_for_id_invalid_empty(get_token):
 @pytest.mark.project_management
 @pytest.mark.functional_negative
 @pytest.mark.equivalence_partition
-def test_TC091_delete_project_for_id_invalid_string(get_token):
+def test_TC019_delete_project_for_id_invalid_string(get_token):
    TOKEN_PLANKA = get_token
-   url = f"{BASE_URI}/projects/{ID_PROJECT_INVALID_STRING}"
+   url = f"{EndpointPlanka.BASE_PROJECTS.value}/{ID_PROJECT_INVALID_STRING}"
    headers = {
     'Authorization': f'Bearer {TOKEN_PLANKA}'
     }

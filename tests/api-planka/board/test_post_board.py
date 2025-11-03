@@ -2,7 +2,8 @@ import requests
 import json
 import jsonschema
 import pytest
-from config import BASE_URI , TOKEN_INVALID , ID_PROJECT1 , ID_PROJECT_NOT_EXISTS ,ID_PROJECT_INVALID_STRING,ID_PROJECT_EMPTY
+from config import TOKEN_INVALID 
+from src.routes.endpoint import EndpointPlanka
 from src.assertions.status_code import assert_status_code_200 , assert_status_code_401, assert_status_code_400,assert_status_code_404,assert_status_code_400_or_404
 from src.resources.payloads.board_payloads import PAYLOAD_BOARD_CREATE , PAYLOAD_BOARD_EMPTY_NAME,PAYLOAD_BOARD_EMPTY_POSITION, PAYLOAD_BOARD_NAME_VALUE_NUMBER,PAYLOAD_BOARD_POSITION_NEGATIVE,PAYLOAD_BOARD_POSITION_INVALID_TYPE,PAYLOAD_BOARD_POSITION_LARGE
 from src.resources.schemas.board_schema import SCHEMA_BOARD_OUTPUT
@@ -14,7 +15,7 @@ from src.resources.schemas.board_schema import SCHEMA_BOARD_OUTPUT
 @pytest.mark.functional_positive
 @pytest.mark.headers_validation
 def test_TC001_create_board_with_valid_token(get_token):
-    url = f"{BASE_URI}/projects/{ID_PROJECT1}/boards"
+    url = EndpointPlanka.BASE_BOARDS.value
     TOKEN_PLANKA = get_token
     payload = json.dumps(PAYLOAD_BOARD_CREATE)
     headers = {
@@ -29,7 +30,7 @@ def test_TC001_create_board_with_valid_token(get_token):
 @pytest.mark.functional_negative
 @pytest.mark.headers_validation 
 def test_TC002_create_board_with_invalid_token():
-    url = f"{BASE_URI}/projects/{ID_PROJECT1}/boards"
+    url = EndpointPlanka.BASE_BOARDS.value
     payload = json.dumps(PAYLOAD_BOARD_CREATE)
     headers = {
     'Authorization': f'Bearer {TOKEN_INVALID}',
@@ -44,7 +45,7 @@ def test_TC002_create_board_with_invalid_token():
 @pytest.mark.equivalence_partition
 @pytest.mark.payload_validation
 def test_TC003_create_board_with_empty_name(get_token):
-    url = f"{BASE_URI}/projects/{ID_PROJECT1}/boards"
+    url = EndpointPlanka.BASE_BOARDS.value
     TOKEN_PLANKA = get_token
     payload = json.dumps(PAYLOAD_BOARD_EMPTY_NAME)
     headers = {
@@ -59,7 +60,7 @@ def test_TC003_create_board_with_empty_name(get_token):
 @pytest.mark.equivalence_partition
 @pytest.mark.payload_validation
 def test_TC004_create_board_with_numeric_name(get_token):
-    url = f"{BASE_URI}/projects/{ID_PROJECT1}/boards"
+    url = EndpointPlanka.BASE_BOARDS.value
     TOKEN_PLANKA = get_token
     payload = json.dumps(PAYLOAD_BOARD_NAME_VALUE_NUMBER)
     headers = {
@@ -74,7 +75,7 @@ def test_TC004_create_board_with_numeric_name(get_token):
 @pytest.mark.equivalence_partition
 @pytest.mark.payload_validation
 def test_TC005_create_board_with_empty_position(get_token):
-    url = f"{BASE_URI}/projects/{ID_PROJECT1}/boards"
+    url = EndpointPlanka.BASE_BOARDS.value
     TOKEN_PLANKA = get_token
     payload = json.dumps(PAYLOAD_BOARD_EMPTY_POSITION)
     headers = {
@@ -89,7 +90,7 @@ def test_TC005_create_board_with_empty_position(get_token):
 @pytest.mark.equivalence_partition
 @pytest.mark.payload_validation
 def test_TC006_create_board_with_negative_position(get_token):
-    url = f"{BASE_URI}/projects/{ID_PROJECT1}/boards"
+    url = EndpointPlanka.BASE_BOARDS.value
     TOKEN_PLANKA = get_token
     payload = json.dumps(PAYLOAD_BOARD_POSITION_NEGATIVE)
     headers = {
@@ -106,7 +107,7 @@ def test_TC006_create_board_with_negative_position(get_token):
 @pytest.mark.equivalence_partition
 @pytest.mark.payload_validation
 def test_TC007_create_board_with_invalid_position_type(get_token):
-    url = f"{BASE_URI}/projects/{ID_PROJECT1}/boards"
+    url = EndpointPlanka.BASE_BOARDS.value
     TOKEN_PLANKA = get_token
     payload = json.dumps(PAYLOAD_BOARD_POSITION_INVALID_TYPE)
     headers = {
@@ -123,7 +124,7 @@ def test_TC007_create_board_with_invalid_position_type(get_token):
 @pytest.mark.equivalence_partition
 @pytest.mark.payload_validation
 def test_TC008_create_board_with_position_attribute_exceeding_digit(get_token):
-    url = f"{BASE_URI}/projects/{ID_PROJECT1}/boards"
+    url = EndpointPlanka.BASE_BOARDS.value
     TOKEN_PLANKA = get_token
     payload = json.dumps(PAYLOAD_BOARD_POSITION_LARGE)
     headers = {
@@ -139,7 +140,7 @@ def test_TC008_create_board_with_position_attribute_exceeding_digit(get_token):
 @pytest.mark.schema_validation
 def test_TC009_validate_board_response_schema(get_token):
     TOKEN_PLANKA = get_token
-    url = f"{BASE_URI}/projects/{ID_PROJECT1}/boards"
+    url = EndpointPlanka.BASE_BOARDS.value
     payload = json.dumps(PAYLOAD_BOARD_CREATE)
     headers = {
     'Authorization': f'Bearer {TOKEN_PLANKA}',
@@ -158,7 +159,7 @@ def test_TC009_validate_board_response_schema(get_token):
 @pytest.mark.functional_negative
 @pytest.mark.equivalence_partition
 def test_TC010_post_board_with_nonexistent_project_id(get_token):
-    url = f"{BASE_URI}/projects/{ID_PROJECT_NOT_EXISTS}/boards"
+    url = EndpointPlanka.BASE_BOARDS_WITH_ID_PROJECT_NOT_EXISTS.value
     TOKEN_PLANKA = get_token
     payload = json.dumps(PAYLOAD_BOARD_CREATE)
     headers = {
@@ -172,7 +173,7 @@ def test_TC010_post_board_with_nonexistent_project_id(get_token):
 @pytest.mark.functional_negative
 @pytest.mark.equivalence_partition
 def test_TC011_post_board_with_empty_project_id(get_token):
-    url = f"{BASE_URI}/projects/{ID_PROJECT_EMPTY}/boards"
+    url = EndpointPlanka.BASE_BOARDS_WITH_ID_PROJECT_EMPTY.value
     TOKEN_PLANKA = get_token
     payload = json.dumps(PAYLOAD_BOARD_CREATE)
     headers = {
@@ -186,7 +187,7 @@ def test_TC011_post_board_with_empty_project_id(get_token):
 @pytest.mark.functional_negative
 @pytest.mark.equivalence_partition
 def test_TC012_post_board_with_invalid_project_id_type(get_token):
-    url = f"{BASE_URI}/projects/{ID_PROJECT_INVALID_STRING}/boards"
+    url = EndpointPlanka.BASE_BOARDS_WITH_ID_PROJECT_INVALID.value
     TOKEN_PLANKA = get_token
     payload = json.dumps(PAYLOAD_BOARD_CREATE)
     headers = {

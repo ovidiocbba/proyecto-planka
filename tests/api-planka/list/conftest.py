@@ -3,11 +3,12 @@ import requests
 import json
 from config import BASE_URI, ID_BOARD2
 from src.resources.payloads.list_payloads import PAYLOAD_CREATE_LIST
+from src.routes.endpoint import EndpointPlanka
 
 
 @pytest.fixture(scope="module")
 def create_test_list(get_token):
-    url = f"{BASE_URI}/boards/{ID_BOARD2}/lists"
+    url = EndpointPlanka.BASE_LISTS.value
     TOKEN_PLANKA = get_token
     payload = json.dumps(PAYLOAD_CREATE_LIST)
     headers = {
