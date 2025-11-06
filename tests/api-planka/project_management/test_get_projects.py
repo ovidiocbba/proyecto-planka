@@ -6,6 +6,8 @@ from src.routes.endpoint import EndpointPlanka
 from src.assertions.status_code import assert_status_code_200 , assert_status_code_401
 from src.assertions.assertion_general import assert_response_time
 from src.resources.schemas.project_schema import SCHEMA_OUTPUT_GET_PROJECTS
+from utils.logger_helper import log_request_response
+
 
 
 @pytest.mark.project_management
@@ -20,6 +22,7 @@ def test_TC011_get_project_with_valid_token(get_token):
     }
 
     response = requests.get(url, headers=headers)
+    log_request_response(url, response, headers)
     assert_status_code_200(response)
 
 
@@ -33,6 +36,7 @@ def test_TC012_get_project_with_invalid_token():
     }
 
     response = requests.get(url,headers=headers)
+    log_request_response(url, response, headers)
     assert_status_code_401(response)
 
 
@@ -47,6 +51,7 @@ def test_TC013_get_project_validate_schema_output(get_token):
           'Authorization': f'Bearer {TOKEN_PLANKA}'
     }    
     response = requests.get(url,headers=headers)
+    log_request_response(url, response, headers)
     assert_status_code_200(response)
     
 
@@ -68,5 +73,6 @@ def test_TC014_get_project_validate_response_time(get_token):
       }    
       
       response = requests.get(url,headers=headers)
+      log_request_response(url, response, headers)
       assert_response_time(response)
       

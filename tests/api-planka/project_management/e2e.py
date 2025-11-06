@@ -5,6 +5,9 @@ from src.routes.endpoint import EndpointPlanka
 from src.assertions.status_code import assert_status_code_200
 from src.resources.payloads.project_payloads import PAYLOAD_PROJECT_CREATE 
 
+from utils.logger_helper import log_request_response
+
+
 
 
 @pytest.mark.project_management
@@ -20,6 +23,7 @@ def test_create_project(get_token):
     'Authorization': f'Bearer {TOKEN_PLANKA}'
     }
     response = requests.post(url, headers=headers, data=payload)
+    log_request_response(url, response, headers, payload)
     assert_status_code_200(response)
 
 
@@ -36,6 +40,7 @@ def test_get_projects(get_token):
     }
 
     response = requests.get(url, headers=headers)
+    log_request_response(url, response, headers)
     assert_status_code_200(response)
 
 
@@ -54,4 +59,5 @@ def test_delete_project_by_id(get_token, create_test_project):
     }
 
     response = requests.delete(url, headers=headers)
+    log_request_response(url, response, headers)
     assert_status_code_200(response)

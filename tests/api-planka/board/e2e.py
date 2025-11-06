@@ -4,6 +4,9 @@ import pytest
 from src.routes.endpoint import EndpointPlanka
 from src.assertions.status_code import assert_status_code_200 
 from src.resources.payloads.board_payloads import PAYLOAD_BOARD_CREATE 
+from utils.logger_helper import log_request_response
+
+
 
 
 @pytest.mark.board
@@ -19,6 +22,7 @@ def test_create_board(get_token):
     }
 
     response = requests.post(url, headers=headers, data=payload)
+    log_request_response(url, response, headers,payload)
     assert_status_code_200(response)
 
 
@@ -34,6 +38,7 @@ def test_get_board_by_id(get_token):
     'Authorization': f'Bearer {TOKEN_PLANKA}'
     }
     response = requests.get(url, headers=headers)
+    log_request_response(url, response, headers)
     assert_status_code_200(response)
 
 
@@ -50,4 +55,5 @@ def test_delete_board_by_id(get_token,post_test_board):
     'Authorization': f'Bearer {TOKEN_PLANKA} '
     }
     response = requests.delete(url, headers=headers)
+    log_request_response(url, response, headers)
     assert_status_code_200(response)

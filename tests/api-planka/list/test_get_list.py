@@ -6,6 +6,8 @@ from src.routes.endpoint import EndpointPlanka
 from src.assertions.status_code import assert_status_code_200, assert_status_code_400,assert_status_code_401 , assert_status_code_404
 from src.assertions.assertion_general import assert_response_time
 from src.resources.schemas.list_schema import SCHEMA_ITEM_LIST , SCHEMA_INCLUDED_LIST
+from utils.logger_helper import log_request_response
+
 
 
 @pytest.mark.list
@@ -21,6 +23,7 @@ def test_TC018_get_list_with_valid_token(get_token):
     }
 
     response = requests.get(url, headers=headers)
+    log_request_response(url, response, headers)
     assert_status_code_200(response)
 
 
@@ -35,13 +38,13 @@ def test_TC019_get_list_with_invalid_token():
     }
 
     response = requests.get(url, headers=headers)
+    log_request_response(url, response, headers)
     assert_status_code_401(response)
 
 
 @pytest.mark.list
 @pytest.mark.functional_positive
 @pytest.mark.performance
-
 def test_TC020_validate_list_response_time(get_token):   
     TOKEN_PLANKA = get_token 
     url = EndpointPlanka.BASE_LISTS_WITH_ID_LIST.value
@@ -50,6 +53,7 @@ def test_TC020_validate_list_response_time(get_token):
     }
 
     response = requests.get(url, headers=headers)
+    log_request_response(url, response, headers)
     assert_response_time(response)
 
 
@@ -66,6 +70,7 @@ def test_TC021_validate_list_response_schema(get_token):
     }
 
     response = requests.get(url, headers=headers)
+    log_request_response(url, response, headers)
     data = response.json()
    
     assert_status_code_200(response)
@@ -96,6 +101,7 @@ def test_TC022_get_list_with_nonexistent_list_id(get_token):
     }
 
     response = requests.get(url, headers=headers)
+    log_request_response(url, response, headers)
     assert_status_code_404(response)
 
 
@@ -113,6 +119,7 @@ def test_TC023_get_list_with_empty_list_id(get_token):
     }
 
     response = requests.get(url, headers=headers)
+    log_request_response(url, response, headers)
     assert_status_code_404(response)
 
 
@@ -129,6 +136,7 @@ def test_TC024_get_list_with_invalid_list_id_type(get_token):
     }
 
     response = requests.get(url, headers=headers)
+    log_request_response(url, response, headers)
     assert_status_code_400(response)
 
 

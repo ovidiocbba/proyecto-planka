@@ -3,6 +3,8 @@ import pytest
 from config import TOKEN_INVALID , ID_PROJECT_INVALID_STRING,ID_PROJECT_NOT_EXISTS,ID_PROJECT_EMPTY 
 from src.routes.endpoint import EndpointPlanka
 from src.assertions.status_code import assert_status_code_200 , assert_status_code_400,assert_status_code_404, assert_status_code_401,assert_status_code_400_or_404
+from utils.logger_helper import log_request_response
+
 
 
 @pytest.mark.project_management
@@ -19,6 +21,7 @@ def test_TC015_delete_project_with_valid_token(get_token, create_test_project):
     }
 
     response = requests.delete(url, headers=headers)
+    log_request_response(url, response, headers)
     assert_status_code_200(response)
 
     
@@ -33,6 +36,7 @@ def test_TC016_delete_project_with_invalid_token(create_test_project):
     }
 
    response = requests.delete(url,headers=headers)
+   log_request_response(url, response, headers)
    assert_status_code_401(response)
 
 
@@ -48,6 +52,7 @@ def test_TC017_delete_project_for_id_not_exists(get_token):
     }
 
    response = requests.delete(url,headers=headers)
+   log_request_response(url, response, headers)
    assert_status_code_400_or_404(response)
 
 
@@ -63,6 +68,7 @@ def test_TC018_delete_project_for_id_invalid_empty(get_token):
     }
 
    response = requests.delete(url,headers=headers)
+   log_request_response(url, response, headers)
    assert_status_code_404(response)
 
 
@@ -79,6 +85,7 @@ def test_TC019_delete_project_for_id_invalid_string(get_token):
     }
 
    response = requests.delete(url,headers=headers)
+   log_request_response(url, response, headers)
    assert_status_code_400(response)
 
    

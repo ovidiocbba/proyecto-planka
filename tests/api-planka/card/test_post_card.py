@@ -7,6 +7,7 @@ from src.assertions.status_code import assert_status_code_200 ,assert_status_cod
 from src.resources.payloads.card_payloads import PAYLOAD_CREATE_CARD , PAYLOAD_CREATE_CARD_TYPE_EMPTY,PAYLOAD_CREATE_CARD_POSITION_EMPTY,PAYLOAD_CREATE_CARD_NAME_EMPTY,PAYLOAD_CREATE_CARD_TYPE_PROJECT,PAYLOAD_CREATE_CARD_TYPE_STORY , PAYLOAD_CREATE_CARD_TYPE_INVALID,PAYLOAD_CREATE_CARD_POSITION_INVALID,PAYLOAD_CREATE_CARD_NAME_INVALID,PAYLOAD_CREATE_CARD_POSITION_VALUE_NEGATIVE,PAYLOAD_CREATE_CARD_POSITION_DIGITS_EXCEEDS
 from src.resources.schemas.card_schema import SCHEMA_CARD_PAYLOAD_INPUT
 from src.routes.endpoint import EndpointPlanka
+from utils.logger_helper import log_request_response
 
 
 @pytest.mark.card
@@ -22,7 +23,10 @@ def test_TC001_create_card_with_valid_token(get_token):
     }
 
     response = requests.post(url, headers=headers, data=payload)
+    log_request_response(url, response, headers, payload)
     assert_status_code_200(response)
+    
+
     
 
 @pytest.mark.card
@@ -36,8 +40,12 @@ def test_TC002_create_card_with_invalid_token():
     }
 
     response = requests.post(url, headers=headers, data=payload)
+    log_request_response(url, response, headers, payload)
     assert_status_code_401(response)
     
+
+
+
 @pytest.mark.card
 @pytest.mark.functional_positive
 @pytest.mark.regression
@@ -51,6 +59,7 @@ def test_TC003_validate_card_creation_request_payload(get_token):
     }
 
     response = requests.post(url, headers=headers, data=payload)
+    log_request_response(url, response, headers, payload)
     assert_status_code_200(response)
 
     try:
@@ -73,7 +82,10 @@ def test_TC004_post_card_validate_attribute_with_type_project(get_token):
     'Authorization': f'Bearer {TOKEN_PLANKA}'
     }
     response = requests.post(url, headers=headers, data=payload)
+    log_request_response(url, response, headers, payload)
     assert_status_code_200(response)
+
+
 
 @pytest.mark.card
 @pytest.mark.functional_positive
@@ -88,6 +100,7 @@ def test_TC005_post_card_validate_attribute_with_type_story(get_token):
     'Authorization': f'Bearer {TOKEN_PLANKA}'
     }
     response = requests.post(url, headers=headers, data=payload)
+    log_request_response(url, response, headers, payload)
     assert_status_code_200(response)
 
 
@@ -104,6 +117,7 @@ def test_TC006_post_card_validate_attribute_with_type_empty(get_token):
     'Authorization': f'Bearer {TOKEN_PLANKA}'
     }
     response = requests.post(url, headers=headers, data=payload)
+    log_request_response(url, response, headers, payload)
     assert_status_code_400(response)
 
 
@@ -121,6 +135,7 @@ def test_TC007_post_card_validate_attribute_with_type_invalid(get_token):
     'Authorization': f'Bearer {TOKEN_PLANKA}'
     }
     response = requests.post(url, headers=headers, data=payload)
+    log_request_response(url, response, headers, payload)
     assert_status_code_400(response)
 
 
@@ -137,6 +152,7 @@ def test_TC008_post_card_validate_attribute_with_position_empty(get_token):
     'Authorization': f'Bearer {TOKEN_PLANKA}'
     }
     response = requests.post(url, headers=headers, data=payload)
+    log_request_response(url, response, headers, payload)
     assert_status_code_400(response)
 
 
@@ -154,6 +170,7 @@ def test_TC009_post_card_validate_attribute_with_position_invalid_type(get_token
     'Authorization': f'Bearer {TOKEN_PLANKA}'
     }
     response = requests.post(url, headers=headers, data=payload)
+    log_request_response(url, response, headers, payload)
     assert_status_code_400(response)
 
 
@@ -171,6 +188,7 @@ def test_TC010_post_card_validate_attribute_with_position_value_negative(get_tok
     'Authorization': f'Bearer {TOKEN_PLANKA}'
     }
     response = requests.post(url, headers=headers, data=payload)
+    log_request_response(url, response, headers, payload)
     assert_status_code_400(response)
 
 
@@ -188,6 +206,7 @@ def test_TC011_post_card_validate_position_attribute_exceeding_digit(get_token):
     'Authorization': f'Bearer {TOKEN_PLANKA}'
     }
     response = requests.post(url, headers=headers, data=payload)
+    log_request_response(url, response, headers, payload)
     assert_status_code_400(response)
 
 
@@ -205,6 +224,7 @@ def test_TC012_post_card_validate_attribute_with_name_empty(get_token):
     'Authorization': f'Bearer {TOKEN_PLANKA}'
     }
     response = requests.post(url, headers=headers, data=payload)
+    log_request_response(url, response, headers, payload)
     assert_status_code_400(response)
 
 @pytest.mark.xfail(reason=" BUG007: La atributo name  permite entradas de valor numerico ",run=True)
@@ -221,6 +241,7 @@ def test_TC013_post_card_validate_attribute_with_name_invalid(get_token):
     'Authorization': f'Bearer {TOKEN_PLANKA}'
     }
     response = requests.post(url, headers=headers, data=payload)
+    log_request_response(url, response, headers, payload)
     assert_status_code_400(response)
 
 
@@ -236,6 +257,7 @@ def test_TC014_post_card_with_nonexistent_list_id(get_token):
     'Authorization': f'Bearer {TOKEN_PLANKA}'
     }
     response = requests.post(url, headers=headers, data=payload)
+    log_request_response(url, response, headers, payload)
     assert_status_code_400_or_404(response)
 
 
@@ -251,6 +273,7 @@ def test_TC015_post_card_with_empty_list_id(get_token):
     'Authorization': f'Bearer {TOKEN_PLANKA}'
     }
     response = requests.post(url, headers=headers, data=payload)
+    log_request_response(url, response, headers, payload)
     assert_status_code_404(response)
 
 
@@ -266,4 +289,5 @@ def test_TC016_post_card_with_invalid_list_id(get_token):
     'Authorization': f'Bearer {TOKEN_PLANKA}'
     }
     response = requests.post(url, headers=headers, data=payload)
+    log_request_response(url, response, headers, payload)
     assert_status_code_400(response)

@@ -6,6 +6,8 @@ from src.routes.endpoint import EndpointPlanka
 from src.assertions.status_code import assert_status_code_200,assert_status_code_401, assert_status_code_400,assert_status_code_404
 from src.assertions.assertion_general import assert_response_time
 from src.resources.schemas.card_schema import SCHEMA_CARD_WITHOUT_STOPWATCH,SCHEMA_CARD_WITH_STOPWATCH
+from utils.logger_helper import log_request_response
+
 
 
 
@@ -21,6 +23,7 @@ def test_TC017_get_card_with_valid_token(get_token):
     }
 
     response = requests.get(url, headers=headers)
+    log_request_response(url, response, headers)
     assert_status_code_200(response)
 
 
@@ -34,7 +37,10 @@ def test_TC018_get_card_with_invalid_token():
     }
 
     response = requests.get(url, headers=headers)
+    log_request_response(url, response, headers)
     assert_status_code_401(response)
+
+
 
 @pytest.mark.card
 @pytest.mark.functional_positive
@@ -47,6 +53,7 @@ def test_TC019_validate_card_response_time(get_token):
     }
 
     response = requests.get(url, headers=headers)
+    log_request_response(url, response, headers)
     assert_response_time(response)
 
 
@@ -62,6 +69,9 @@ def test_TC020_validate_card_response_schema(get_token):
     }
 
     response = requests.get(url, headers=headers)
+    log_request_response(url, response, headers)
+    assert_status_code_200(response)
+
 
     data = response.json()
     stopwatch = data["item"].get("stopwatch")
@@ -75,6 +85,7 @@ def test_TC020_validate_card_response_schema(get_token):
 @pytest.mark.card
 @pytest.mark.functional_negative
 @pytest.mark.regression
+@pytest.mark.equivalence_partition
 def test_TC021_get_card_with_nonexistent_card_id(get_token):
     url = EndpointPlanka.BASE_CARDS_WITH_ID_CARD_NOT_EXISTS.value
     TOKEN_PLANKA = get_token
@@ -83,6 +94,7 @@ def test_TC021_get_card_with_nonexistent_card_id(get_token):
     }
 
     response = requests.get(url, headers=headers)
+    log_request_response(url, response, headers)
     assert_status_code_404(response)
 
 
@@ -91,6 +103,7 @@ def test_TC021_get_card_with_nonexistent_card_id(get_token):
 @pytest.mark.card
 @pytest.mark.functional_negative
 @pytest.mark.regression
+@pytest.mark.equivalence_partition
 def test_TC022_get_card_with_empty_card_id(get_token):
     url = EndpointPlanka.BASE_CARDS_WITH_ID_CARD_VALUE_EMPTY.value
     TOKEN_PLANKA = get_token
@@ -99,12 +112,14 @@ def test_TC022_get_card_with_empty_card_id(get_token):
     }
 
     response = requests.get(url, headers=headers)
+    log_request_response(url, response, headers)
     assert_status_code_400(response)
 
 
 @pytest.mark.card
 @pytest.mark.functional_negative
 @pytest.mark.regression
+@pytest.mark.equivalence_partition
 def test_TC023_get_card_with_invalid_card_id_type(get_token):
     url = EndpointPlanka.BASE_CARDS_WITH_ID_CARD_VALUE_INVALID.value
     TOKEN_PLANKA = get_token
@@ -113,5 +128,6 @@ def test_TC023_get_card_with_invalid_card_id_type(get_token):
     }
 
     response = requests.get(url, headers=headers)
+    log_request_response(url, response, headers)
     assert_status_code_400(response)
 
