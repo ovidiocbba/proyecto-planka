@@ -1,9 +1,8 @@
 import requests
 import pytest
-import jsonschema
 from config import TOKEN_INVALID 
 from src.routes.endpoint import EndpointPlanka
-from src.assertions.status_code import assert_status_code_200, assert_status_code_401 , assert_status_code_400 , assert_status_code_404
+from src.assertions.status_code_assertion import AssertionStatusCode
 from src.resources.schemas.board_schema import SCHEMA_BOARD_OUTPUT2
 from src.assertions.assertion_general import assert_response_time
 from src.assertions.schema_assertion import AssertionSchemas
@@ -23,7 +22,7 @@ def test_TC013_get_board_with_valid_token(get_token):
     }
     response = requests.get(url, headers=headers)
     log_request_response(url, response, headers)
-    assert_status_code_200(response)
+    AssertionStatusCode.assert_status_code_200(response)
 
 
 @pytest.mark.board
@@ -36,7 +35,7 @@ def test_TC014_get_board_with_invalid_token():
     }
     response = requests.get(url, headers=headers)
     log_request_response(url, response, headers)
-    assert_status_code_401(response)
+    AssertionStatusCode.assert_status_code_401(response)
 
 
 
@@ -52,7 +51,7 @@ def test_TC015_validate_board_response_schema(get_token):
     }
     response = requests.get(url,headers=headers)
     log_request_response(url, response, headers)
-    assert_status_code_200(response)
+    AssertionStatusCode.assert_status_code_200(response)
     AssertionSchemas.validate_output_schema(response,SCHEMA_BOARD_OUTPUT2)
 
 
@@ -84,7 +83,7 @@ def test_TC017_get_board_with_nonexistent_board_id(get_token):
     }
     response = requests.get(url, headers=headers)
     log_request_response(url, response, headers)
-    assert_status_code_404(response)
+    AssertionStatusCode.assert_status_code_404(response)
 
 
 
@@ -101,7 +100,7 @@ def test_TC018_get_board_with_empty_board_id(get_token):
     }
     response = requests.get(url, headers=headers)
     log_request_response(url, response, headers)
-    assert_status_code_400(response)
+    AssertionStatusCode.assert_status_code_400(response)
 
 
 
@@ -117,4 +116,4 @@ def test_TC019_get_board_with_invalid_board_id_type(get_token):
     }
     response = requests.get(url, headers=headers)
     log_request_response(url, response, headers)
-    assert_status_code_400(response)
+    AssertionStatusCode.assert_status_code_400(response)

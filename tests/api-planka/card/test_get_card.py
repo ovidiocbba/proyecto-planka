@@ -1,9 +1,8 @@
 import requests
 import pytest
-import jsonschema
 from config import TOKEN_INVALID 
 from src.routes.endpoint import EndpointPlanka
-from src.assertions.status_code import assert_status_code_200,assert_status_code_401, assert_status_code_400,assert_status_code_404
+from src.assertions.status_code_assertion import AssertionStatusCode
 from src.assertions.assertion_general import assert_response_time
 from utils.logger_helper import log_request_response
 
@@ -23,7 +22,9 @@ def test_TC017_get_card_with_valid_token(get_token):
 
     response = requests.get(url, headers=headers)
     log_request_response(url, response, headers)
-    assert_status_code_200(response)
+    AssertionStatusCode.assert_status_code_200(response)
+    
+
 
 
 @pytest.mark.card
@@ -37,7 +38,8 @@ def test_TC018_get_card_with_invalid_token():
 
     response = requests.get(url, headers=headers)
     log_request_response(url, response, headers)
-    assert_status_code_401(response)
+    AssertionStatusCode.assert_status_code_401(response)
+
 
 
 
@@ -70,7 +72,9 @@ def test_TC021_get_card_with_nonexistent_card_id(get_token):
 
     response = requests.get(url, headers=headers)
     log_request_response(url, response, headers)
-    assert_status_code_404(response)
+    AssertionStatusCode.assert_status_code_404(response)
+    
+
 
 
 
@@ -88,7 +92,8 @@ def test_TC022_get_card_with_empty_card_id(get_token):
 
     response = requests.get(url, headers=headers)
     log_request_response(url, response, headers)
-    assert_status_code_400(response)
+    AssertionStatusCode.assert_status_code_400(response)
+
 
 
 @pytest.mark.card
@@ -103,6 +108,11 @@ def test_TC023_get_card_with_invalid_card_id_type(get_token):
     }
 
     response = requests.get(url, headers=headers)
-    log_request_response(url, response, headers)    
-    assert_status_code_400(response)
+    log_request_response(url, response, headers)   
+    AssertionStatusCode.assert_status_code_400(response)
+
+
+
+ 
+
 

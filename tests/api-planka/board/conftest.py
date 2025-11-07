@@ -3,7 +3,7 @@ import json
 import pytest
 from config import BASE_URI , ID_PROJECT1
 from src.routes.endpoint import EndpointPlanka
-from src.assertions.status_code import assert_status_code_200 
+# from src.assertions.status_code_assertion import assert_status_code_200 
 from src.resources.payloads.board_payloads import PAYLOAD_BOARD_CREATE 
 
 

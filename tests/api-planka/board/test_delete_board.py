@@ -2,7 +2,7 @@ import requests
 import pytest
 from config import TOKEN_INVALID , ID_BOARD2 , ID_BOARD_NOT_EXISTS , ID_BOARD_EMPTY ,ID_BOARD_INVALID_STRING
 from src.routes.endpoint import EndpointPlanka
-from src.assertions.status_code import assert_status_code_200, assert_status_code_400,assert_status_code_401 , assert_status_code_404
+from src.assertions.status_code_assertion import AssertionStatusCode
 from utils.logger_helper import log_request_response
 
 
@@ -21,7 +21,7 @@ def test_TC020_delete_board_with_valid_token(get_token,post_test_board):
     }
     response = requests.delete(url, headers=headers)
     log_request_response(url, response, headers)
-    assert_status_code_200(response)
+    AssertionStatusCode.assert_status_code_200(response)
 
 
 
@@ -35,7 +35,7 @@ def test_TC021_delete_board_with_invalid_token():
     }
     response = requests.delete(url, headers=headers)
     log_request_response(url, response, headers)
-    assert_status_code_401(response)
+    AssertionStatusCode.assert_status_code_401(response)
 
 
 @pytest.mark.board
@@ -50,7 +50,7 @@ def test_TC022_delete_board_with_nonexistent_id(get_token):
     }
     response = requests.delete(url, headers=headers)
     log_request_response(url, response, headers)
-    assert_status_code_404(response)
+    AssertionStatusCode.assert_status_code_404(response)
 
 
 @pytest.mark.board
@@ -65,7 +65,7 @@ def test_TC023_delete_board_with_empty_id(get_token):
     }
     response = requests.delete(url, headers=headers)
     log_request_response(url, response, headers)
-    assert_status_code_404(response)
+    AssertionStatusCode.assert_status_code_404(response)
 
 
 @pytest.mark.board
@@ -80,4 +80,4 @@ def test_TC024_delete_board_with_invalid_id_type(get_token):
     }
     response = requests.delete(url, headers=headers)
     log_request_response(url, response, headers)
-    assert_status_code_400(response)
+    AssertionStatusCode.assert_status_code_400(response)

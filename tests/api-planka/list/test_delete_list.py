@@ -2,7 +2,7 @@ import requests
 import pytest
 from config import TOKEN_INVALID ,ID_LIST_NOT_EXISTS,ID_LIST_EMPTY,ID_LIST_INVALID_STRING
 from src.routes.endpoint import EndpointPlanka
-from src.assertions.status_code import assert_status_code_200,assert_status_code_401,assert_status_code_404
+from src.assertions.status_code_assertion import AssertionStatusCode
 from utils.logger_helper import log_request_response
 
 
@@ -21,7 +21,9 @@ def test_TC025_delete_list_with_valid_token(get_token , create_test_list):
     }
     response = requests.delete(url, headers=headers)
     log_request_response(url, response, headers)
-    assert_status_code_200(response)
+    AssertionStatusCode.assert_status_code_200(response)
+
+
 
 
 @pytest.mark.list
@@ -36,7 +38,9 @@ def test_TC026_delete_list_with_invalid_token(create_test_list):
     }
     response = requests.delete(url, headers=headers)
     log_request_response(url, response, headers)
-    assert_status_code_401(response)
+    AssertionStatusCode.assert_status_code_401(response)
+
+
 
 
 @pytest.mark.list
@@ -51,7 +55,8 @@ def test_TC027_delete_list_with_id_list_not_exists():
     }
     response = requests.delete(url, headers=headers)
     log_request_response(url, response, headers)
-    assert_status_code_401(response)
+    AssertionStatusCode.assert_status_code_401(response)
+ 
 
 
 @pytest.mark.list
@@ -66,7 +71,8 @@ def test_TC028_delete_list_with_id_list_empty():
     }
     response = requests.delete(url, headers=headers)
     log_request_response(url, response, headers)
-    assert_status_code_404(response)
+    AssertionStatusCode.assert_status_code_404(response)
+
 
 
 @pytest.mark.list
@@ -81,4 +87,5 @@ def test_TC029_delete_list_with_id_list_invalid():
     }
     response = requests.delete(url, headers=headers)
     log_request_response(url, response, headers)
-    assert_status_code_401(response)
+    AssertionStatusCode.assert_status_code_401(response)
+

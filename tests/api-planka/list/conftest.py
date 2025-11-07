@@ -1,7 +1,7 @@
 import pytest
 import requests
 import json
-from config import BASE_URI, ID_BOARD2
+from config import BASE_URI
 from src.resources.payloads.list_payloads import PAYLOAD_CREATE_LIST
 from src.routes.endpoint import EndpointPlanka
 
