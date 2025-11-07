@@ -15,7 +15,8 @@ from src.assertions.schema_assertion import AssertionSchemas
 @pytest.mark.smoke
 @pytest.mark.functional_positive
 @pytest.mark.headers_validation
-def test_TC001_create_list_with_valid_token(get_token):
+def test_TC001_create_list_with_valid_token(setup_add_list):
+    get_token,created_lists = setup_add_list
     url = EndpointPlanka.BASE_LISTS.value
     TOKEN_PLANKA = get_token
     payload = json.dumps(PAYLOAD_CREATE_LIST)
@@ -26,7 +27,7 @@ def test_TC001_create_list_with_valid_token(get_token):
     response = requests.post(url, headers=headers, data=payload)
     log_request_response(url, response, headers, payload)
     AssertionStatusCode.assert_status_code_200(response)
-
+    created_lists.append(response.json())
 
 
 
@@ -51,7 +52,8 @@ def test_TC002_create_list_with_invalid_token():
 @pytest.mark.regression
 @pytest.mark.payload_validation
 @pytest.mark.equivalence_partition
-def test_TC003_post_list_with_attribute_type_active(get_token):
+def test_TC003_post_list_with_attribute_type_active(setup_add_list):
+    get_token,created_lists = setup_add_list
     url = EndpointPlanka.BASE_LISTS.value
     TOKEN_PLANKA = get_token
     payload = json.dumps(PAYLOAD_CREATE_LIST_TYPE_ACTIVE)
@@ -62,6 +64,9 @@ def test_TC003_post_list_with_attribute_type_active(get_token):
     response = requests.post(url, headers=headers, data=payload)
     log_request_response(url, response, headers, payload)
     AssertionStatusCode.assert_status_code_200(response)
+    created_lists.append(response.json())
+
+
 
 
 
@@ -71,7 +76,8 @@ def test_TC003_post_list_with_attribute_type_active(get_token):
 @pytest.mark.regression
 @pytest.mark.payload_validation
 @pytest.mark.equivalence_partition
-def test_TC004_post_list_with_attribute_type_closed(get_token):
+def test_TC004_post_list_with_attribute_type_closed(setup_add_list):
+    get_token,created_lists = setup_add_list
     url = EndpointPlanka.BASE_LISTS.value
     TOKEN_PLANKA = get_token
     payload = json.dumps(PAYLOAD_CREATE_LIST_TYPE_CLOSED)
@@ -82,6 +88,9 @@ def test_TC004_post_list_with_attribute_type_closed(get_token):
     response = requests.post(url, headers=headers, data=payload)
     log_request_response(url, response, headers, payload)
     AssertionStatusCode.assert_status_code_200(response)
+    created_lists.append(response.json())
+
+
 
 
 
@@ -247,7 +256,8 @@ def test_TC012_post_list_attribute_with_name_invalid(get_token):
 @pytest.mark.functional_positive
 @pytest.mark.regression
 @pytest.mark.schema_validation
-def test_TC013_validate_list_creation_response_schema(get_token):
+def test_TC013_validate_list_creation_response_schema(setup_add_list):
+    get_token,created_lists = setup_add_list
     url = EndpointPlanka.BASE_LISTS.value
     TOKEN_PLANKA = get_token
     payload = json.dumps(PAYLOAD_CREATE_LIST)
@@ -258,13 +268,18 @@ def test_TC013_validate_list_creation_response_schema(get_token):
     log_request_response(url, response, headers, payload)
     AssertionStatusCode.assert_status_code_200(response)
     AssertionSchemas.validate_output_schema(response,SCHEMA_CREATE_LIST_OUTPUT)
+    created_lists.append(response.json())
+
    
+
+
 
 @pytest.mark.list
 @pytest.mark.functional_positive
 @pytest.mark.regression
 @pytest.mark.schema_validation
-def test_TC014_validate_list_creation_request_payload(get_token):
+def test_TC014_validate_list_creation_request_payload(setup_add_list):
+    get_token,created_lists = setup_add_list
     url = EndpointPlanka.BASE_LISTS.value
     TOKEN_PLANKA = get_token
     payload = json.dumps(PAYLOAD_CREATE_LIST)
@@ -275,6 +290,7 @@ def test_TC014_validate_list_creation_request_payload(get_token):
     log_request_response(url, response, headers, payload)
     AssertionStatusCode.assert_status_code_200(response)
     AssertionSchemas.validate_input_schema(PAYLOAD_CREATE_LIST,SCHEMA_LIST_PAYLOAD_INPUT)
+    created_lists.append(response.json())
 
     
 

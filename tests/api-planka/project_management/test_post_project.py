@@ -10,22 +10,25 @@ from src.assertions.schema_assertion import AssertionSchemas
 from utils.logger_helper import log_request_response
 
 
+
 @pytest.mark.project_management
 @pytest.mark.smoke
 @pytest.mark.functional_positive
 @pytest.mark.headers_validation
-def test_TC001_create_project_with_valid_token(get_token):
+def test_TC001_create_project_with_valid_token(setup_add_project):
     url = EndpointPlanka.BASE_PROJECTS.value
-    TOKEN_PLANKA = get_token
+    get_token , created_projects = setup_add_project
     payload = json.dumps(PAYLOAD_PROJECT_CREATE)
     headers = {
-    'Authorization': f'Bearer {TOKEN_PLANKA}'
+    'Authorization': f'Bearer {get_token}'
     }
     response = requests.post(url, headers=headers, data=payload)
+
     log_request_response(url, response, headers, payload)
     AssertionStatusCode.assert_status_code_200(response)
-  
+    created_projects.append(response.json())
 
+  
 
 
 @pytest.mark.project_management
@@ -49,7 +52,8 @@ def test_TC002_create_project_with_invalid_token():
 @pytest.mark.regression
 @pytest.mark.functional_positive
 @pytest.mark.payload_validation
-def test_TC003_validate_project_creation_response_payload(get_token):
+def test_TC003_validate_project_creation_response_payload(setup_add_project):
+    get_token , created_projects = setup_add_project
     url = EndpointPlanka.BASE_PROJECTS.value
     TOKEN_PLANKA = get_token 
     payload = json.dumps(PAYLOAD_PROJECT_CREATE)
@@ -61,6 +65,7 @@ def test_TC003_validate_project_creation_response_payload(get_token):
     log_request_response(url, response, headers, payload)
     AssertionStatusCode.assert_status_code_200(response)
     AssertionSchemas.validate_output_schema(response , SCHEMA_OUTPUT_CREATE_PROJECT)
+    created_projects.append(response.json())
 
 
 
@@ -68,7 +73,8 @@ def test_TC003_validate_project_creation_response_payload(get_token):
 @pytest.mark.payload_validation
 @pytest.mark.regression
 @pytest.mark.functional_positive
-def test_TC004_validate_project_creation_request_payload(get_token):
+def test_TC004_validate_project_creation_request_payload(setup_add_project):
+    get_token , created_projects = setup_add_project
     url = EndpointPlanka.BASE_PROJECTS.value
     TOKEN_PLANKA = get_token
     headers = {
@@ -79,6 +85,7 @@ def test_TC004_validate_project_creation_request_payload(get_token):
     log_request_response(url, response, headers, PAYLOAD_PROJECT_CREATE)
     AssertionStatusCode.assert_status_code_200(response)
     AssertionSchemas.validate_input_schema(PAYLOAD_PROJECT_CREATE,SCHEMA_INPUT_CREATE_PROJECT)
+    created_projects.append(response.json())
 
 
 
@@ -87,7 +94,8 @@ def test_TC004_validate_project_creation_request_payload(get_token):
 @pytest.mark.regression
 @pytest.mark.payload_validation
 @pytest.mark.equivalence_partition
-def test_TC005_create_project_with_attribute_type_private(get_token):
+def test_TC005_create_project_with_attribute_type_private(setup_add_project):
+    get_token , created_projects = setup_add_project
     url = EndpointPlanka.BASE_PROJECTS.value
     TOKEN_PLANKA = get_token
     payload = json.dumps(PAYLOAD_PROJECT_CREATE_TYPE_PRIVATE)
@@ -97,6 +105,7 @@ def test_TC005_create_project_with_attribute_type_private(get_token):
     response = requests.post(url, headers=headers, data=payload)
     log_request_response(url, response, headers, payload)
     AssertionStatusCode.assert_status_code_200(response)
+    created_projects.append(response.json())
 
 
 
@@ -105,7 +114,8 @@ def test_TC005_create_project_with_attribute_type_private(get_token):
 @pytest.mark.regression
 @pytest.mark.payload_validation
 @pytest.mark.equivalence_partition
-def test_TC006_create_project_with_attribute_type_shared(get_token):
+def test_TC006_create_project_with_attribute_type_shared(setup_add_project):
+    get_token , created_projects = setup_add_project
     url = EndpointPlanka.BASE_PROJECTS.value
     TOKEN_PLANKA = get_token
     payload = json.dumps(PAYLOAD_PROJECT_CREATE_TYPE_SHARED)
@@ -115,6 +125,7 @@ def test_TC006_create_project_with_attribute_type_shared(get_token):
     response = requests.post(url, headers=headers, data=payload)
     log_request_response(url, response, headers, payload)
     AssertionStatusCode.assert_status_code_200(response)
+    created_projects.append(response.json())
   
 
 

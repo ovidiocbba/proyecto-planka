@@ -12,8 +12,9 @@ from utils.logger_helper import log_request_response
 @pytest.mark.smoke
 @pytest.mark.headers_validation
 @pytest.mark.equivalence_partition
-def test_TC015_delete_project_with_valid_token(get_token, create_test_project):
-    ID_PROJECT = create_test_project
+def test_TC015_delete_project_with_valid_token(get_token,create_test_project):
+    project_id = create_test_project
+    ID_PROJECT = project_id
     url = f"{EndpointPlanka.BASE_PROJECTS.value}/{ID_PROJECT}"
     TOKEN_PLANKA = get_token
     headers = {
@@ -26,12 +27,13 @@ def test_TC015_delete_project_with_valid_token(get_token, create_test_project):
 
 
 
-    
+
 @pytest.mark.project_management
 @pytest.mark.functional_negative
 @pytest.mark.headers_validation
 def test_TC016_delete_project_with_invalid_token(create_test_project):
-   ID_PROJECT = create_test_project
+   project_id = create_test_project
+   ID_PROJECT = project_id
    url = f"{EndpointPlanka.BASE_PROJECTS.value}/{ID_PROJECT}"
    headers = {
     'Authorization': f'Bearer {TOKEN_INVALID}'
@@ -59,7 +61,6 @@ def test_TC017_delete_project_for_id_not_exists(get_token):
    AssertionStatusCode.assert_status_code_400_or_404(response)
 
  
-
 
 @pytest.mark.project_management
 @pytest.mark.functional_negative

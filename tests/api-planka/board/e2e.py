@@ -13,7 +13,9 @@ from utils.logger_helper import log_request_response
 @pytest.mark.e2e
 @pytest.mark.smoke
 @pytest.mark.functional_positive
-def test_create_board(get_token):
+@pytest.mark.headers_validation
+def test_create_board(setup_add_board):
+    get_token,created_boards = setup_add_board
     url = EndpointPlanka.BASE_BOARDS.value
     TOKEN_PLANKA = get_token
     payload = json.dumps(PAYLOAD_BOARD_CREATE)
@@ -22,8 +24,9 @@ def test_create_board(get_token):
     }
 
     response = requests.post(url, headers=headers, data=payload)
-    log_request_response(url, response, headers,payload)
+    log_request_response(url, response, headers, payload)
     AssertionStatusCode.assert_status_code_200(response)
+    created_boards.append(response.json())
 
 
 @pytest.mark.board

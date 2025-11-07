@@ -13,7 +13,8 @@ from utils.logger_helper import log_request_response
 @pytest.mark.smoke
 @pytest.mark.functional_positive
 @pytest.mark.headers_validation
-def test_TC001_create_board_with_valid_token(get_token):
+def test_TC001_create_board_with_valid_token(setup_add_board):
+    get_token,created_boards = setup_add_board
     url = EndpointPlanka.BASE_BOARDS.value
     TOKEN_PLANKA = get_token
     payload = json.dumps(PAYLOAD_BOARD_CREATE)
@@ -24,6 +25,9 @@ def test_TC001_create_board_with_valid_token(get_token):
     response = requests.post(url, headers=headers, data=payload)
     log_request_response(url, response, headers, payload)
     AssertionStatusCode.assert_status_code_200(response)
+    created_boards.append(response.json())
+
+
 
 
 @pytest.mark.board
@@ -154,7 +158,8 @@ def test_TC008_create_board_with_position_attribute_exceeding_digit(get_token):
 @pytest.mark.functional_negative
 @pytest.mark.regression
 @pytest.mark.schema_validation
-def test_TC009_validate_board_response_schema(get_token):
+def test_TC009_validate_board_response_schema(setup_add_board):
+    get_token,created_boards = setup_add_board
     TOKEN_PLANKA = get_token
     url = EndpointPlanka.BASE_BOARDS.value
     payload = json.dumps(PAYLOAD_BOARD_CREATE)
@@ -165,6 +170,7 @@ def test_TC009_validate_board_response_schema(get_token):
     log_request_response(url, response, headers, payload)
     AssertionStatusCode.assert_status_code_200(response)
     AssertionSchemas.validate_output_schema(response,SCHEMA_BOARD_OUTPUT)
+    created_boards.append(response.json())
 
  
     

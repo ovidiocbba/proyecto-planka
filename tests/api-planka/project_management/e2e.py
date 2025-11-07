@@ -4,9 +4,7 @@ import pytest
 from src.routes.endpoint import EndpointPlanka
 from src.assertions.status_code_assertion import AssertionStatusCode
 from src.resources.payloads.project_payloads import PAYLOAD_PROJECT_CREATE 
-
 from utils.logger_helper import log_request_response
-
 
 
 
@@ -15,16 +13,18 @@ from utils.logger_helper import log_request_response
 @pytest.mark.smoke
 @pytest.mark.functional_positive
 @pytest.mark.headers_validation
-def test_create_project(get_token):
+def test_create_project(setup_add_project):
     url = EndpointPlanka.BASE_PROJECTS.value
-    TOKEN_PLANKA = get_token
+    get_token , created_projects = setup_add_project
     payload = json.dumps(PAYLOAD_PROJECT_CREATE)
     headers = {
-    'Authorization': f'Bearer {TOKEN_PLANKA}'
+    'Authorization': f'Bearer {get_token}'
     }
     response = requests.post(url, headers=headers, data=payload)
+
     log_request_response(url, response, headers, payload)
     AssertionStatusCode.assert_status_code_200(response)
+    created_projects.append(response.json())
 
 
 

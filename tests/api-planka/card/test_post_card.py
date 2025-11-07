@@ -10,13 +10,12 @@ from utils.logger_helper import log_request_response
 from src.assertions.schema_assertion import AssertionSchemas
 
 
-
-
 @pytest.mark.card
 @pytest.mark.smoke
 @pytest.mark.functional_positive
 @pytest.mark.headers_validation
-def test_TC001_create_card_with_valid_token(get_token):
+def test_TC001_create_card_with_valid_token(setup_add_card):
+    get_token,created_cards = setup_add_card
     url = EndpointPlanka.BASE_CARDS.value
     TOKEN_PLANKA = get_token
     payload = json.dumps(PAYLOAD_CREATE_CARD)
@@ -27,6 +26,7 @@ def test_TC001_create_card_with_valid_token(get_token):
     response = requests.post(url, headers=headers, data=payload)
     log_request_response(url, response, headers, payload)
     AssertionStatusCode.assert_status_code_200(response)
+    created_cards.append(response.json())
 
     
     
@@ -53,7 +53,8 @@ def test_TC002_create_card_with_invalid_token():
 @pytest.mark.functional_positive
 @pytest.mark.regression
 @pytest.mark.payload_validation
-def test_TC003_validate_card_creation_request_payload(get_token):
+def test_TC003_validate_card_creation_request_payload(setup_add_card):
+    get_token,created_cards = setup_add_card
     url = EndpointPlanka.BASE_CARDS.value
     TOKEN_PLANKA = get_token
     payload = json.dumps(PAYLOAD_CREATE_CARD)
@@ -65,6 +66,8 @@ def test_TC003_validate_card_creation_request_payload(get_token):
     log_request_response(url, response, headers, payload)
     AssertionStatusCode.assert_status_code_200(response)
     AssertionSchemas.validate_input_schema(PAYLOAD_CREATE_CARD, SCHEMA_CARD_PAYLOAD_INPUT)
+    created_cards.append(response.json())
+
 
    
 
@@ -73,7 +76,8 @@ def test_TC003_validate_card_creation_request_payload(get_token):
 @pytest.mark.regression
 @pytest.mark.payload_validation
 @pytest.mark.equivalence_partition
-def test_TC004_post_card_validate_attribute_with_type_project(get_token):
+def test_TC004_post_card_validate_attribute_with_type_project(setup_add_card):
+    get_token,created_cards = setup_add_card
     url = EndpointPlanka.BASE_CARDS.value
     TOKEN_PLANKA = get_token
     payload = json.dumps(PAYLOAD_CREATE_CARD_TYPE_PROJECT)
@@ -83,8 +87,8 @@ def test_TC004_post_card_validate_attribute_with_type_project(get_token):
     response = requests.post(url, headers=headers, data=payload)
     log_request_response(url, response, headers, payload)
     AssertionStatusCode.assert_status_code_200(response)
-
-
+    created_cards.append(response.json())
+    
 
 
 
@@ -93,7 +97,8 @@ def test_TC004_post_card_validate_attribute_with_type_project(get_token):
 @pytest.mark.regression
 @pytest.mark.payload_validation
 @pytest.mark.equivalence_partition
-def test_TC005_post_card_validate_attribute_with_type_story(get_token):
+def test_TC005_post_card_validate_attribute_with_type_story(setup_add_card):
+    get_token,created_cards = setup_add_card
     url = EndpointPlanka.BASE_CARDS.value
     TOKEN_PLANKA = get_token
     payload = json.dumps(PAYLOAD_CREATE_CARD_TYPE_STORY)
@@ -103,6 +108,8 @@ def test_TC005_post_card_validate_attribute_with_type_story(get_token):
     response = requests.post(url, headers=headers, data=payload)
     log_request_response(url, response, headers, payload)
     AssertionStatusCode.assert_status_code_200(response)
+    created_cards.append(response.json())
+    
 
 
 
