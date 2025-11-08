@@ -13,7 +13,7 @@ on:
         description: 'Seleccionar la marca para ejecutar por tipo de prueba'
         required: true
         default: 'smoke'
-        type:choice
+        type: choice
         options:
           - card
           - list
