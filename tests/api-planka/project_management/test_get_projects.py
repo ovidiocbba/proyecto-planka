@@ -1,6 +1,6 @@
 
 import pytest
-from utils.variables import TOKEN_INVALID
+from utils.constans import TOKEN_INVALID
 from src.routes.endpoint import EndpointPlanka
 from src.assertions.status_code_assertion import AssertionStatusCode
 from src.assertions.assertion_general import assert_response_time

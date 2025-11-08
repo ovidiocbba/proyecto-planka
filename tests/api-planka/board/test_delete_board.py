@@ -1,6 +1,6 @@
 
 import pytest
-from utils.variables import TOKEN_INVALID , ID_BOARD2 , ID_BOARD_NOT_EXISTS , ID_BOARD_EMPTY ,ID_BOARD_INVALID_STRING
+from utils.constans import TOKEN_INVALID , ID_BOARD2 , ID_BOARD_NOT_EXISTS , ID_BOARD_EMPTY ,ID_BOARD_INVALID_STRING
 from src.routes.endpoint import EndpointPlanka
 from src.assertions.status_code_assertion import AssertionStatusCode
 from utils.logger_helper import log_request_response

@@ -1,5 +1,5 @@
 
-from config import BASE_URI, USER_EMAIL, USER_PASSWORD
+from utils.config import BASE_URI, USER_EMAIL, USER_PASSWORD
 from src.routes.request import PlankaRequests
 
 def generate_token():
