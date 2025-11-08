@@ -10,11 +10,11 @@ on:
         required: true
         default: 'TU_CODIGO_GENERADO_MANUALMENTE'
       mark: #permite que ejecutes el workflow manualmente , ingreses un valor por ejemplo un tipo dde mark
-          description:'Seleccionar la marca para ejecutar por tipo de prueba'
-          required: true
-          default:'smoke'
-          type:choice
-          options:
+        description: 'Seleccionar la marca para ejecutar por tipo de prueba'
+        required: true
+        default: 'smoke'
+        type:choice
+        options:
           - card
           - list
           - board
