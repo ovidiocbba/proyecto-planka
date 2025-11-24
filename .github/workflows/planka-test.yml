@@ -51,12 +51,13 @@ jobs:
 
       - name: Esperar a que Planka esté listo
         run: |
-          echo "Esperando a que Planka y la API estén listos..."
-          until curl --silent --fail http://localhost:3000/api; do
-            echo "Esperando..."
-            sleep 5
-          done
-          echo "Planka está en línea."
+           echo "Waiting for Planka..."
+           until curl -s http://localhost:3000 > /dev/null; do
+             echo "Planka esperando..."
+             sleep 5
+           done
+           echo "Planka esta en linea"
+
 
 
       - name: Ejecutar tests E2E
@@ -87,4 +88,4 @@ jobs:
 
 
       - name: Cleanup Docker
-        run: docker-compose down -v
+        run: docker compose down -v
