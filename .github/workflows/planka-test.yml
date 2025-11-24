@@ -57,20 +57,12 @@ jobs:
           pip install -r requirements.txt
     
    
-      - name: Establecer variables de entorno para Planka
-        run: |
-          echo "BASE_URI=${{ secrets.BASE_URI }}" >> $GITHUB_ENV
-          echo "USER_EMAIL=${{ secrets.USER_EMAIL }}" >> $GITHUB_ENV
-          echo "USER_PASSWORD=${{ secrets.USER_PASSWORD }}" >> $GITHUB_ENV
-
-
-
-      - name: Ejecutar tests E2E
+      - name: Ejecutar tests E2
         run: pytest -v --alluredir=allure-results
         env:
-          BASE_URI: ${{ env.BASE_URI }}
-          USER_EMAIL: ${{ env.USER_EMAIL }}
-          USER_PASSWORD: ${{ env.USER_PASSWORD }}
+          BASE_URI: ${{ secrets.BASE_URI }}
+          USER_EMAIL: ${{ secrets.USER_EMAIL }}
+          USER_PASSWORD: ${{ secrets.USER_PASSWORD }}
 
 
       - name: Set up Node.js
