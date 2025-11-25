@@ -45,7 +45,6 @@ jobs:
           pip install -r requirements.txt
           pip install allure-pytest
 
- 
       - name: Levantar Planka con Docker y esperar
         run: |
          docker compose up -d
