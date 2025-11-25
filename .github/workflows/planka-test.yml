@@ -30,14 +30,14 @@ jobs:
 
       - name: Establecer variables de entorno desde secrets
         run: |
-          echo "DEFAULT_ADMIN_EMAIL=${{ secrets.PLANKA_ADMIN_EMAIL }}" >> $GITHUB_ENV
-          echo "DEFAULT_ADMIN_PASSWORD=${{ secrets.PLANKA_ADMIN_PASSWORD }}" >> $GITHUB_ENV
-          echo "DEFAULT_ADMIN_USERNAME=${{ secrets.PLANKA_ADMIN_USERNAME }}" >> $GITHUB_ENV
+          echo "BASE_URI=${{ secrets.BASE_URI}}" >> $GITHUB_ENV
+          echo "USER_EMAIL=${{ secrets.USER_EMAIL }}" >> $GITHUB_ENV
+          echo "USER_PASSWORD=${{ secrets.USER_PASSWORD }}" >> $GITHUB_ENV
 
       - name: Verificar variables...
         run: |
-          echo "Email: $DEFAULT_ADMIN_EMAIL"
-          echo "Username: $DEFAULT_ADMIN_USERNAME"
+          echo "Email: $USER_EMAIL"
+          echo "Password: $USER_PASSWORD"
 
       - name: Instalar dependencias
         run: |
