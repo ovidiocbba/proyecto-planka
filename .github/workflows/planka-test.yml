@@ -12,16 +12,16 @@ jobs:
     runs-on: ubuntu-latest
 
     
-    services:
-      planka:
-        image: ghcr.io/plankanban/planka:latest
-        ports:
-          - 3000:3000
-        options: >-
-          --health-cmd="curl --fail http://localhost:3000 || exit 1"
-          --health-interval=10s
-          --health-timeout=5s
-          --health-retries=10
+    # services:
+    #   planka:
+    #     image: ghcr.io/plankanban/planka:latest
+    #     ports:
+    #       - 3000:3000
+    #     options: >-
+    #       --health-cmd="curl --fail http://localhost:3000 || exit 1"
+    #       --health-interval=10s
+    #       --health-timeout=5s
+    #       --health-retries=10
 
     steps:
 
