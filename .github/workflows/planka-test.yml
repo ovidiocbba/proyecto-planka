@@ -30,9 +30,9 @@ jobs:
 
       - name: Establecer variables de entorno desde secrets
         run: |
-          echo "BASE_URI=${{ secrets.BASE_URI}}" >> $GITHUB_ENV
-          echo "USER_EMAIL=${{ secrets.USER_EMAIL }}" >> $GITHUB_ENV
-          echo "USER_PASSWORD=${{ secrets.USER_PASSWORD }}" >> $GITHUB_ENV
+         echo "DEFAULT_ADMIN_EMAIL=${{ secrets.USER_EMAIL }}" >> $GITHUB_ENV
+         echo "DEFAULT_ADMIN_PASSWORD=${{ secrets.USER_PASSWORD }}" >> $GITHUB_ENV
+         echo "DEFAULT_ADMIN_USERNAME=${{ secrets.USER_NAME }}" >> $GITHUB_ENV
 
       - name: Verificar variables...
         run: |
