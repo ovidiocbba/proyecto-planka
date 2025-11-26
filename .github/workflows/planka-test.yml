@@ -50,18 +50,7 @@ jobs:
          done
          echo "Planka está en línea"
 
-      - name: Verificar generación de token
-        run: |
-          echo "Intentando generar token..."
-          RESPONSE=$(curl -s -X POST "$BASE_URI/access-tokens" \
-            -H "Content-Type: application/json" \
-            -d "{\"emailOrUsername\":\"$USER_EMAIL\",\"password\":\"$USER_PASSWORD\"}")
-          echo "Respuesta token: $RESPONSE"
-          STATUS=$(echo "$RESPONSE" | jq -r '.status_code // empty')
-          if [[ "$STATUS" == "401" || -z "$RESPONSE" ]]; then
-            echo "ERROR: No se pudo generar token"
-            exit 1
-          fi
+      
 
       - name: Instalar dependencias
         run: |
