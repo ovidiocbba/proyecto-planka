@@ -25,15 +25,16 @@ jobs:
         with:
             python-version: 3.11
 
-      - name: Levantar Planka con Docker
+      - name: Levantar Planka con Docker y esperar
         run: |
-          docker compose up -d
-          echo "Esperando a que Planka arranque..."
-          until curl --silent --fail http://localhost:3000/api > /dev/null; do
+         docker compose up -d
+         echo "Esperando a que Planka arranque..."
+         until curl --silent --fail http://localhost:3000 > /dev/null; do
             echo "esperando..."
-            sleep 10
-          done
-          echo "Planka está en línea"
+            sleep 25
+         done
+         echo "Planka está en línea"
+
 
       - name: Obtener token admin
         id: login
