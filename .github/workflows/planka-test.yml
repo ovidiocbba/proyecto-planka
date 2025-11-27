@@ -46,20 +46,26 @@ jobs:
           echo "Esperando a que Planka arranque..."
           until curl --silent --fail http://localhost:3000 > /dev/null; do
             echo "esperando..."
-            sleep 10
+            sleep 20
           done
           echo "Planka está en línea"
 
       - name: Generar token de admin
         run: |
-          TOKEN=$(curl -s -X POST http://localhost:3000/api/auth/login \
+          sudo apt-get install -y jq
+          echo "Esperando a que el admin esté listo..."
+          until TOKEN=$(curl -s -X POST http://localhost:3000/api/auth/login \
             -H "Content-Type: application/json" \
             -d '{
                   "email": "'"$USER_EMAIL"'",
                   "password": "'"$USER_PASSWORD"'"
-                }' | jq -r '.token')
+                }' | jq -r '.token') && [ "$TOKEN" != "null" ]; do
+            echo "Admin aún no listo, esperando 5s..."
+            sleep 5
+          done
           echo "TOKEN=$TOKEN" >> $GITHUB_ENV
           echo "Token generado: $TOKEN"
+
 
       - name: Ejecutar tests Pytest
         continue-on-error: true
