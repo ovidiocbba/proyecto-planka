@@ -25,15 +25,22 @@ jobs:
         with:
             python-version: 3.11
 
+      - name: Instalar dependencias
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+          pip install allure-pytest jq
+
       - name: Levantar Planka con Docker y esperar
         run: |
-         docker-compose up -d
+         docker compose up -d
          echo "Esperando a que Planka arranque..."
          until curl --silent --fail http://localhost:3000 > /dev/null; do
             echo "esperando..."
             sleep 25
          done
          echo "Planka está en línea"
+
 
 
       - name: Obtener token admin
@@ -46,11 +53,7 @@ jobs:
           echo "TOKEN=$TOKEN" >> $GITHUB_ENV
           echo "Token admin obtenido correctamente"
 
-      - name: Instalar dependencias
-        run: |
-          python -m pip install --upgrade pip
-          pip install -r requirements.txt
-          pip install allure-pytest jq
+      
 
       - name: Ejecutar tests Pytest
         continue-on-error: true
