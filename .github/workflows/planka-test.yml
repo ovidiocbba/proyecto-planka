@@ -70,8 +70,12 @@ jobs:
         continue-on-error: true
         run: |
           pytest -v tests/ --alluredir=allure-results
-          
 
+      - name: Generate Allure report
+        uses: allure-framework/allure-report-action@v2
+        with:
+           results: reports/allure
+   
   
       - name: Publicar Allure en GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
