@@ -69,12 +69,7 @@ jobs:
             sleep 25
          done
          echo "Planka está en línea"
-  
 
-      # - name: Ejecutar tests Pytest
-      #   continue-on-error: true
-      #   run: |
-      #     pytest -v tests/ --alluredir=allure-results
 
 
       - name: Ejecutar tests con pytest y generar reporte Allure
@@ -87,15 +82,8 @@ jobs:
             pytest --disable-warnings -v --alluredir=reports/allure-results
           fi
 
-      - name: Load test report history
-        uses: actions/checkout@v4
-        if: always()
-        continue-on-error: true
-        with:
-          ref: report-allure
-          path: report-allure
 
-      - name: Build test report
+      - name: Generar Reporte de Pruebas
         uses: simple-elf/allure-report-action@master
         if: always()
         with:
@@ -103,7 +91,7 @@ jobs:
           allure_results: reports/allure-results
           allure_history: allure-history
 
-      - name: Publish test report
+      - name: Publicar Reporte de Pruebas
         uses: peaceiris/actions-gh-pages@v3
         if: always()
         with:
@@ -111,13 +99,3 @@ jobs:
           publish_dir: ./reports/allure-report
           publish_branch: report-allure
    
-  
-      # - name: Publicar Allure en GitHub Pages
-      #   uses: peaceiris/actions-gh-pages@v3
-      #   with:
-      #     github_token: ${{ secrets.GITHUB_TOKEN }}
-      #     publish_dir: ./allure-report
-
-
-      # - name: Cleanup Docker
-      #   run: docker compose down -v
