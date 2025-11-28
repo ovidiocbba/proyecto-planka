@@ -16,6 +16,10 @@ jobs:
   test:
     runs-on: ubuntu-latest
 
+    # These permissions are required to generate reports.
+    permissions:
+      contents: write # To push a branch (gh_pages).
+
     steps:
        # Hacer checkout de la rama daniela
       - name: Checkout code from daniela
