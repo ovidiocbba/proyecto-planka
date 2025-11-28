@@ -16,7 +16,6 @@ jobs:
   test:
     runs-on: ubuntu-latest
 
-    # These permissions are required to generate reports.
     permissions:
       contents: write # To push a branch (gh_pages).
 
@@ -101,5 +100,5 @@ jobs:
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./reports/allure-report
-          publish_branch: report-allure
+          publish_branch: gh-pages
    
