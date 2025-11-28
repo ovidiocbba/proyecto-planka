@@ -6,6 +6,11 @@ on:
     - main 
     - daniela
   workflow_dispatch:
+     inputs:
+      marker:
+        description: 'Marker de pytest a ejecutar (ej:smoke,functional_positive,functional_negative,regression,performance)'
+        required: false
+        default: ''
 
 jobs:
   test:
