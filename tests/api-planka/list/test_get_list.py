@@ -27,10 +27,9 @@ from src.routes.request import PlankaRequests
           "TC019: get_list_with_invalid_token"
      ])
 
-def test_get_list_with_token(get_token,use_fixture,token_value,expected_status):
+def test_get_list_with_token(get_token,use_fixture,token_value,expected_status,id_list):
    TOKEN_PLANKA =get_token if use_fixture else token_value
-
-   url = EndpointPlanka.BASE_LISTS_WITH_ID_LIST.value
+   url = f"{EndpointPlanka.BASE_LIST_MAJOR.value}/{id_list}"
    headers = {'Authorization': f'Bearer {TOKEN_PLANKA}'}
    response = PlankaRequests.get(url,headers)
    log_request_response(url, response, headers)
@@ -46,9 +45,9 @@ def test_get_list_with_token(get_token,use_fixture,token_value,expected_status):
 @pytest.mark.list
 @pytest.mark.functional_positive
 @pytest.mark.performance
-def test_TC020_validate_list_response_time(get_token):   
+def test_TC020_validate_list_response_time(get_token,id_list):   
     TOKEN_PLANKA = get_token 
-    url = EndpointPlanka.BASE_LISTS_WITH_ID_LIST.value
+    url = f"{EndpointPlanka.BASE_LIST_MAJOR.value}/{id_list}"
     headers = {'Authorization': f'Bearer {TOKEN_PLANKA}'}
     response = PlankaRequests.get(url,headers)
     log_request_response(url, response, headers)
@@ -60,9 +59,9 @@ def test_TC020_validate_list_response_time(get_token):
 @pytest.mark.functional_positive
 @pytest.mark.regression
 @pytest.mark.schema_validation
-def test_TC021_validate_list_response_schema(get_token):   
+def test_TC021_validate_list_response_schema(get_token,id_list):   
     TOKEN_PLANKA = get_token 
-    url = EndpointPlanka.BASE_LISTS_WITH_ID_LIST.value
+    url = f"{EndpointPlanka.BASE_LIST_MAJOR.value}/{id_list}"
     headers = {'Authorization': f'Bearer {TOKEN_PLANKA}'}
     response = PlankaRequests.get(url,headers)
     log_request_response(url, response, headers)
@@ -85,7 +84,7 @@ def test_TC021_validate_list_response_schema(get_token):
                    id="TC022: get_list_with_nonexistent_list_id"),
 
         pytest.param(EndpointPlanka.BASE_LISTS_WITH_ID_LIST_EMPTY.value,400, 
-                   marks=pytest.mark.xfail(reason="BUG0018: La aplicación retorna código 200 y muestra el mensaje : Necesitas habilitar JavaScript para ejecutar esta aplicación"),
+                   marks=pytest.mark.xfail(reason="BUG0013: La aplicación retorna código 200 y muestra el mensaje : Necesitas habilitar JavaScript para ejecutar esta aplicación"),
                    id="TC023: get_list_with_empty_list_id"),
 
         pytest.param(EndpointPlanka.BASE_LISTS_WITH_ID_LIST_INVALID.value,400,

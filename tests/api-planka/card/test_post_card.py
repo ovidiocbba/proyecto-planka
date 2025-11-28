@@ -25,10 +25,10 @@ from src.routes.request import PlankaRequests
         "TC002: create_card_with_invalid_token"
     ])
 
-def test_create_card_with_token(setup_add_card,use_fixture,token_value,expected_status):
-    get_token, created_cards = (setup_add_card if use_fixture else (token_value, []))
+def test_create_card_with_token(setup_card,use_fixture,token_value,expected_status,id_list):
+    get_token, created_cards = (setup_card if use_fixture else (token_value, []))
 
-    url = EndpointPlanka.BASE_CARDS.value
+    url = f"{EndpointPlanka.BASE_LIST_MAJOR.value}/{id_list}/cards"
     headers = {'Authorization': f'Bearer {get_token}'}
     response = PlankaRequests.post(url,headers,PAYLOAD_CREATE_CARD)
     log_request_response(url, response, headers, PAYLOAD_CREATE_CARD)
@@ -46,9 +46,9 @@ def test_create_card_with_token(setup_add_card,use_fixture,token_value,expected_
 @pytest.mark.functional_positive
 @pytest.mark.regression
 @pytest.mark.payload_validation
-def test_TC003_validate_card_creation_request_payload(setup_add_card):
-    get_token,created_cards = setup_add_card
-    url = EndpointPlanka.BASE_CARDS.value
+def test_TC003_validate_card_creation_request_payload(setup_card,id_list):
+    get_token,created_cards = setup_card
+    url = f"{EndpointPlanka.BASE_LIST_MAJOR.value}/{id_list}/cards"
     TOKEN_PLANKA = get_token
     headers = {'Authorization': f'Bearer {TOKEN_PLANKA}'}
     response = PlankaRequests.post(url,headers,PAYLOAD_CREATE_CARD)
@@ -78,9 +78,9 @@ def test_TC003_validate_card_creation_request_payload(setup_add_card):
         "TC007: create_card_with_type_invalid" 
     ])
 
-def test_post_card_validate_attribute_with_type(setup_add_card,payload,expected_status):
-    get_token,created_cards = setup_add_card
-    url = EndpointPlanka.BASE_CARDS.value
+def test_post_card_validate_attribute_with_type(setup_card,payload,expected_status,id_list):
+    get_token,created_cards = setup_card
+    url = f"{EndpointPlanka.BASE_LIST_MAJOR.value}/{id_list}/cards"
     headers = {'Authorization': f'Bearer {get_token}'}
     response = PlankaRequests.post(url,headers,payload)
     log_request_response(url, response, headers, payload)
@@ -110,12 +110,12 @@ def test_post_card_validate_attribute_with_type(setup_add_card,payload,expected_
                   id="TC010: create_card_with_attribute_position_value_negative"),
 
         pytest.param( PAYLOAD_CREATE_CARD_POSITION_DIGITS_EXCEEDS,400,
-                 marks=pytest.mark.xfail(reason="BG008: El campo position permite ingresar numeros sin limite de digitos"),
+                 marks=pytest.mark.xfail(reason="BG006: El campo position permite ingresar numeros sin limite de digitos"),
                  id="TC011: create_card_with_attribute_position_value_exceeding")
     ])
 
-def test_post_card_validate_attribute_with_position(get_token,payload,expected_status):
-    url = EndpointPlanka.BASE_CARDS.value
+def test_post_card_validate_attribute_with_position(get_token,payload,expected_status,id_list):
+    url = f"{EndpointPlanka.BASE_LIST_MAJOR.value}/{id_list}/cards"
     headers = {'Authorization': f'Bearer {get_token}'}
     response = PlankaRequests.post(url,headers,payload)
     log_request_response(url, response, headers, payload)
@@ -137,12 +137,12 @@ def test_post_card_validate_attribute_with_position(get_token,payload,expected_s
                    id="TC012: create_card_with_attribute_name_empty"),
 
         pytest.param(PAYLOAD_CREATE_CARD_NAME_INVALID,400,
-                  marks=pytest.mark.xfail(reason="BUG009: El campo name permite ingresar valores numericos"),
+                  marks=pytest.mark.xfail(reason="BUG007: El campo name permite ingresar valores numericos"),
                   id="TC013: create_card_with_attribute_name_invalid")
     ])
 
-def test_post_card_validate_attribute_with_name(get_token,payload,expected_status):
-    url = EndpointPlanka.BASE_CARDS.value
+def test_post_card_validate_attribute_with_name(get_token,payload,expected_status,id_list):
+    url = f"{EndpointPlanka.BASE_LIST_MAJOR.value}/{id_list}/cards"
     headers = {'Authorization': f'Bearer {get_token}'}
     response = PlankaRequests.post(url,headers,payload)
     log_request_response(url, response, headers, payload)
@@ -160,7 +160,7 @@ def test_post_card_validate_attribute_with_name(get_token,payload,expected_statu
                    id="TC014: create_card_with_nonexistent_list_id"),
         
         pytest.param(EndpointPlanka.BASE_CARD_WITH_ID_LIST_EMPTY.value,400,
-                   marks=pytest.mark.xfail(reason="BUG010: Código HTTP incorrecto se retorna 404 en lugar de 400 al consultar un recurso vacio"),
+                   marks=pytest.mark.xfail(reason="BUG008: Código HTTP incorrecto se retorna 404 en lugar de 400 al consultar un recurso vacio"),
                    id="TC015: create_card_with_empty_list_id"),
         
         pytest.param(EndpointPlanka.BASE_CARD_WITH_ID_LIST_INVALID.value,400,

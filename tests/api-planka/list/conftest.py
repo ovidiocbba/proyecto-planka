@@ -7,42 +7,28 @@ from utils.logger_helper import get_logger
 
 
 logger = get_logger("list_fixture")
-
-
 @pytest.fixture(scope="function")
-def create_test_list(get_token):
-    url = EndpointPlanka.BASE_LISTS.value
-    TOKEN_PLANKA = get_token
-    payload = PAYLOAD_CREATE_LIST
-    headers = {'Authorization': f'Bearer {TOKEN_PLANKA}'}
-    response = PlankaRequests.post(url,headers,payload)
-    data = response.json()
-    list_id = data["item"]["id"]
-    yield list_id
-   
-    
-
-
-
-@pytest.fixture(scope="module")
-def setup_add_list(get_token):
+def setup_list(get_token):
     created_lists = []      
     logger.info("Setup iniciado para creación de listas")
     yield get_token,created_lists
-
-
-    logger.info("Iniciando teardown de listas creados")
-    for list in created_lists:
-        list_id = list.get("item", {}).get("id")
-        try:
-            delete_url = f"{EndpointPlanka.BASE_LIST_MAJOR.value}/{list_id}"
-            headers = {'Authorization': f'Bearer {get_token}'} 
-            delete_response = PlankaRequests.delete(delete_url,headers)
-            if delete_response.status_code == 200:
-                     logger.info(f"Lista eliminado correctamente: {list_id}")
+     
+    if created_lists:
+        logger.info("Iniciando teardown: Eliminación de listas...")
+        headers = {'Authorization': f'Bearer {get_token}'}
+        for list in created_lists:
+            list_id_to_delete = list.get("item", {}).get("id")
+            url = f"{EndpointPlanka.BASE_LIST_MAJOR.value}/{list_id_to_delete}"
+            response = PlankaRequests.delete(url, headers)
+            if response.status_code == 200:
+                logger.info(f"Lista eliminada correctamente: {list_id_to_delete}")
             else:
-                    logger.error(f" No se pudo eliminar el lista {list_id}. ")
-        except Exception as e:
-            logger.exception(f"Error eliminando lista: {e}")  
+                logger.info(
+                    f"No se pudo eliminar la lista {list_id_to_delete}. "
+                    f"Status: {response.status_code}"
+                )
+    else:
+        logger.info("No hay listas creadas para eliminar.")
+            
 
 

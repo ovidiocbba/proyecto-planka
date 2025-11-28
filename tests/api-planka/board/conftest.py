@@ -8,35 +8,35 @@ from utils.logger_helper import get_logger
 
 logger = get_logger("board_fixture")
 
-@pytest.fixture(scope="function")
-def post_test_board(get_token):
-    url = EndpointPlanka.BASE_BOARDS.value
-    TOKEN_PLANKA = get_token
-    payload = PAYLOAD_BOARD_CREATE
-    headers = {'Authorization': f'Bearer {TOKEN_PLANKA}',}
-    response = PlankaRequests.post(url,headers,payload)
-    data = response.json()
-    board_id = data["item"]["id"]
-    yield board_id
-   
-   
 
-@pytest.fixture(scope="module")
-def setup_add_board(get_token):
+@pytest.fixture(scope="function")
+def setup_board(get_token):
     created_boards = []
     logger.info("Setup iniciado para creación de tableros")
     yield get_token,created_boards
 
-    logger.info("Iniciando teardown de tableros creados")
-    for board in created_boards:
-        board_id = board.get("item", {}).get("id")
-        try:
-              delete_url = f"{EndpointPlanka.BASE_BOARD_MAJOR.value}/{board_id}"
-              headers = {'Authorization': f'Bearer {get_token}'} 
-              delete_response = PlankaRequests.delete(delete_url,headers)
-              if delete_response.status_code == 200:
-                    logger.info(f"Tablero eliminado correctamente: {board_id}")
-              else:
-                   logger.error(f" No se pudo eliminar el tablero {board_id}. ")
-        except Exception as e:
-          logger.exception(f"Error eliminando tablero: {e}")
+    if created_boards:
+        logger.info("Iniciando teardown: Eliminación de tableros...")
+        headers = {'Authorization': f'Bearer {get_token}'}
+        for board in created_boards:
+            board_id = board.get("item", {}).get("id")
+            delete_url = f"{EndpointPlanka.BASE_BOARD_MAJOR.value}/{board_id}"
+            response = PlankaRequests.delete(delete_url, headers)
+            if response.status_code == 200:
+                logger.info(f"Tablero eliminado correctamente: {board_id}")
+            else:
+                logger.info(
+                    f"No se pudo eliminar el tablero {board_id}. "
+                    f"Status: {response.status_code}"
+                )
+    else:
+        logger.info("No hay tableros creados para eliminar.")
+
+
+
+
+
+
+
+
+   

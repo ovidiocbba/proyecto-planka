@@ -25,10 +25,10 @@ from src.routes.request import PlankaRequests
         "TC002: create_list_with_invalid_token"
     ])
 
-def test_create_list_with_token(setup_add_list,use_fixture,token_value,expected_status):
-    get_token, created_lists = (setup_add_list if use_fixture else (token_value, []))
+def test_create_list_with_token(setup_list,use_fixture,token_value,expected_status,id_board):
+    get_token, created_lists = (setup_list if use_fixture else (token_value, []))
 
-    url = EndpointPlanka.BASE_LISTS.value
+    url = f"{EndpointPlanka.BASE_LISTS.value}/{id_board}/lists"
     headers = {'Authorization': f'Bearer {get_token}'}
     response = PlankaRequests.post(url,headers,PAYLOAD_CREATE_LIST)
     log_request_response(url, response, headers, PAYLOAD_CREATE_LIST)
@@ -63,9 +63,9 @@ def test_create_list_with_token(setup_add_list,use_fixture,token_value,expected_
         "TC006 : create_list_with_type_invalid",
     ])
 
-def test_create_list_with_attribute_type_parametrizer(setup_add_list,payload,expected_status):
-    get_token, created_lists = setup_add_list
-    url = EndpointPlanka.BASE_LISTS.value
+def test_create_list_with_attribute_type_parametrizer(setup_list,payload,expected_status,id_board):
+    get_token, created_lists = setup_list
+    url = f"{EndpointPlanka.BASE_LISTS.value}/{id_board}/lists"
     headers = {'Authorization': f'Bearer {get_token}'}
 
     response = PlankaRequests.post(url,headers,payload)
@@ -98,13 +98,13 @@ def test_create_list_with_attribute_type_parametrizer(setup_add_list,payload,exp
                   id="TC009: create_list_with_attribute_position_value_negative"),
 
         pytest.param(PAYLOAD_CREATE_LIST_POSITION_VALUE_EXCEEDS,400,
-                 marks=pytest.mark.xfail(reason="BUG015: El campo position permite ingresar numeros sin limite de digitos "),
+                 marks=pytest.mark.xfail(reason="BUG011: El campo position permite ingresar numeros sin limite de digitos "),
                   id="TC010: create_list_with_attribute_position_value_exceeding")
 
  ])
 
-def test_create_list_with_attribute_position_parametrizer(get_token,payload,expected_status):
-   url = EndpointPlanka.BASE_LISTS.value
+def test_create_list_with_attribute_position_parametrizer(get_token,payload,expected_status,id_board):
+   url = f"{EndpointPlanka.BASE_LISTS.value}/{id_board}/lists"
    headers = {'Authorization': f'Bearer {get_token}'}
    response = PlankaRequests.post(url,headers,payload)
    log_request_response(url, response, headers, payload)
@@ -126,12 +126,12 @@ def test_create_list_with_attribute_position_parametrizer(get_token,payload,expe
                     id="TC011: create_list_with_attribute_name_empty"),
 
             pytest.param(PAYLOAD_CREATE_LIST_INVALID_NAME,400,
-                    marks=pytest.mark.xfail(reason="BUG016: El campo name permite ingresar valores numericos",run=True),
+                    marks=pytest.mark.xfail(reason="BUG012: El campo name permite ingresar valores numericos",run=True),
                     id="TC012: create_list_with_attribute_name_invalid")
         ])
 
-def test_create_list_with_attribute_name_parametrizer(get_token,payload,expected_status):
-    url = EndpointPlanka.BASE_LISTS.value
+def test_create_list_with_attribute_name_parametrizer(get_token,payload,expected_status,id_board):
+    url = f"{EndpointPlanka.BASE_LISTS.value}/{id_board}/lists"
     headers = {'Authorization': f'Bearer {get_token}'}
     response = PlankaRequests.post(url,headers,payload)
     log_request_response(url, response, headers, payload)
@@ -144,9 +144,9 @@ def test_create_list_with_attribute_name_parametrizer(get_token,payload,expected
 @pytest.mark.functional_positive
 @pytest.mark.regression
 @pytest.mark.schema_validation
-def test_TC013_validate_list_creation_response_schema(setup_add_list):
-    get_token,created_lists = setup_add_list
-    url = EndpointPlanka.BASE_LISTS.value
+def test_TC013_validate_list_creation_response_schema(setup_list,id_board):
+    get_token,created_lists = setup_list
+    url = f"{EndpointPlanka.BASE_LISTS.value}/{id_board}/lists"
     TOKEN_PLANKA = get_token
     headers = {'Authorization': f'Bearer {TOKEN_PLANKA}'}
     response = PlankaRequests.post(url,headers,PAYLOAD_CREATE_LIST)
@@ -161,9 +161,9 @@ def test_TC013_validate_list_creation_response_schema(setup_add_list):
 @pytest.mark.functional_positive
 @pytest.mark.regression
 @pytest.mark.schema_validation
-def test_TC014_validate_list_creation_request_payload(setup_add_list):
-    get_token,created_lists = setup_add_list
-    url = EndpointPlanka.BASE_LISTS.value
+def test_TC014_validate_list_creation_request_payload(setup_list,id_board):
+    get_token,created_lists = setup_list
+    url = f"{EndpointPlanka.BASE_LISTS.value}/{id_board}/lists"
     TOKEN_PLANKA = get_token
     headers = {'Authorization': f'Bearer {TOKEN_PLANKA}'}
     response = PlankaRequests.post(url,headers,PAYLOAD_CREATE_LIST)

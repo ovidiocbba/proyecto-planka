@@ -24,10 +24,10 @@ from src.routes.request import PlankaRequests
         "TC018: get_card_with_invalid_token"
     ])
 
-def test_get_card_with_token(get_token,use_fixture,token_value,expected_status):
+def test_get_card_with_token(get_token,use_fixture,token_value,expected_status,id_card):
     TOKEN_PLANKA = (get_token if use_fixture else (token_value))
 
-    url = EndpointPlanka.BASE_CARDS_WITH_ID_CARD.value
+    url = f"{EndpointPlanka.BASE_CARD_MAJOR.value}/{id_card}"
     headers = {'Authorization': f'Bearer {TOKEN_PLANKA}'}
     response = PlankaRequests.get(url,headers)
     log_request_response(url, response, headers)
@@ -44,8 +44,8 @@ def test_get_card_with_token(get_token,use_fixture,token_value,expected_status):
 @pytest.mark.card
 @pytest.mark.functional_positive
 @pytest.mark.performance
-def test_TC019_validate_card_response_time(get_token):
-    url = EndpointPlanka.BASE_CARDS_WITH_ID_CARD.value
+def test_TC019_validate_card_response_time(get_token,id_card):
+    url = f"{EndpointPlanka.BASE_CARD_MAJOR.value}/{id_card}"
     TOKEN_PLANKA = get_token
     headers = {'Authorization': f'Bearer {TOKEN_PLANKA}'}
     response = PlankaRequests.get(url,headers)
@@ -64,7 +64,7 @@ def test_TC019_validate_card_response_time(get_token):
                    id="TC020: get_card_with_nonexistent_card_id"),
 
         pytest.param(EndpointPlanka.BASE_CARDS_WITH_ID_CARD_VALUE_EMPTY.value,400, 
-                   marks=pytest.mark.xfail(reason="BUG011: La aplicación retorna código 200 y muestra el mensaje: Necesitas habilitar JavaScript para ejecutar esta aplicación "),
+                   marks=pytest.mark.xfail(reason="BUG009: La aplicación retorna código 200 y muestra el mensaje: Necesitas habilitar JavaScript para ejecutar esta aplicación "),
                    id="TC021: get_card_with_empty_card_id"),
         
         pytest.param(EndpointPlanka.BASE_CARDS_WITH_ID_CARD_VALUE_INVALID.value,400,

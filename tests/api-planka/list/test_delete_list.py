@@ -22,10 +22,9 @@ from src.routes.request import PlankaRequests
           "TC026: delete_list_with_invalid_token"
      ])
 
-def test_delete_list_with_token(get_token,create_test_list,use_fixture,token_value,expected_status):
+def test_delete_list_with_token(get_token,use_fixture,token_value,expected_status,id_list):
    TOKEN_PLANKA =get_token if use_fixture else token_value
-   ID_LIST = create_test_list
-   url = f"{EndpointPlanka.BASE_LIST_MAJOR.value}/{ID_LIST}"
+   url = f"{EndpointPlanka.BASE_LIST_MAJOR.value}/{id_list}"
    headers = {'Authorization': f'Bearer {TOKEN_PLANKA}'}
    response = PlankaRequests.delete(url,headers)
    log_request_response(url, response, headers)
@@ -43,7 +42,7 @@ def test_delete_list_with_token(get_token,create_test_list,use_fixture,token_val
 @pytest.mark.regression
 @pytest.mark.equivalence_partition
 @pytest.mark.parametrize(
-   "id_list,expected_status",[
+   "id_list_actual,expected_status",[
       pytest.param(ID_LIST_NOT_EXISTS,404,
                    id="TC027: delete_list_with_id_not_exists"),
 
@@ -55,9 +54,9 @@ def test_delete_list_with_token(get_token,create_test_list,use_fixture,token_val
 
    ])
 
-def test_delete_list_with_id_parametrizer(get_token,id_list,expected_status):
+def test_delete_list_with_id_parametrizer(get_token,id_list_actual,expected_status):
    TOKEN_PLANKA = get_token
-   url = f"{EndpointPlanka.BASE_LIST_MAJOR.value}/{id_list}"
+   url = f"{EndpointPlanka.BASE_LIST_MAJOR.value}/{id_list_actual}"
    headers = {'Authorization': f'Bearer {TOKEN_PLANKA}'}
    response = PlankaRequests.delete(url,headers)
    log_request_response(url, response, headers)

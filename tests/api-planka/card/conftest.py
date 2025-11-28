@@ -8,35 +8,26 @@ from utils.logger_helper import get_logger
 
 logger = get_logger("card_fixture")
 
-@pytest.fixture(scope="function")
-def post_card(get_token):
-    url = EndpointPlanka.BASE_CARDS.value
-    TOKEN_PLANKA = get_token
-    payload = PAYLOAD_CREATE_CARD
-    headers = {'Authorization': f'Bearer {TOKEN_PLANKA}'}
-    response = PlankaRequests.post(url, headers, payload)
-    data = response.json()
-    card_id = data["item"]["id"]
-    yield card_id
-   
-
 @pytest.fixture(scope="module")
-def setup_add_card(get_token):
-    created_cards = []      
-    logger.info("Setup iniciado para creación de tarjetas")
-    yield get_token,created_cards
+def setup_card(get_token):
+    created_card = []
+    logger.info("Setup iniciado para creación de cards")
+    yield get_token, created_card
 
-
-    logger.info("Iniciando teardown de tarjetas creados")
-    for card in created_cards:
-        card_id = card.get("item", {}).get("id")
-        try:
-            delete_url = f"{EndpointPlanka.BASE_CARD_MAJOR.value}/{card_id}"
-            headers = {'Authorization': f'Bearer {get_token}'} 
-            delete_response = PlankaRequests.delete(delete_url,headers)
-            if delete_response.status_code == 200:
-                     logger.info(f"Tarjeta eliminado correctamente: {card_id}")
+    if created_card:
+        logger.info("Iniciando teardown: Eliminación de cards...")
+        headers = {'Authorization': f'Bearer {get_token}'}
+        for card in created_card:
+            card_id_to_delete = card.get("item", {}).get("id")
+            url = f"{EndpointPlanka.BASE_CARD_MAJOR.value}/{card_id_to_delete}"
+            #http://localhost:3000/api/cards/{{ID_CARD1}}
+            response = PlankaRequests.delete(url, headers)  
+            if response.status_code == 200:
+                logger.info(f"Card eliminada correctamente: {card_id_to_delete}")
             else:
-                    logger.error(f" No se pudo eliminar el tarjeta {card_id}. ")
-        except Exception as e:
-            logger.exception(f"Error eliminando tarjeta: {e}")  
+                logger.info(
+                    f"No se pudo eliminar la card {card_id_to_delete}. "
+                    f"Status: {response.status_code}"
+                )
+    else:
+        logger.info("No hay cards creadas para eliminar.")  

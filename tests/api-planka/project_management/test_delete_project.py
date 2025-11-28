@@ -25,10 +25,9 @@ from src.routes.request import PlankaRequests
           "TC016: delete_project_with_invalid_token"
      ])
 
-def test_delete_project_with_token(get_token,create_test_project,use_fixture,token_value,expected_status):
+def test_delete_project_with_token(get_token,use_fixture,token_value,expected_status,id_project):
    TOKEN_PLANKA =get_token if use_fixture else token_value
-   ID_PROJECT = create_test_project
-   url = f"{EndpointPlanka.BASE_PROJECTS.value}/{ID_PROJECT}"
+   url = f"{EndpointPlanka.BASE_PROJECTS.value}/{id_project}"
    headers = {'Authorization': f'Bearer {TOKEN_PLANKA}'}
    response = PlankaRequests.delete(url,headers)
    log_request_response(url, response, headers)

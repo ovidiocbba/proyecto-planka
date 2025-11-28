@@ -26,10 +26,10 @@ from src.routes.request import PlankaRequests
         "TC002: create_board_with_invalid_token"
     ])
 
-def test_create_board_with_token(setup_add_board,use_fixture,token_value,expected_status):
-    get_token, created_boards = (setup_add_board if use_fixture else (token_value, []))
+def test_create_board_with_token(setup_board,use_fixture,token_value,expected_status,id_project):
+    get_token, created_boards = (setup_board if use_fixture else (token_value, []))
 
-    url = EndpointPlanka.BASE_BOARDS.value
+    url = f"{EndpointPlanka.BASE_PROJECTS.value}/{id_project}/boards"
     headers = {'Authorization': f'Bearer {get_token}'}
     response = PlankaRequests.post(url,headers,PAYLOAD_BOARD_CREATE)
     log_request_response(url, response, headers, PAYLOAD_BOARD_CREATE)
@@ -54,12 +54,12 @@ def test_create_board_with_token(setup_add_board,use_fixture,token_value,expecte
                    id="TC003: create_board_with_attribute_name_empty"),
 
         pytest.param(PAYLOAD_BOARD_NAME_VALUE_NUMBER,400,
-                  marks=pytest.mark.xfail(reason="BUG001: El atributo name  permite entradas de valor numerico"),
+                  marks=pytest.mark.xfail(reason="BUG001: El atributo name permite entradas de valor numérico"),
                   id="TC004: create_card_board_with_attribute_name_invalid")
     ])
 
-def test_post_board_validate_attribute_with_name(get_token,payload,expected_status):
-    url = EndpointPlanka.BASE_BOARDS.value
+def test_post_board_validate_attribute_with_name(get_token,payload,expected_status,id_project):
+    url = f"{EndpointPlanka.BASE_PROJECTS.value}/{id_project}/boards"
     headers = {'Authorization': f'Bearer {get_token}'}
     response = PlankaRequests.post(url,headers,payload)
     log_request_response(url, response, headers, payload)
@@ -92,8 +92,8 @@ def test_post_board_validate_attribute_with_name(get_token,payload,expected_stat
 
     ])
 
-def test_post_board_validate_attribute_with_position(get_token,payload,expected_status):
-       url = EndpointPlanka.BASE_BOARDS.value
+def test_post_board_validate_attribute_with_position(get_token,payload,expected_status,id_project):
+       url = f"{EndpointPlanka.BASE_PROJECTS.value}/{id_project}/boards"
        headers = {'Authorization': f'Bearer {get_token}'}
        response = PlankaRequests.post(url,headers,payload)
        log_request_response(url, response, headers, payload)
@@ -111,7 +111,8 @@ def test_post_board_validate_attribute_with_position(get_token,payload,expected_
 @pytest.mark.parametrize(
     "url_id_project , expected_status", [
         pytest.param(EndpointPlanka.BASE_BOARDS_WITH_ID_PROJECT_NOT_EXISTS.value,404,
-                     marks=pytest.mark.xfail(reason="BUG003: Código HTTP incorrecto se retorna 400 en lugar de 404 al consultar al no existir el recurso"),
+                     marks=pytest.mark.xfail(reason="BUG003:Código de respuesta incorrecto de (400) al solicitar crear tablero especificando el identificador (ID) de proyecto no existente"),
+
                    id="TC009: create_board_with_nonexistent_project_id"),
         
         pytest.param(EndpointPlanka.BASE_BOARDS_WITH_ID_PROJECT_EMPTY.value,404,
@@ -123,7 +124,6 @@ def test_post_board_validate_attribute_with_position(get_token,payload,expected_
 
 def test_post_board_with_project_id(get_token,url_id_project,expected_status):
     headers = {'Authorization': f'Bearer {get_token}'}
-    print(url_id_project)
     response = PlankaRequests.post(url_id_project,headers,PAYLOAD_BOARD_CREATE)
     log_request_response(url_id_project, response, headers, PAYLOAD_BOARD_CREATE)
     if expected_status==404:
@@ -134,10 +134,10 @@ def test_post_board_with_project_id(get_token,url_id_project,expected_status):
 
 
 
-def test_TC012_validate_board_response_schema(setup_add_board):
-    get_token,created_boards = setup_add_board
+def test_TC012_validate_board_response_schema(setup_board,id_project):
+    get_token,created_boards = setup_board
     TOKEN_PLANKA = get_token
-    url = EndpointPlanka.BASE_BOARDS.value
+    url = f"{EndpointPlanka.BASE_PROJECTS.value}/{id_project}/boards"
     headers = {'Authorization': f'Bearer {TOKEN_PLANKA}'}
     response = PlankaRequests.post(url,headers,PAYLOAD_BOARD_CREATE)
     log_request_response(url, response, headers, PAYLOAD_BOARD_CREATE)

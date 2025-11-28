@@ -23,10 +23,9 @@ from src.routes.request import PlankaRequests
           "TC021: delete_board_with_invalid_token"
      ])
 
-def test_delete_board_with_token(get_token,post_test_board,use_fixture,token_value,expected_status):
+def test_delete_board_with_token(get_token,use_fixture,token_value,expected_status,id_board):
    TOKEN_PLANKA =get_token if use_fixture else token_value
-   ID_BOARD = post_test_board
-   url = f"{EndpointPlanka.BASE_BOARD_MAJOR.value}/{ID_BOARD}"
+   url = f"{EndpointPlanka.BASE_BOARD_MAJOR.value}/{id_board}"
    headers = {'Authorization': f'Bearer {TOKEN_PLANKA}'}
    response = PlankaRequests.delete(url,headers)
    log_request_response(url, response, headers)
@@ -35,8 +34,6 @@ def test_delete_board_with_token(get_token,post_test_board,use_fixture,token_val
       AssertionStatusCode.assert_status_code_200(response)
    else:
       AssertionStatusCode.assert_status_code_401(response)
-
-
 
 
 
@@ -50,7 +47,7 @@ def test_delete_board_with_token(get_token,post_test_board,use_fixture,token_val
                    id="TC022: delete_board_with_nonexistent_id"),
         
         pytest.param(ID_BOARD_EMPTY,400,
-                   marks=pytest.mark.xfail(reason="BUG006: Código HTTP incorrecto se retorna 404 en lugar de 400 al consultar un recurso vacio"),
+                   marks=pytest.mark.xfail(reason="BUG005: Código de respuesta incorrecto de (404) al solicitar eliminar un tablero sin especificar su identificador (ID)"),
                    id="TC023: delete_board_with_empty_id"),
         
         pytest.param(ID_BOARD_INVALID_STRING,400,

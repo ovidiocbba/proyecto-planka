@@ -25,17 +25,40 @@ def log_request_response(url, response, headers=None, payload=None):
     if payload:
         logging.debug("PAYLOAD REQUEST:\n%s", json.dumps(payload, indent=4, ensure_ascii=False))
   
-  
+
+
 def get_logger(name="test_logger"):
     logger = logging.getLogger(name)
-    logger.setLevel(logging.DEBUG)
-    logger.propagate = False
+
+    # NO BLOQUEAR la propagación hacia pytest
+    logger.propagate = True
+
+    # Solo configurar handlers la primera vez
     if not logger.handlers:
+        logger.setLevel(logging.DEBUG)
+
         handler = logging.StreamHandler()
+        handler.setLevel(logging.DEBUG)
+
         formatter = logging.Formatter(
-            "%(asctime)s | %(levelname)s | %(message)s"
+            "%(asctime)s | %(levelname)s | %(name)s | %(message)s"
         )
         handler.setFormatter(formatter)
+
         logger.addHandler(handler)
 
     return logger
+  
+# def get_logger(name="test_logger"):
+#     logger = logging.getLogger(name)
+#     logger.setLevel(logging.DEBUG)
+#     logger.propagate = False
+#     if not logger.handlers:
+#         handler = logging.StreamHandler()
+#         formatter = logging.Formatter(
+#             "%(asctime)s | %(levelname)s | %(message)s"
+#         )
+#         handler.setFormatter(formatter)
+#         logger.addHandler(handler)
+
+#     return logger
