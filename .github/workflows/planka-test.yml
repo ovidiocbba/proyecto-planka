@@ -66,6 +66,19 @@ jobs:
          echo "Planka está en línea"
 
 
+      - name: Esperar API de Planka (endpoint login)
+        run: |
+          echo "Esperando a que la API de Planka esté lista..."
+          until curl --silent --fail -X POST http://localhost:3000/api/users/token \
+            -H "Content-Type: application/json" \
+            -d "{\"email\": \"test@example.com\", \"password\": \"test\"}" > /dev/null; do
+              echo "API aún no lista..."
+              sleep 10
+          done
+          echo "✔ API de Planka lista"
+
+
+
       - name: Obtener token de Planka
         run: |
           echo "Haciendo login en Planka..."
