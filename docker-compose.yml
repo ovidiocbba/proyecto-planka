@@ -18,6 +18,7 @@ services:
       - DEFAULT_ADMIN_EMAIL=${USER_EMAIL}        # email del admin CI
       - DEFAULT_ADMIN_PASSWORD=${USER_PASSWORD} # password del admin CI
       - DEFAULT_ADMIN_USERNAME=Daniela Tester   # nombre del admin
+      - DEFAULT_ADMIN_NAME=Daniela Tester
 
     depends_on:
       postgres:
@@ -26,8 +27,6 @@ services:
   postgres:
     image: postgres:16-alpine
     restart: on-failure
-    volumes:
-      - db-data:/var/lib/postgresql/data
     environment:
       - POSTGRES_DB=planka
       - POSTGRES_HOST_AUTH_METHOD=trust
