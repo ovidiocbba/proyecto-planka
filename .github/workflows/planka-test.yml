@@ -71,18 +71,48 @@ jobs:
         run: |
           pytest -v tests/ --alluredir=allure-results
 
-      - name: Generate Allure report
-        uses: allure-framework/allure-report-action@v2
+
+      - name: Ejecutar tests con pytest y generar reporte Allure
+        run: |
+          if [ -n "${{ github.event.inputs.marker }}" ]; then
+            echo "Ejecutando pytest con marker: ${{ github.event.inputs.marker }}"
+            pytest --disable-warnings -v ${{ github.event.inputs.marker }} --alluredir=reports/allure-results
+          else
+            echo "Ejecutando todos los tests"
+            pytest --disable-warnings -v --alluredir=reports/allure-results
+          fi
+
+      - name: Load test report history
+        uses: actions/checkout@v4
+        if: always()
+        continue-on-error: true
         with:
-           results: reports/allure
-   
-  
-      - name: Publicar Allure en GitHub Pages
+          ref: report-allure
+          path: report-allure
+
+      - name: Build test report
+        uses: simple-elf/allure-report-action@master
+        if: always()
+        with:
+          gh_pages: report-allure
+          allure_results: reports/allure-results
+          allure_history: allure-history
+
+      - name: Publish test report
         uses: peaceiris/actions-gh-pages@v3
+        if: always()
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./allure-report
+          publish_branch: report-allure
+          publish_dir: allure-history
+   
+  
+      # - name: Publicar Allure en GitHub Pages
+      #   uses: peaceiris/actions-gh-pages@v3
+      #   with:
+      #     github_token: ${{ secrets.GITHUB_TOKEN }}
+      #     publish_dir: ./allure-report
 
 
-      - name: Cleanup Docker
-        run: docker compose down -v
+      # - name: Cleanup Docker
+      #   run: docker compose down -v
