@@ -86,7 +86,7 @@ jobs:
 
           RESPONSE=$(curl -s -X POST http://localhost:3000/api/access-tokens \
             -H "Content-Type: application/json" \
-            -d "{\"emailOrUsername\": \"$USER_EMAIL\", \"password\": \"$USER_PASSWORD\"}"
+            -d "{\"emailOrUsername\": \"$USER_EMAIL\", \"password\": \"$USER_PASSWORD"}")
 
           echo "Respuesta:"
           echo "$RESPONSE"
