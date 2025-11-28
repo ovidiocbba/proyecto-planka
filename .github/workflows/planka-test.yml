@@ -3,94 +3,79 @@ name: CI Pruebas REST PLANKA
 on:
   push:
     branches: 
-    - main 
-    - daniela
+      - main
+      - daniela
   workflow_dispatch:
     inputs:
       marker:
-        description: 'Insertar Mark o Suite'
+        description: "Insertar Mark o Suite"
         required: false
-        default: ''
+        default: ""
 
 jobs:
   test:
     runs-on: ubuntu-latest
 
     steps:
-       # Hacer checkout de la rama daniela
-      - name: Checkout code from daniela
-        uses: actions/checkout@v4
-        with:
-          ref: daniela  
 
-      - name: Configurar Node.js
-        uses: actions/setup-node@v3
-        with:
-          node-version: '18'
+      - name: Checkout código
+        uses: actions/checkout@v4
 
       - name: Configurar Python
         uses: actions/setup-python@v5
         with:
-            python-version: 3.11
+          python-version: 3.11
 
-      - name: Establecer variables de entorno desde secrets
+      - name: Configurar Node.js (requerido por Allure)
+        uses: actions/setup-node@v3
+        with:
+          node-version: '18'
+
+      - name: Exportar variables desde secrets
         run: |
-         echo "BASE_URI=${{ secrets.BASE_URI }}" >> $GITHUB_ENV
-         echo "USER_EMAIL=${{ secrets.USER_EMAIL }}" >> $GITHUB_ENV
-         echo "USER_PASSWORD=${{ secrets.USER_PASSWORD }}" >> $GITHUB_ENV
-
+          echo "BASE_URI=${{ secrets.BASE_URI }}" >> $GITHUB_ENV
+          echo "USER_EMAIL=${{ secrets.USER_EMAIL }}" >> $GITHUB_ENV
+          echo "USER_PASSWORD=${{ secrets.USER_PASSWORD }}" >> $GITHUB_ENV
 
       - name: Instalar dependencias
         run: |
-          python -m pip install --upgrade pip
+          pip install --upgrade pip
           pip install -r requirements.txt
-         
-    
 
-      - name: Levantar Planka con Docker y esperar
-        env:
-          USER_EMAIL: ${{ secrets.USER_EMAIL }}
-          USER_PASSWORD: ${{ secrets.USER_PASSWORD }}
-          BASE_URI: ${{ secrets.BASE_URI }}
+      - name: Instalar Allure CLI
         run: |
-         export USER_EMAIL=${USER_EMAIL}
-         export USER_PASSWORD=${USER_PASSWORD}
-         export BASE_URI=${BASE_URI}
-         docker compose up -d
-         echo "Esperando a que Planka arranque..."
-         until curl --silent --fail http://localhost:3000 > /dev/null; do
-            echo "esperando..."
-            sleep 25
-         done
-         echo "Planka está en línea"
-  
+          sudo apt-add-repository ppa:qameta/allure -y
+          sudo apt-get update
+          sudo apt-get install allure -y
 
-      # - name: Ejecutar tests Pytest
-      #   continue-on-error: true
-      #   run: |
-      #     pytest -v tests/ --alluredir=allure-results
+      - name: Levantar Planka con Docker
+        run: |
+          docker compose up -d
+          echo "Esperando que Planka arranque..."
+          until curl --silent --fail http://localhost:3000 > /dev/null; do
+              echo "esperando..."
+              sleep 25
+          done
+          echo "Planka está en línea"
 
-      - name: Ejecutar tests con pytest y generar reporte Allure
+      - name: Ejecutar tests con pytest + Allure
         run: |
           if [ -n "${{ github.event.inputs.marker }}" ]; then
             echo "Ejecutando pytest con marker: ${{ github.event.inputs.marker }}"
-            pytest --disable-warnings -v ${{ github.event.inputs.marker }} --alluredir=reports/allure-results
+            pytest -v --disable-warnings ${{ github.event.inputs.marker }} --alluredir=reports/allure-results
           else
             echo "Ejecutando todos los tests"
-            pytest --disable-warnings -v --alluredir=reports/allure-results
+            pytest -v --disable-warnings --alluredir=reports/allure-results
           fi
-          
 
-      - name: Cargar pruebas para reporte de historias
+      - name: Checkout branch report-allure
         uses: actions/checkout@v4
         if: always()
-        continue-on-error: true
         with:
           ref: report-allure
           path: report-allure
-   
-   
-      - name: Build test report
+
+      - name: Generar reporte Allure
         uses: simple-elf/allure-report-action@master
         if: always()
         with:
@@ -98,14 +83,12 @@ jobs:
           allure_results: reports/allure-results
           allure_history: allure-history
 
-      - name: Publish test report
+      - name: Publicar Allure Report en GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
         if: always()
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_branch: report-allure
-          publish_dir: allure-history
-
+          publish_dir: allure-report
 
       - name: Cleanup Docker
         run: docker compose down -v
