@@ -1,0 +1,51 @@
+from enum import Enum
+from utils.constans import ID_BOARD_NOT_EXISTS , ID_BOARD_EMPTY , ID_BOARD_INVALID_STRING,ID_LIST_NOT_EXISTS,ID_LIST_EMPTY,ID_LIST_INVALID_STRING,ID_PROJECT_NOT_EXISTS,ID_PROJECT_EMPTY,ID_PROJECT_INVALID_STRING,ID_CARD_NOT_EXISTS,ID_CARD_EMPTY,ID_CARD_INVALID_STRING
+from utils.config import BASE_URI
+
+
+
+class EndpointPlanka(Enum):
+
+    BASE_PROJECTS = f"{BASE_URI}/projects"
+    #-----------------------------------------------------
+    BASE_BOARD_MAJOR = f"{BASE_URI}/boards"
+   
+    BASE_BOARDS_WITH_ID_BOARD_NOT_EXISTS = f"{BASE_URI}/boards/{ID_BOARD_NOT_EXISTS}"
+    BASE_BOARDS_WITH_ID_BOARD_EMPTY = f"{BASE_URI}/boards/{ID_BOARD_EMPTY}"
+    BASE_BOARDS_WITH_ID_BOARD_INVALID = f"{BASE_URI}/boards/{ID_BOARD_INVALID_STRING}"
+    
+
+    BASE_BOARDS_WITH_ID_PROJECT_NOT_EXISTS = f"{BASE_URI}/projects/{ID_PROJECT_NOT_EXISTS}/boards"
+    BASE_BOARDS_WITH_ID_PROJECT_EMPTY = f"{BASE_URI}/projects/{ID_PROJECT_EMPTY}/boards"
+    BASE_BOARDS_WITH_ID_PROJECT_INVALID = f"{BASE_URI}/projects/{ID_PROJECT_INVALID_STRING}/boards"
+
+
+    #-----------------------------------------------------
+    BASE_LIST_MAJOR = f"{BASE_URI}/lists" 
+    BASE_LISTS= f"{BASE_URI}/boards" 
+   
+
+  
+    BASE_LIST_WITH_ID_LIST_NOT_EXISTS = f"{BASE_URI}/lists/{ID_LIST_NOT_EXISTS}"
+    BASE_LISTS_WITH_ID_LIST_EMPTY = f"{BASE_URI}/lists/{ID_LIST_EMPTY}"
+    BASE_LISTS_WITH_ID_LIST_INVALID = f"{BASE_URI}/lists/{ID_LIST_INVALID_STRING}"
+    
+
+    BASE_LISTS_WITH_ID_BOARD_NOT_EXISTS = f"{BASE_URI}/boards/{ID_BOARD_NOT_EXISTS}/lists"
+    BASE_LISTS_WITH_ID_BOARD_EMPTY = f"{BASE_URI}/boards/{ID_BOARD_EMPTY}/lists"
+    BASE_LISTS_WITH_ID_BOARD_INVALID = f"{BASE_URI}/boards/{ID_BOARD_INVALID_STRING}/lists"
+    #-----------------------------------------------------
+    BASE_CARD_MAJOR = f"{BASE_URI}/cards"
+    
+    
+    BASE_CARDS_WITH_ID_CARD_NOT_EXISTS = f"{BASE_URI}/cards/{ID_CARD_NOT_EXISTS}"
+    BASE_CARDS_WITH_ID_CARD_VALUE_EMPTY = f"{BASE_URI}/cards/{ID_CARD_EMPTY}"
+    BASE_CARDS_WITH_ID_CARD_VALUE_INVALID = f"{BASE_URI}/cards/{ID_CARD_INVALID_STRING}"
+
+
+
+    BASE_CARD_WITH_ID_LIST_NOT_EXISTS = f"{BASE_URI}/lists/{ID_LIST_NOT_EXISTS}/cards"
+    BASE_CARD_WITH_ID_LIST_EMPTY = f"{BASE_URI}/lists/{ID_LIST_EMPTY}/cards"
+    BASE_CARD_WITH_ID_LIST_INVALID = f"{BASE_URI}/lists/{ID_LIST_INVALID_STRING}/cards"
+
+    #-----------------------------------------------------

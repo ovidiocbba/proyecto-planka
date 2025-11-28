@@ -1,0 +1,4054 @@
+{
+	"info": {
+		"_postman_id": "9a4c72e9-ab5e-48a1-b833-cd977b9651bd",
+		"name": "PlankaAPI",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "45775484",
+		"_collection_link": "https://daniela-1691074.postman.co/workspace/PruebasApis~3055dba9-5508-4e61-845b-545af643e996/collection/45775484-9a4c72e9-ab5e-48a1-b833-cd977b9651bd?action=share&source=collection_link&creator=45775484"
+	},
+	"item": [
+		{
+			"name": "gestion usuarios",
+			"item": [
+				{
+					"name": "/ crear usuarios",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": " Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6IjQ3YmQ1OGZlLWZmODQtNDgwMi05ZmQyLTgzYzYzZDJjMzNhNyJ9.eyJpYXQiOjE3NjE3Njc1NTksImV4cCI6MTc5MzMwMzU1OSwic3ViIjoiMTYzMjIyMDU5Mzg0OTg5NDE1NCJ9.jcl_4EIR2Q8SZhJa94-nDVgXDk_sTUS9eIMag2QK_3g",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"name\": \"roxi\",\r\n  \"email\": \"roxi@test.com\",\r\n  \"password\": \"8826267D@ny\",\r\n  \"role\": \"admin\"\r\n}"
+						},
+						"url": {
+							"raw": "http://localhost:3000/api/users",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"users"
+							]
+						},
+						"description": "Generated from cURL: curl --location 'https://planka.dominio.com/api/users' \\\r\n--data-raw '{\r\n    \"email\": \"tom2@gmail.com\",\r\n    \"password\": \"tom@250281**\",\r\n    \"name\": \"Tom Silva 8\",\r\n    \"username\": \"Tom8\",\r\n    \"phone\": \"593999921016\",\r\n    \"organization\": \"sesotec\",\r\n    \"language\": \"es-ES\",\r\n    \"subscribeToOwnCards\": true\r\n}'"
+					},
+					"response": [
+						{
+							"name": "/ crear usuarios",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": " Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6IjQ3YmQ1OGZlLWZmODQtNDgwMi05ZmQyLTgzYzYzZDJjMzNhNyJ9.eyJpYXQiOjE3NjE3Njc1NTksImV4cCI6MTc5MzMwMzU1OSwic3ViIjoiMTYzMjIyMDU5Mzg0OTg5NDE1NCJ9.jcl_4EIR2Q8SZhJa94-nDVgXDk_sTUS9eIMag2QK_3g",
+										"type": "text"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"name\": \"roxi\",\r\n  \"email\": \"roxi@test.com\",\r\n  \"password\": \"8826267D@ny\",\r\n  \"role\": \"admin\"\r\n}"
+								},
+								"url": {
+									"raw": "http://localhost:3000/api/users",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"api",
+										"users"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": null,
+							"header": [
+								{
+									"key": "X-Exit",
+									"value": "success"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "294"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"126-HWLur3yg1yttTdaRWYIGwvNXO8A\""
+								},
+								{
+									"key": "Vary",
+									"value": "Accept-Encoding"
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 29 Oct 2025 19:57:12 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"item\": {\n        \"id\": \"1632223743000446231\",\n        \"createdAt\": \"2025-10-29T19:57:12.778Z\",\n        \"updatedAt\": null,\n        \"email\": \"roxi@test.com\",\n        \"role\": \"admin\",\n        \"name\": \"roxi\",\n        \"username\": null,\n        \"phone\": null,\n        \"organization\": null,\n        \"isSsoUser\": false,\n        \"isDeactivated\": false,\n        \"avatar\": null,\n        \"isDefaultAdmin\": false,\n        \"lockedFieldNames\": []\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "/ obtener lista usuarios",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6IjQ3YmQ1OGZlLWZmODQtNDgwMi05ZmQyLTgzYzYzZDJjMzNhNyJ9.eyJpYXQiOjE3NjE3Njc1NTksImV4cCI6MTc5MzMwMzU1OSwic3ViIjoiMTYzMjIyMDU5Mzg0OTg5NDE1NCJ9.jcl_4EIR2Q8SZhJa94-nDVgXDk_sTUS9eIMag2QK_3g"
+							},
+							{
+								"key": "",
+								"value": "",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": []
+						},
+						"url": {
+							"raw": "http://localhost:3000/api/users",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"users"
+							]
+						},
+						"description": "Generated from cURL: curl --location 'https://planka.dominio.com/api/users' \\\r\n--header 'Authorization: Bearear eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6ImQ4MmM3MDgyLWZlMzYtNDBhMi1hYmU1LTFkMzdjMjk1MDJjYiJ9.eyJpYXQiOjE3NDI0NDAxNzksImV4cCI6MTc3Mzk3NjE3OSwic3ViIjoiMTQ2NDgyNjI0MDk2Njg1MzYzMyJ9._2SFWD4TXLHfkkdlu-dE5nz76uvyjoWNMeqap0WfJlc'"
+					},
+					"response": [
+						{
+							"name": "/ obtener lista usuarios",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6IjQ3YmQ1OGZlLWZmODQtNDgwMi05ZmQyLTgzYzYzZDJjMzNhNyJ9.eyJpYXQiOjE3NjE3Njc1NTksImV4cCI6MTc5MzMwMzU1OSwic3ViIjoiMTYzMjIyMDU5Mzg0OTg5NDE1NCJ9.jcl_4EIR2Q8SZhJa94-nDVgXDk_sTUS9eIMag2QK_3g"
+									},
+									{
+										"key": "",
+										"value": "",
+										"type": "text",
+										"disabled": true
+									}
+								],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": []
+								},
+								"url": {
+									"raw": "http://localhost:3000/api/users",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"api",
+										"users"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": null,
+							"header": [
+								{
+									"key": "X-Exit",
+									"value": "success"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"955-rPUDDY43bm7Q7SkI/dgEuVnwEcU\""
+								},
+								{
+									"key": "Vary",
+									"value": "Accept-Encoding"
+								},
+								{
+									"key": "Content-Encoding",
+									"value": "gzip"
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 29 Oct 2025 19:57:44 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"items\": [\n        {\n            \"id\": \"1596567761373365308\",\n            \"createdAt\": \"2025-09-10T15:15:08.525Z\",\n            \"updatedAt\": null,\n            \"email\": \"fulis@test.com\",\n            \"role\": \"projectOwner\",\n            \"name\": \"Fulanito Perez\",\n            \"username\": null,\n            \"phone\": null,\n            \"organization\": null,\n            \"isSsoUser\": false,\n            \"isDeactivated\": false,\n            \"avatar\": null,\n            \"isDefaultAdmin\": false,\n            \"lockedFieldNames\": []\n        },\n        {\n            \"id\": \"1620593172537148491\",\n            \"createdAt\": \"2025-10-13T18:49:20.738Z\",\n            \"updatedAt\": null,\n            \"email\": \"maria@test.com\",\n            \"role\": \"projectOwner\",\n            \"name\": \"Maria Perez\",\n            \"username\": null,\n            \"phone\": null,\n            \"organization\": null,\n            \"isSsoUser\": false,\n            \"isDeactivated\": false,\n            \"avatar\": null,\n            \"isDefaultAdmin\": false,\n            \"lockedFieldNames\": []\n        },\n        {\n            \"id\": \"1620766694249071769\",\n            \"createdAt\": \"2025-10-14T00:34:06.131Z\",\n            \"updatedAt\": null,\n            \"email\": \"pruebita2025@gmail.com\",\n            \"role\": \"admin\",\n            \"name\": \"Prueba Tester\",\n            \"username\": \"pruebita\",\n            \"phone\": null,\n            \"organization\": null,\n            \"isSsoUser\": false,\n            \"isDeactivated\": false,\n            \"avatar\": null,\n            \"isDefaultAdmin\": false,\n            \"lockedFieldNames\": []\n        },\n        {\n            \"id\": \"1632207771325695237\",\n            \"createdAt\": \"2025-10-29T19:25:28.808Z\",\n            \"updatedAt\": null,\n            \"email\": \"lou23@test.com\",\n            \"role\": \"projectOwner\",\n            \"name\": \"Lourdes Perez\",\n            \"username\": null,\n            \"phone\": null,\n            \"organization\": null,\n            \"isSsoUser\": false,\n            \"isDeactivated\": false,\n            \"avatar\": null,\n            \"isDefaultAdmin\": false,\n            \"lockedFieldNames\": []\n        },\n        {\n            \"id\": \"1632209227764204806\",\n            \"createdAt\": \"2025-10-29T19:28:22.424Z\",\n            \"updatedAt\": null,\n            \"email\": \"mariela@test.com\",\n            \"role\": \"projectOwner\",\n            \"name\": \"mariela.perez\",\n            \"username\": null,\n            \"phone\": null,\n            \"organization\": null,\n            \"isSsoUser\": false,\n            \"isDeactivated\": false,\n            \"avatar\": null,\n            \"isDefaultAdmin\": false,\n            \"lockedFieldNames\": []\n        },\n        {\n            \"id\": \"1632220593849894154\",\n            \"createdAt\": \"2025-10-29T19:50:57.354Z\",\n            \"updatedAt\": null,\n            \"email\": \"danielabravo2308@gmail.com\",\n            \"role\": \"admin\",\n            \"name\": \"Daniela Bravo\",\n            \"username\": \"dani_admin\",\n            \"phone\": null,\n            \"organization\": null,\n            \"language\": null,\n            \"subscribeToOwnCards\": false,\n            \"subscribeToCardWhenCommenting\": true,\n            \"turnOffRecentCardHighlighting\": false,\n            \"enableFavoritesByDefault\": false,\n            \"defaultEditorMode\": \"wysiwyg\",\n            \"defaultHomeView\": \"groupedProjects\",\n            \"defaultProjectsOrder\": \"byDefault\",\n            \"isSsoUser\": false,\n            \"isDeactivated\": false,\n            \"avatar\": null,\n            \"isDefaultAdmin\": false,\n            \"lockedFieldNames\": []\n        },\n        {\n            \"id\": \"1632223743000446231\",\n            \"createdAt\": \"2025-10-29T19:57:12.778Z\",\n            \"updatedAt\": null,\n            \"email\": \"roxi@test.com\",\n            \"role\": \"admin\",\n            \"name\": \"roxi\",\n            \"username\": null,\n            \"phone\": null,\n            \"organization\": null,\n            \"isSsoUser\": false,\n            \"isDeactivated\": false,\n            \"avatar\": null,\n            \"isDefaultAdmin\": false,\n            \"lockedFieldNames\": []\n        }\n    ]\n}"
+						}
+					]
+				},
+				{
+					"name": "/ eliminar usuario por id",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6IjQ3YmQ1OGZlLWZmODQtNDgwMi05ZmQyLTgzYzYzZDJjMzNhNyJ9.eyJpYXQiOjE3NjE3Njc1NTksImV4cCI6MTc5MzMwMzU1OSwic3ViIjoiMTYzMjIyMDU5Mzg0OTg5NDE1NCJ9.jcl_4EIR2Q8SZhJa94-nDVgXDk_sTUS9eIMag2QK_3g",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:3000/api/users/1632209227764204806",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"users",
+								"1632209227764204806"
+							]
+						},
+						"description": "Generated from cURL: curl --location --request DELETE 'https://planka.dominio.com/api/users/1470100150889219093'"
+					},
+					"response": [
+						{
+							"name": "/ eliminar usuario por id",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6IjQ3YmQ1OGZlLWZmODQtNDgwMi05ZmQyLTgzYzYzZDJjMzNhNyJ9.eyJpYXQiOjE3NjE3Njc1NTksImV4cCI6MTc5MzMwMzU1OSwic3ViIjoiMTYzMjIyMDU5Mzg0OTg5NDE1NCJ9.jcl_4EIR2Q8SZhJa94-nDVgXDk_sTUS9eIMag2QK_3g",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "http://localhost:3000/api/users/1632209227764204806",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"api",
+										"users",
+										"1632209227764204806"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": null,
+							"header": [
+								{
+									"key": "X-Exit",
+									"value": "success"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "313"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"139-VqpEJket0HKpyz93xZRO4YQaDbY\""
+								},
+								{
+									"key": "Vary",
+									"value": "Accept-Encoding"
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 29 Oct 2025 20:08:42 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"item\": {\n        \"id\": \"1632209227764204806\",\n        \"createdAt\": \"2025-10-29T19:28:22.424Z\",\n        \"updatedAt\": null,\n        \"email\": \"mariela@test.com\",\n        \"role\": \"projectOwner\",\n        \"name\": \"mariela.perez\",\n        \"username\": null,\n        \"phone\": null,\n        \"organization\": null,\n        \"isSsoUser\": false,\n        \"isDeactivated\": false,\n        \"avatar\": null,\n        \"isDefaultAdmin\": false,\n        \"lockedFieldNames\": []\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "/ obtener usuario por id",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6IjQ3YmQ1OGZlLWZmODQtNDgwMi05ZmQyLTgzYzYzZDJjMzNhNyJ9.eyJpYXQiOjE3NjE3Njc1NTksImV4cCI6MTc5MzMwMzU1OSwic3ViIjoiMTYzMjIyMDU5Mzg0OTg5NDE1NCJ9.jcl_4EIR2Q8SZhJa94-nDVgXDk_sTUS9eIMag2QK_3g",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:3000/api/users/me",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"users",
+								"me"
+							]
+						},
+						"description": "Generated from cURL: curl --location 'https://planka.dominio.com/api/users/1464826240966853633'"
+					},
+					"response": [
+						{
+							"name": "/ obtener usuario por id",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6IjQ3YmQ1OGZlLWZmODQtNDgwMi05ZmQyLTgzYzYzZDJjMzNhNyJ9.eyJpYXQiOjE3NjE3Njc1NTksImV4cCI6MTc5MzMwMzU1OSwic3ViIjoiMTYzMjIyMDU5Mzg0OTg5NDE1NCJ9.jcl_4EIR2Q8SZhJa94-nDVgXDk_sTUS9eIMag2QK_3g",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "http://localhost:3000/api/users/me",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"api",
+										"users",
+										"me"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": null,
+							"header": [
+								{
+									"key": "X-Exit",
+									"value": "success"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "616"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"268-TCILymD9uDm7wSi0yg+4TAqidMs\""
+								},
+								{
+									"key": "Vary",
+									"value": "Accept-Encoding"
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 29 Oct 2025 20:12:11 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"item\": {\n        \"id\": \"1632220593849894154\",\n        \"createdAt\": \"2025-10-29T19:50:57.354Z\",\n        \"updatedAt\": null,\n        \"email\": \"danielabravo2308@gmail.com\",\n        \"role\": \"admin\",\n        \"name\": \"Daniela Bravo\",\n        \"username\": \"dani_admin\",\n        \"phone\": null,\n        \"organization\": null,\n        \"language\": null,\n        \"subscribeToOwnCards\": false,\n        \"subscribeToCardWhenCommenting\": true,\n        \"turnOffRecentCardHighlighting\": false,\n        \"enableFavoritesByDefault\": false,\n        \"defaultEditorMode\": \"wysiwyg\",\n        \"defaultHomeView\": \"groupedProjects\",\n        \"defaultProjectsOrder\": \"byDefault\",\n        \"isSsoUser\": false,\n        \"isDeactivated\": false,\n        \"avatar\": null,\n        \"isDefaultAdmin\": false,\n        \"lockedFieldNames\": []\n    },\n    \"included\": {\n        \"notificationServices\": []\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "/ actualizar usuario",
+					"request": {
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6IjQ3YmQ1OGZlLWZmODQtNDgwMi05ZmQyLTgzYzYzZDJjMzNhNyJ9.eyJpYXQiOjE3NjE3Njc1NTksImV4cCI6MTc5MzMwMzU1OSwic3ViIjoiMTYzMjIyMDU5Mzg0OTg5NDE1NCJ9.jcl_4EIR2Q8SZhJa94-nDVgXDk_sTUS9eIMag2QK_3g",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"isAdmin\": true,\r\n    \"name\": \"Daniela Bravo Rueda\",\r\n    \"avatarUrl\": null,\r\n    \"phone\": \"666666666\",\r\n    \"organization\": \"Jalasoft\",\r\n    \"language\": null,\r\n    \"subscribeToOwnCards\": true\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/api/users/{{ID_USER_ADMIN}}",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"users",
+								"{{ID_USER_ADMIN}}"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "/ actualizar usuario admin",
+							"originalRequest": {
+								"method": "PATCH",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6IjQ3YmQ1OGZlLWZmODQtNDgwMi05ZmQyLTgzYzYzZDJjMzNhNyJ9.eyJpYXQiOjE3NjE3Njc1NTksImV4cCI6MTc5MzMwMzU1OSwic3ViIjoiMTYzMjIyMDU5Mzg0OTg5NDE1NCJ9.jcl_4EIR2Q8SZhJa94-nDVgXDk_sTUS9eIMag2QK_3g",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"isAdmin\": true,\r\n    \"name\": \"Daniela Bravo Rueda\",\r\n    \"avatarUrl\": null,\r\n    \"phone\": \"666666666\",\r\n    \"organization\": \"Jalasoft\",\r\n    \"language\": null,\r\n    \"subscribeToOwnCards\": true\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:3000/api/users/{{ID_USER_ADMIN}}",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"api",
+										"users",
+										"{{ID_USER_ADMIN}}"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": null,
+							"header": [
+								{
+									"key": "X-Exit",
+									"value": "success"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "617"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"269-boOQtoujozak0s9LsXSh7/SYeyo\""
+								},
+								{
+									"key": "Vary",
+									"value": "Accept-Encoding"
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 29 Oct 2025 21:25:42 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"item\": {\n        \"id\": \"1632220593849894154\",\n        \"createdAt\": \"2025-10-29T19:50:57.354Z\",\n        \"updatedAt\": \"2025-10-29T21:25:42.868Z\",\n        \"email\": \"danielabravo2308@gmail.com\",\n        \"role\": \"admin\",\n        \"name\": \"Daniela Bravo Rueda\",\n        \"username\": \"dani_admin\",\n        \"phone\": \"666666666\",\n        \"organization\": \"Jalasoft\",\n        \"language\": null,\n        \"subscribeToOwnCards\": true,\n        \"subscribeToCardWhenCommenting\": true,\n        \"turnOffRecentCardHighlighting\": false,\n        \"enableFavoritesByDefault\": false,\n        \"defaultEditorMode\": \"wysiwyg\",\n        \"defaultHomeView\": \"groupedProjects\",\n        \"defaultProjectsOrder\": \"byDefault\",\n        \"isSsoUser\": false,\n        \"isDeactivated\": false,\n        \"avatar\": null,\n        \"isDefaultAdmin\": false,\n        \"lockedFieldNames\": []\n    }\n}"
+						},
+						{
+							"name": "/ actualizar usuario",
+							"originalRequest": {
+								"method": "PATCH",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6IjQ3YmQ1OGZlLWZmODQtNDgwMi05ZmQyLTgzYzYzZDJjMzNhNyJ9.eyJpYXQiOjE3NjE3Njc1NTksImV4cCI6MTc5MzMwMzU1OSwic3ViIjoiMTYzMjIyMDU5Mzg0OTg5NDE1NCJ9.jcl_4EIR2Q8SZhJa94-nDVgXDk_sTUS9eIMag2QK_3g",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"isAdmin\": true,\r\n    \"name\": \"Daniela Bravo Rueda\",\r\n    \"avatarUrl\": null,\r\n    \"phone\": \"666666666\",\r\n    \"organization\": \"Jalasoft\",\r\n    \"language\": null,\r\n    \"subscribeToOwnCards\": true\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:3000/api/users/{{ID_USER}}",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"api",
+										"users",
+										"{{ID_USER}}"
+									]
+								}
+							},
+							"status": "Forbidden",
+							"code": 403,
+							"_postman_previewlanguage": null,
+							"header": [
+								{
+									"key": "X-Exit",
+									"value": "notEnoughRights"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "52"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"34-xltY3YVfv8Y3ggsMzM8aeQn8TC0\""
+								},
+								{
+									"key": "Vary",
+									"value": "Accept-Encoding"
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 29 Oct 2025 21:29:07 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"code\": \"E_FORBIDDEN\",\n    \"message\": \"Not enough rights\"\n}"
+						}
+					]
+				},
+				{
+					"name": "/ actualizar correo user",
+					"request": {
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6IjQ3YmQ1OGZlLWZmODQtNDgwMi05ZmQyLTgzYzYzZDJjMzNhNyJ9.eyJpYXQiOjE3NjE3Njc1NTksImV4cCI6MTc5MzMwMzU1OSwic3ViIjoiMTYzMjIyMDU5Mzg0OTg5NDE1NCJ9.jcl_4EIR2Q8SZhJa94-nDVgXDk_sTUS9eIMag2QK_3g",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{       \r\n \"email\": \"perrita@gmail.com\",\r\n \"currentPassword\": \"8826267D@ny\"     \r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/api/users/{{ID_USER_ADMIN}}/email",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"users",
+								"{{ID_USER_ADMIN}}",
+								"email"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "/ actualizar correo user",
+							"originalRequest": {
+								"method": "PATCH",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6IjQ3YmQ1OGZlLWZmODQtNDgwMi05ZmQyLTgzYzYzZDJjMzNhNyJ9.eyJpYXQiOjE3NjE3Njc1NTksImV4cCI6MTc5MzMwMzU1OSwic3ViIjoiMTYzMjIyMDU5Mzg0OTg5NDE1NCJ9.jcl_4EIR2Q8SZhJa94-nDVgXDk_sTUS9eIMag2QK_3g",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{       \r\n \"email\": \"perrita@gmail.com\",\r\n \"currentPassword\": \"8826267D@ny\"     \r\n}\r\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:3000/api/users/{{ID_USER2}}/email",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"api",
+										"users",
+										"{{ID_USER2}}",
+										"email"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": null,
+							"header": [
+								{
+									"key": "X-Exit",
+									"value": "success"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "336"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"150-be68OUdJFiM9omyfKXfHYRmgq0g\""
+								},
+								{
+									"key": "Vary",
+									"value": "Accept-Encoding"
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 29 Oct 2025 21:22:09 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"item\": {\n        \"id\": \"1632207771325695237\",\n        \"createdAt\": \"2025-10-29T19:25:28.808Z\",\n        \"updatedAt\": \"2025-10-29T21:22:09.378Z\",\n        \"email\": \"perrita@gmail.com\",\n        \"role\": \"projectOwner\",\n        \"name\": \"Lourdes Perez\",\n        \"username\": null,\n        \"phone\": null,\n        \"organization\": null,\n        \"isSsoUser\": false,\n        \"isDeactivated\": false,\n        \"avatar\": null,\n        \"isDefaultAdmin\": false,\n        \"lockedFieldNames\": []\n    }\n}"
+						},
+						{
+							"name": "/ actualizar correo user admin",
+							"originalRequest": {
+								"method": "PATCH",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6IjQ3YmQ1OGZlLWZmODQtNDgwMi05ZmQyLTgzYzYzZDJjMzNhNyJ9.eyJpYXQiOjE3NjE3Njc1NTksImV4cCI6MTc5MzMwMzU1OSwic3ViIjoiMTYzMjIyMDU5Mzg0OTg5NDE1NCJ9.jcl_4EIR2Q8SZhJa94-nDVgXDk_sTUS9eIMag2QK_3g",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{       \r\n \"email\": \"perrita@gmail.com\",\r\n \"currentPassword\": \"8826267D@ny\"     \r\n}\r\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:3000/api/users/{{ID_USER_ADMIN}}/email",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"api",
+										"users",
+										"{{ID_USER_ADMIN}}",
+										"email"
+									]
+								}
+							},
+							"status": "Forbidden",
+							"code": 403,
+							"_postman_previewlanguage": null,
+							"header": [
+								{
+									"key": "X-Exit",
+									"value": "invalidCurrentPassword"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "59"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"3b-C2PedjRP5Xujk7Ry0iyk0a34dJ8\""
+								},
+								{
+									"key": "Vary",
+									"value": "Accept-Encoding"
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 29 Oct 2025 21:26:55 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"code\": \"E_FORBIDDEN\",\n    \"message\": \"Invalid current password\"\n}"
+						}
+					]
+				},
+				{
+					"name": "/ actualizar contraseña",
+					"request": {
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6IjQ3YmQ1OGZlLWZmODQtNDgwMi05ZmQyLTgzYzYzZDJjMzNhNyJ9.eyJpYXQiOjE3NjE3Njc1NTksImV4cCI6MTc5MzMwMzU1OSwic3ViIjoiMTYzMjIyMDU5Mzg0OTg5NDE1NCJ9.jcl_4EIR2Q8SZhJa94-nDVgXDk_sTUS9eIMag2QK_3g",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"password\": \"8826267D@ny\",\r\n  \"currentPassword\": \"123456789\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/api/users/{{ID_USER3}}/password",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"users",
+								"{{ID_USER3}}",
+								"password"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "/ actualizar contraseña user",
+							"originalRequest": {
+								"method": "PATCH",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6IjQ3YmQ1OGZlLWZmODQtNDgwMi05ZmQyLTgzYzYzZDJjMzNhNyJ9.eyJpYXQiOjE3NjE3Njc1NTksImV4cCI6MTc5MzMwMzU1OSwic3ViIjoiMTYzMjIyMDU5Mzg0OTg5NDE1NCJ9.jcl_4EIR2Q8SZhJa94-nDVgXDk_sTUS9eIMag2QK_3g",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"password\": \"8826267D@ny\",\r\n  \"currentPassword\": \"123456789\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:3000/api/users/{{ID_USER3}}/password",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"api",
+										"users",
+										"{{ID_USER3}}",
+										"password"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": null,
+							"header": [
+								{
+									"key": "X-Exit",
+									"value": "success"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "322"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"142-n50ZzJdmjuY85qxetQwYYpEW+lg\""
+								},
+								{
+									"key": "Vary",
+									"value": "Accept-Encoding"
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 29 Oct 2025 21:33:25 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"item\": {\n        \"id\": \"1632223743000446231\",\n        \"createdAt\": \"2025-10-29T19:57:12.778Z\",\n        \"updatedAt\": \"2025-10-29T21:33:25.346Z\",\n        \"email\": \"daniela94@gmail.com\",\n        \"role\": \"admin\",\n        \"name\": \"roxi\",\n        \"username\": null,\n        \"phone\": null,\n        \"organization\": null,\n        \"isSsoUser\": false,\n        \"isDeactivated\": false,\n        \"avatar\": null,\n        \"isDefaultAdmin\": false,\n        \"lockedFieldNames\": []\n    }\n}"
+						},
+						{
+							"name": "/ actualizar contraseña user admin",
+							"originalRequest": {
+								"method": "PATCH",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6IjQ3YmQ1OGZlLWZmODQtNDgwMi05ZmQyLTgzYzYzZDJjMzNhNyJ9.eyJpYXQiOjE3NjE3Njc1NTksImV4cCI6MTc5MzMwMzU1OSwic3ViIjoiMTYzMjIyMDU5Mzg0OTg5NDE1NCJ9.jcl_4EIR2Q8SZhJa94-nDVgXDk_sTUS9eIMag2QK_3g",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"password\": \"8826267D@ny\",\r\n  \"currentPassword\": \"123456789\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:3000/api/users/{{ID_USER_ADMIN}}/password",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"api",
+										"users",
+										"{{ID_USER_ADMIN}}",
+										"password"
+									]
+								}
+							},
+							"status": "Forbidden",
+							"code": 403,
+							"_postman_previewlanguage": null,
+							"header": [
+								{
+									"key": "X-Exit",
+									"value": "invalidCurrentPassword"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "59"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"3b-C2PedjRP5Xujk7Ry0iyk0a34dJ8\""
+								},
+								{
+									"key": "Vary",
+									"value": "Accept-Encoding"
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 29 Oct 2025 21:34:49 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"code\": \"E_FORBIDDEN\",\n    \"message\": \"Invalid current password\"\n}"
+						}
+					]
+				},
+				{
+					"name": "/ actualizar nombre usuario",
+					"request": {
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6IjQ3YmQ1OGZlLWZmODQtNDgwMi05ZmQyLTgzYzYzZDJjMzNhNyJ9.eyJpYXQiOjE3NjE3Njc1NTksImV4cCI6MTc5MzMwMzU1OSwic3ViIjoiMTYzMjIyMDU5Mzg0OTg5NDE1NCJ9.jcl_4EIR2Q8SZhJa94-nDVgXDk_sTUS9eIMag2QK_3g",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"username\": \"daniAdmin\",\r\n    \"currentPassword\": \"db8826267\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/api/users/{{ID_USER_ADMIN}}/username",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"users",
+								"{{ID_USER_ADMIN}}",
+								"username"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "/ actualizar nombre usuario",
+							"originalRequest": {
+								"method": "PATCH",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6IjQ3YmQ1OGZlLWZmODQtNDgwMi05ZmQyLTgzYzYzZDJjMzNhNyJ9.eyJpYXQiOjE3NjE3Njc1NTksImV4cCI6MTc5MzMwMzU1OSwic3ViIjoiMTYzMjIyMDU5Mzg0OTg5NDE1NCJ9.jcl_4EIR2Q8SZhJa94-nDVgXDk_sTUS9eIMag2QK_3g",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"username\": \"roquita\",\r\n    \"currentPassword\": \"123456789\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:3000/api/users/{{ID_USER3}}/username",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"api",
+										"users",
+										"{{ID_USER3}}",
+										"username"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": null,
+							"header": [
+								{
+									"key": "X-Exit",
+									"value": "success"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "327"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"147-cSrtX4L0M5e/U6Tj6wStIXFMaf8\""
+								},
+								{
+									"key": "Vary",
+									"value": "Accept-Encoding"
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 29 Oct 2025 21:40:12 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"item\": {\n        \"id\": \"1632223743000446231\",\n        \"createdAt\": \"2025-10-29T19:57:12.778Z\",\n        \"updatedAt\": \"2025-10-29T21:40:12.557Z\",\n        \"email\": \"daniela94@gmail.com\",\n        \"role\": \"admin\",\n        \"name\": \"roxi\",\n        \"username\": \"roquita\",\n        \"phone\": null,\n        \"organization\": null,\n        \"isSsoUser\": false,\n        \"isDeactivated\": false,\n        \"avatar\": null,\n        \"isDefaultAdmin\": false,\n        \"lockedFieldNames\": []\n    }\n}"
+						},
+						{
+							"name": "/ actualizar nombre usuario admin",
+							"originalRequest": {
+								"method": "PATCH",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6IjQ3YmQ1OGZlLWZmODQtNDgwMi05ZmQyLTgzYzYzZDJjMzNhNyJ9.eyJpYXQiOjE3NjE3Njc1NTksImV4cCI6MTc5MzMwMzU1OSwic3ViIjoiMTYzMjIyMDU5Mzg0OTg5NDE1NCJ9.jcl_4EIR2Q8SZhJa94-nDVgXDk_sTUS9eIMag2QK_3g",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"username\": \"daniAdmin\",\r\n    \"currentPassword\": \"db8826267\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:3000/api/users/{{ID_USER_ADMIN}}/username",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"api",
+										"users",
+										"{{ID_USER_ADMIN}}",
+										"username"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": null,
+							"header": [
+								{
+									"key": "X-Exit",
+									"value": "success"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "616"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"268-qc9KkgPn5WAdyzV4vFOHrwzqNfM\""
+								},
+								{
+									"key": "Vary",
+									"value": "Accept-Encoding"
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 29 Oct 2025 21:42:09 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"item\": {\n        \"id\": \"1632220593849894154\",\n        \"createdAt\": \"2025-10-29T19:50:57.354Z\",\n        \"updatedAt\": \"2025-10-29T21:42:08.949Z\",\n        \"email\": \"danielabravo2308@gmail.com\",\n        \"role\": \"admin\",\n        \"name\": \"Daniela Bravo Rueda\",\n        \"username\": \"daniadmin\",\n        \"phone\": \"666666666\",\n        \"organization\": \"Jalasoft\",\n        \"language\": null,\n        \"subscribeToOwnCards\": true,\n        \"subscribeToCardWhenCommenting\": true,\n        \"turnOffRecentCardHighlighting\": false,\n        \"enableFavoritesByDefault\": false,\n        \"defaultEditorMode\": \"wysiwyg\",\n        \"defaultHomeView\": \"groupedProjects\",\n        \"defaultProjectsOrder\": \"byDefault\",\n        \"isSsoUser\": false,\n        \"isDeactivated\": false,\n        \"avatar\": null,\n        \"isDefaultAdmin\": false,\n        \"lockedFieldNames\": []\n    }\n}"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Proyecto",
+			"item": [
+				{
+					"name": "gestion proyectos",
+					"item": [
+						{
+							"name": "/ crear proyecto",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6IjQ3YmQ1OGZlLWZmODQtNDgwMi05ZmQyLTgzYzYzZDJjMzNhNyJ9.eyJpYXQiOjE3NjE3Njc1NTksImV4cCI6MTc5MzMwMzU1OSwic3ViIjoiMTYzMjIyMDU5Mzg0OTg5NDE1NCJ9.jcl_4EIR2Q8SZhJa94-nDVgXDk_sTUS9eIMag2QK_3g",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"type\": \"private\",\r\n  \"name\": \"Development Project\",\r\n  \"description\": \"A project for developing new features...\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:3000/api/projects",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"api",
+										"projects"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "/ crear proyecto",
+									"originalRequest": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Authorization",
+												"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6IjQ3YmQ1OGZlLWZmODQtNDgwMi05ZmQyLTgzYzYzZDJjMzNhNyJ9.eyJpYXQiOjE3NjE3Njc1NTksImV4cCI6MTc5MzMwMzU1OSwic3ViIjoiMTYzMjIyMDU5Mzg0OTg5NDE1NCJ9.jcl_4EIR2Q8SZhJa94-nDVgXDk_sTUS9eIMag2QK_3g",
+												"type": "text"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n  \"type\": \"private\",\r\n  \"name\": \"Development Project\",\r\n  \"description\": \"A project for developing new features...\"\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "http://localhost:3000/api/projects",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"port": "3000",
+											"path": [
+												"api",
+												"projects"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": null,
+									"header": [
+										{
+											"key": "X-Exit",
+											"value": "success"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json; charset=utf-8"
+										},
+										{
+											"key": "Content-Length",
+											"value": "520"
+										},
+										{
+											"key": "ETag",
+											"value": "W/\"208-17/Ruq7MF0GtKFTJ125JS3ew/e8\""
+										},
+										{
+											"key": "Vary",
+											"value": "Accept-Encoding"
+										},
+										{
+											"key": "Date",
+											"value": "Wed, 29 Oct 2025 21:53:55 GMT"
+										},
+										{
+											"key": "Connection",
+											"value": "keep-alive"
+										},
+										{
+											"key": "Keep-Alive",
+											"value": "timeout=5"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"item\": {\n        \"id\": \"1632282486459335962\",\n        \"createdAt\": \"2025-10-29T21:53:55.540Z\",\n        \"updatedAt\": \"2025-10-29T21:53:55.591Z\",\n        \"name\": \"Development Project\",\n        \"description\": \"A project for developing new features...\",\n        \"backgroundType\": null,\n        \"backgroundGradient\": null,\n        \"isHidden\": false,\n        \"ownerProjectManagerId\": \"1632282486576776475\",\n        \"backgroundImageId\": null\n    },\n    \"included\": {\n        \"projectManagers\": [\n            {\n                \"id\": \"1632282486576776475\",\n                \"createdAt\": \"2025-10-29T21:53:55.568Z\",\n                \"updatedAt\": null,\n                \"projectId\": \"1632282486459335962\",\n                \"userId\": \"1632220593849894154\"\n            }\n        ]\n    }\n}"
+								}
+							]
+						},
+						{
+							"name": "/ obtener lista de proyectos",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6IjQ3YmQ1OGZlLWZmODQtNDgwMi05ZmQyLTgzYzYzZDJjMzNhNyJ9.eyJpYXQiOjE3NjE3Njc1NTksImV4cCI6MTc5MzMwMzU1OSwic3ViIjoiMTYzMjIyMDU5Mzg0OTg5NDE1NCJ9.jcl_4EIR2Q8SZhJa94-nDVgXDk_sTUS9eIMag2QK_3g",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "http://localhost:3000/api/projects",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"api",
+										"projects"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "/ obtener lista de proyectos",
+									"originalRequest": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Authorization",
+												"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6IjQ3YmQ1OGZlLWZmODQtNDgwMi05ZmQyLTgzYzYzZDJjMzNhNyJ9.eyJpYXQiOjE3NjE3Njc1NTksImV4cCI6MTc5MzMwMzU1OSwic3ViIjoiMTYzMjIyMDU5Mzg0OTg5NDE1NCJ9.jcl_4EIR2Q8SZhJa94-nDVgXDk_sTUS9eIMag2QK_3g",
+												"type": "text"
+											}
+										],
+										"url": {
+											"raw": "http://localhost:3000/api/projects",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"port": "3000",
+											"path": [
+												"api",
+												"projects"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": null,
+									"header": [
+										{
+											"key": "X-Exit",
+											"value": "success"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json; charset=utf-8"
+										},
+										{
+											"key": "ETag",
+											"value": "W/\"f31-CKFrMbgL0hRJGLpGtLQcYY8A4Po\""
+										},
+										{
+											"key": "Vary",
+											"value": "Accept-Encoding"
+										},
+										{
+											"key": "Content-Encoding",
+											"value": "gzip"
+										},
+										{
+											"key": "Date",
+											"value": "Wed, 29 Oct 2025 21:55:41 GMT"
+										},
+										{
+											"key": "Connection",
+											"value": "keep-alive"
+										},
+										{
+											"key": "Keep-Alive",
+											"value": "timeout=5"
+										},
+										{
+											"key": "Transfer-Encoding",
+											"value": "chunked"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"items\": [\n        {\n            \"id\": \"1632222564535239951\",\n            \"createdAt\": \"2025-10-29T19:54:52.296Z\",\n            \"updatedAt\": null,\n            \"name\": \"Nuevo\",\n            \"description\": null,\n            \"backgroundType\": null,\n            \"backgroundGradient\": null,\n            \"isHidden\": false,\n            \"ownerProjectManagerId\": null,\n            \"backgroundImageId\": null,\n            \"isFavorite\": false\n        },\n        {\n            \"id\": \"1632282486459335962\",\n            \"createdAt\": \"2025-10-29T21:53:55.540Z\",\n            \"updatedAt\": \"2025-10-29T21:53:55.591Z\",\n            \"name\": \"Development Project\",\n            \"description\": \"A project for developing new features...\",\n            \"backgroundType\": null,\n            \"backgroundGradient\": null,\n            \"isHidden\": false,\n            \"ownerProjectManagerId\": \"1632282486576776475\",\n            \"backgroundImageId\": null,\n            \"isFavorite\": false\n        },\n        {\n            \"id\": \"1620586734641218624\",\n            \"createdAt\": \"2025-10-13T18:36:33.282Z\",\n            \"updatedAt\": null,\n            \"name\": \"PruebaProyecto\",\n            \"description\": null,\n            \"backgroundType\": null,\n            \"backgroundGradient\": null,\n            \"isHidden\": false,\n            \"ownerProjectManagerId\": null,\n            \"backgroundImageId\": null,\n            \"isFavorite\": false\n        },\n        {\n            \"id\": \"1630248482944058532\",\n            \"createdAt\": \"2025-10-27T02:32:43.431Z\",\n            \"updatedAt\": null,\n            \"name\": \"dsaf\",\n            \"description\": null,\n            \"backgroundType\": null,\n            \"backgroundGradient\": null,\n            \"isHidden\": false,\n            \"ownerProjectManagerId\": null,\n            \"backgroundImageId\": null,\n            \"isFavorite\": false\n        }\n    ],\n    \"included\": {\n        \"projectManagers\": [\n            {\n                \"id\": \"1632216098394866952\",\n                \"createdAt\": \"2025-10-29T19:42:01.462Z\",\n                \"updatedAt\": null,\n                \"projectId\": \"1620586734641218624\",\n                \"userId\": \"1596516129533068289\"\n            },\n            {\n                \"id\": \"1632216098688468233\",\n                \"createdAt\": \"2025-10-29T19:42:01.465Z\",\n                \"updatedAt\": null,\n                \"projectId\": \"1630248482944058532\",\n                \"userId\": \"1596516129533068289\"\n            },\n            {\n                \"id\": \"1632222564619126032\",\n                \"createdAt\": \"2025-10-29T19:54:52.313Z\",\n                \"updatedAt\": null,\n                \"projectId\": \"1632222564535239951\",\n                \"userId\": \"1632220593849894154\"\n            },\n            {\n                \"id\": \"1632282486576776475\",\n                \"createdAt\": \"2025-10-29T21:53:55.568Z\",\n                \"updatedAt\": null,\n                \"projectId\": \"1632282486459335962\",\n                \"userId\": \"1632220593849894154\"\n            }\n        ],\n        \"baseCustomFieldGroups\": [],\n        \"boards\": [\n            {\n                \"id\": \"1620586852559881282\",\n                \"createdAt\": \"2025-10-13T18:36:47.339Z\",\n                \"updatedAt\": \"2025-10-13T18:36:53.457Z\",\n                \"position\": 65536,\n                \"name\": \"TableroPrueba\",\n                \"defaultView\": \"kanban\",\n                \"defaultCardType\": \"project\",\n                \"limitCardTypesToDefaultOne\": false,\n                \"alwaysDisplayCardCreator\": false,\n                \"projectId\": \"1620586734641218624\"\n            },\n            {\n                \"id\": \"1630746743207363757\",\n                \"createdAt\": \"2025-10-27T19:02:40.654Z\",\n                \"updatedAt\": null,\n                \"position\": 65536,\n                \"name\": \"Primero\",\n                \"defaultView\": \"kanban\",\n                \"defaultCardType\": \"project\",\n                \"limitCardTypesToDefaultOne\": false,\n                \"alwaysDisplayCardCreator\": false,\n                \"projectId\": \"1630248482944058532\"\n            },\n            {\n                \"id\": \"1632222659511059729\",\n                \"createdAt\": \"2025-10-29T19:55:03.619Z\",\n                \"updatedAt\": \"2025-10-29T19:55:05.019Z\",\n                \"position\": 65536,\n                \"name\": \"Sprint1\",\n                \"defaultView\": \"kanban\",\n                \"defaultCardType\": \"project\",\n                \"limitCardTypesToDefaultOne\": false,\n                \"alwaysDisplayCardCreator\": false,\n                \"projectId\": \"1632222564535239951\"\n            },\n            {\n                \"id\": \"1620588328334132294\",\n                \"createdAt\": \"2025-10-13T18:39:43.265Z\",\n                \"updatedAt\": \"2025-10-13T18:39:45.324Z\",\n                \"position\": 131072,\n                \"name\": \"Nuevo\",\n                \"defaultView\": \"kanban\",\n                \"defaultCardType\": \"project\",\n                \"limitCardTypesToDefaultOne\": false,\n                \"alwaysDisplayCardCreator\": false,\n                \"projectId\": \"1620586734641218624\"\n            }\n        ],\n        \"boardMemberships\": [\n            {\n                \"id\": \"1632222659611723026\",\n                \"createdAt\": \"2025-10-29T19:55:03.637Z\",\n                \"updatedAt\": null,\n                \"role\": \"editor\",\n                \"canComment\": null,\n                \"projectId\": \"1632222564535239951\",\n                \"boardId\": \"1632222659511059729\",\n                \"userId\": \"1632220593849894154\"\n            }\n        ],\n        \"customFields\": [],\n        \"notificationServices\": [],\n        \"users\": [\n            {\n                \"id\": \"1632220593849894154\",\n                \"createdAt\": \"2025-10-29T19:50:57.354Z\",\n                \"updatedAt\": \"2025-10-29T21:42:08.949Z\",\n                \"email\": \"danielabravo2308@gmail.com\",\n                \"role\": \"admin\",\n                \"name\": \"Daniela Bravo Rueda\",\n                \"username\": \"daniadmin\",\n                \"phone\": \"666666666\",\n                \"organization\": \"Jalasoft\",\n                \"language\": null,\n                \"subscribeToOwnCards\": true,\n                \"subscribeToCardWhenCommenting\": true,\n                \"turnOffRecentCardHighlighting\": false,\n                \"enableFavoritesByDefault\": false,\n                \"defaultEditorMode\": \"wysiwyg\",\n                \"defaultHomeView\": \"groupedProjects\",\n                \"defaultProjectsOrder\": \"byDefault\",\n                \"isSsoUser\": false,\n                \"isDeactivated\": false,\n                \"avatar\": null,\n                \"isDefaultAdmin\": false,\n                \"lockedFieldNames\": []\n            }\n        ],\n        \"backgroundImages\": []\n    }\n}"
+								}
+							]
+						},
+						{
+							"name": "/ eliminar proyecto",
+							"request": {
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6IjQ3YmQ1OGZlLWZmODQtNDgwMi05ZmQyLTgzYzYzZDJjMzNhNyJ9.eyJpYXQiOjE3NjE3Njc1NTksImV4cCI6MTc5MzMwMzU1OSwic3ViIjoiMTYzMjIyMDU5Mzg0OTg5NDE1NCJ9.jcl_4EIR2Q8SZhJa94-nDVgXDk_sTUS9eIMag2QK_3g",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "http://localhost:3000/api/projects/{{ID_TABLERO}}",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"api",
+										"projects",
+										"{{ID_TABLERO}}"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "/ eliminar proyecto",
+									"originalRequest": {
+										"method": "DELETE",
+										"header": [
+											{
+												"key": "Authorization",
+												"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6IjQ3YmQ1OGZlLWZmODQtNDgwMi05ZmQyLTgzYzYzZDJjMzNhNyJ9.eyJpYXQiOjE3NjE3Njc1NTksImV4cCI6MTc5MzMwMzU1OSwic3ViIjoiMTYzMjIyMDU5Mzg0OTg5NDE1NCJ9.jcl_4EIR2Q8SZhJa94-nDVgXDk_sTUS9eIMag2QK_3g",
+												"type": "text"
+											}
+										],
+										"url": {
+											"raw": "http://localhost:3000/api/projects/{{ID_TABLERO}}",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"port": "3000",
+											"path": [
+												"api",
+												"projects",
+												"{{ID_TABLERO}}"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": null,
+									"header": [
+										{
+											"key": "X-Exit",
+											"value": "success"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json; charset=utf-8"
+										},
+										{
+											"key": "Content-Length",
+											"value": "337"
+										},
+										{
+											"key": "ETag",
+											"value": "W/\"151-339R+b0lafVQnAeNXXcI/9RIWrw\""
+										},
+										{
+											"key": "Vary",
+											"value": "Accept-Encoding"
+										},
+										{
+											"key": "Date",
+											"value": "Wed, 29 Oct 2025 21:58:09 GMT"
+										},
+										{
+											"key": "Connection",
+											"value": "keep-alive"
+										},
+										{
+											"key": "Keep-Alive",
+											"value": "timeout=5"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"item\": {\n        \"id\": \"1632282486459335962\",\n        \"createdAt\": \"2025-10-29T21:53:55.540Z\",\n        \"updatedAt\": \"2025-10-29T21:53:55.591Z\",\n        \"name\": \"Development Project\",\n        \"description\": \"A project for developing new features...\",\n        \"backgroundType\": null,\n        \"backgroundGradient\": null,\n        \"isHidden\": false,\n        \"ownerProjectManagerId\": \"1632282486576776475\",\n        \"backgroundImageId\": null\n    }\n}"
+								}
+							]
+						}
+					]
+				},
+				{
+					"name": "tablero",
+					"item": [
+						{
+							"name": "/ crear tablero",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6IjQ3YmQ1OGZlLWZmODQtNDgwMi05ZmQyLTgzYzYzZDJjMzNhNyJ9.eyJpYXQiOjE3NjE3Njc1NTksImV4cCI6MTc5MzMwMzU1OSwic3ViIjoiMTYzMjIyMDU5Mzg0OTg5NDE1NCJ9.jcl_4EIR2Q8SZhJa94-nDVgXDk_sTUS9eIMag2QK_3g",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"position\": 8,\r\n    \"name\": \"Proyecto Oficial \"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:3000/api/projects/{{ID_PROJECT}}/boards",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"api",
+										"projects",
+										"{{ID_PROJECT}}",
+										"boards"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "/ crear tablero",
+									"originalRequest": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Authorization",
+												"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6IjQ3YmQ1OGZlLWZmODQtNDgwMi05ZmQyLTgzYzYzZDJjMzNhNyJ9.eyJpYXQiOjE3NjE3Njc1NTksImV4cCI6MTc5MzMwMzU1OSwic3ViIjoiMTYzMjIyMDU5Mzg0OTg5NDE1NCJ9.jcl_4EIR2Q8SZhJa94-nDVgXDk_sTUS9eIMag2QK_3g",
+												"type": "text"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n    \"position\": 2,\r\n    \"name\": \"Nuevon Tablero\"\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "http://localhost:3000/api/projects/{{ID_PROJECT}}/boards",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"port": "3000",
+											"path": [
+												"api",
+												"projects",
+												"{{ID_PROJECT}}",
+												"boards"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": null,
+									"header": [
+										{
+											"key": "X-Exit",
+											"value": "success"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json; charset=utf-8"
+										},
+										{
+											"key": "Content-Length",
+											"value": "533"
+										},
+										{
+											"key": "ETag",
+											"value": "W/\"215-mHg4ijoRoKYK6+ufwFV7xHYgfio\""
+										},
+										{
+											"key": "Vary",
+											"value": "Accept-Encoding"
+										},
+										{
+											"key": "Date",
+											"value": "Thu, 30 Oct 2025 00:20:08 GMT"
+										},
+										{
+											"key": "Connection",
+											"value": "keep-alive"
+										},
+										{
+											"key": "Keep-Alive",
+											"value": "timeout=5"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"item\": {\n        \"id\": \"1632356076881970463\",\n        \"createdAt\": \"2025-10-30T00:20:08.207Z\",\n        \"updatedAt\": null,\n        \"position\": 2,\n        \"name\": \"Nuevon Tablero\",\n        \"defaultView\": \"kanban\",\n        \"defaultCardType\": \"project\",\n        \"limitCardTypesToDefaultOne\": false,\n        \"alwaysDisplayCardCreator\": false,\n        \"projectId\": \"1632353966727628061\"\n    },\n    \"included\": {\n        \"boardMemberships\": [\n            {\n                \"id\": \"1632356076965856544\",\n                \"createdAt\": \"2025-10-30T00:20:08.225Z\",\n                \"updatedAt\": null,\n                \"role\": \"editor\",\n                \"canComment\": null,\n                \"projectId\": \"1632353966727628061\",\n                \"boardId\": \"1632356076881970463\",\n                \"userId\": \"1632220593849894154\"\n            }\n        ]\n    }\n}"
+								},
+								{
+									"name": "/ crear tablero 2",
+									"originalRequest": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Authorization",
+												"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6IjQ3YmQ1OGZlLWZmODQtNDgwMi05ZmQyLTgzYzYzZDJjMzNhNyJ9.eyJpYXQiOjE3NjE3Njc1NTksImV4cCI6MTc5MzMwMzU1OSwic3ViIjoiMTYzMjIyMDU5Mzg0OTg5NDE1NCJ9.jcl_4EIR2Q8SZhJa94-nDVgXDk_sTUS9eIMag2QK_3g",
+												"type": "text"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n    \"position\": 8,\r\n    \"name\": \"Proyecto Oficial \"\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "http://localhost:3000/api/projects/{{ID_PROJECT}}/boards",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"port": "3000",
+											"path": [
+												"api",
+												"projects",
+												"{{ID_PROJECT}}",
+												"boards"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": null,
+									"header": [
+										{
+											"key": "X-Exit",
+											"value": "success"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json; charset=utf-8"
+										},
+										{
+											"key": "Content-Length",
+											"value": "536"
+										},
+										{
+											"key": "ETag",
+											"value": "W/\"218-wc5KcqBiNaFw5GEG3tEaCSiXi5w\""
+										},
+										{
+											"key": "Vary",
+											"value": "Accept-Encoding"
+										},
+										{
+											"key": "Date",
+											"value": "Thu, 30 Oct 2025 00:52:02 GMT"
+										},
+										{
+											"key": "Connection",
+											"value": "keep-alive"
+										},
+										{
+											"key": "Keep-Alive",
+											"value": "timeout=5"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"item\": {\n        \"id\": \"1632372132920952111\",\n        \"createdAt\": \"2025-10-30T00:52:02.239Z\",\n        \"updatedAt\": null,\n        \"position\": 8,\n        \"name\": \"Proyecto Oficial \",\n        \"defaultView\": \"kanban\",\n        \"defaultCardType\": \"project\",\n        \"limitCardTypesToDefaultOne\": false,\n        \"alwaysDisplayCardCreator\": false,\n        \"projectId\": \"1632353966727628061\"\n    },\n    \"included\": {\n        \"boardMemberships\": [\n            {\n                \"id\": \"1632372132988060976\",\n                \"createdAt\": \"2025-10-30T00:52:02.253Z\",\n                \"updatedAt\": null,\n                \"role\": \"editor\",\n                \"canComment\": null,\n                \"projectId\": \"1632353966727628061\",\n                \"boardId\": \"1632372132920952111\",\n                \"userId\": \"1632220593849894154\"\n            }\n        ]\n    }\n}"
+								}
+							]
+						},
+						{
+							"name": "/ eliminar tablero",
+							"request": {
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6IjQ3YmQ1OGZlLWZmODQtNDgwMi05ZmQyLTgzYzYzZDJjMzNhNyJ9.eyJpYXQiOjE3NjE3Njc1NTksImV4cCI6MTc5MzMwMzU1OSwic3ViIjoiMTYzMjIyMDU5Mzg0OTg5NDE1NCJ9.jcl_4EIR2Q8SZhJa94-nDVgXDk_sTUS9eIMag2QK_3g",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "http://localhost:3000/api/boards/{{ID_BOARD}}",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"api",
+										"boards",
+										"{{ID_BOARD}}"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "/ eliminar tablero",
+									"originalRequest": {
+										"method": "DELETE",
+										"header": [
+											{
+												"key": "Authorization",
+												"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6IjQ3YmQ1OGZlLWZmODQtNDgwMi05ZmQyLTgzYzYzZDJjMzNhNyJ9.eyJpYXQiOjE3NjE3Njc1NTksImV4cCI6MTc5MzMwMzU1OSwic3ViIjoiMTYzMjIyMDU5Mzg0OTg5NDE1NCJ9.jcl_4EIR2Q8SZhJa94-nDVgXDk_sTUS9eIMag2QK_3g",
+												"type": "text"
+											}
+										],
+										"url": {
+											"raw": "http://localhost:3000/api/boards/{{ID_BOARD}}",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"port": "3000",
+											"path": [
+												"api",
+												"boards",
+												"{{ID_BOARD}}"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": null,
+									"header": [
+										{
+											"key": "X-Exit",
+											"value": "success"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json; charset=utf-8"
+										},
+										{
+											"key": "Content-Length",
+											"value": "291"
+										},
+										{
+											"key": "ETag",
+											"value": "W/\"123-tW/oNeev8QgRDjcQdoIDaemJlYo\""
+										},
+										{
+											"key": "Vary",
+											"value": "Accept-Encoding"
+										},
+										{
+											"key": "Date",
+											"value": "Thu, 30 Oct 2025 00:50:44 GMT"
+										},
+										{
+											"key": "Connection",
+											"value": "keep-alive"
+										},
+										{
+											"key": "Keep-Alive",
+											"value": "timeout=5"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"item\": {\n        \"id\": \"1632367776565822763\",\n        \"createdAt\": \"2025-10-30T00:43:22.896Z\",\n        \"updatedAt\": null,\n        \"position\": 16390,\n        \"name\": \"Presentacion Final\",\n        \"defaultView\": \"kanban\",\n        \"defaultCardType\": \"project\",\n        \"limitCardTypesToDefaultOne\": false,\n        \"alwaysDisplayCardCreator\": false,\n        \"projectId\": \"1632353966727628061\"\n    }\n}"
+								}
+							]
+						},
+						{
+							"name": "/ obtener tablero por id",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6IjQ3YmQ1OGZlLWZmODQtNDgwMi05ZmQyLTgzYzYzZDJjMzNhNyJ9.eyJpYXQiOjE3NjE3Njc1NTksImV4cCI6MTc5MzMwMzU1OSwic3ViIjoiMTYzMjIyMDU5Mzg0OTg5NDE1NCJ9.jcl_4EIR2Q8SZhJa94-nDVgXDk_sTUS9eIMag2QK_3g",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "http://localhost:3000/api/boards/{{ID_BOARD}}",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"api",
+										"boards",
+										"{{ID_BOARD}}"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "/ obtener tablero por id",
+									"originalRequest": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Authorization",
+												"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6IjQ3YmQ1OGZlLWZmODQtNDgwMi05ZmQyLTgzYzYzZDJjMzNhNyJ9.eyJpYXQiOjE3NjE3Njc1NTksImV4cCI6MTc5MzMwMzU1OSwic3ViIjoiMTYzMjIyMDU5Mzg0OTg5NDE1NCJ9.jcl_4EIR2Q8SZhJa94-nDVgXDk_sTUS9eIMag2QK_3g",
+												"type": "text"
+											}
+										],
+										"url": {
+											"raw": "http://localhost:3000/api/boards/{{ID_BOARD}}",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"port": "3000",
+											"path": [
+												"api",
+												"boards",
+												"{{ID_BOARD}}"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": null,
+									"header": [
+										{
+											"key": "X-Exit",
+											"value": "success"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json; charset=utf-8"
+										},
+										{
+											"key": "ETag",
+											"value": "W/\"7ff-tCM10rImMgiNi0NII6LTPpfMDWE\""
+										},
+										{
+											"key": "Vary",
+											"value": "Accept-Encoding"
+										},
+										{
+											"key": "Content-Encoding",
+											"value": "gzip"
+										},
+										{
+											"key": "Date",
+											"value": "Thu, 30 Oct 2025 00:45:38 GMT"
+										},
+										{
+											"key": "Connection",
+											"value": "keep-alive"
+										},
+										{
+											"key": "Keep-Alive",
+											"value": "timeout=5"
+										},
+										{
+											"key": "Transfer-Encoding",
+											"value": "chunked"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"item\": {\n        \"id\": \"1632367776565822763\",\n        \"createdAt\": \"2025-10-30T00:43:22.896Z\",\n        \"updatedAt\": null,\n        \"position\": 16390,\n        \"name\": \"Presentacion Final\",\n        \"defaultView\": \"kanban\",\n        \"defaultCardType\": \"project\",\n        \"limitCardTypesToDefaultOne\": false,\n        \"alwaysDisplayCardCreator\": false,\n        \"projectId\": \"1632353966727628061\",\n        \"isSubscribed\": false\n    },\n    \"included\": {\n        \"boardMemberships\": [\n            {\n                \"id\": \"1632367776658097452\",\n                \"createdAt\": \"2025-10-30T00:43:22.937Z\",\n                \"updatedAt\": null,\n                \"role\": \"editor\",\n                \"canComment\": null,\n                \"projectId\": \"1632353966727628061\",\n                \"boardId\": \"1632367776565822763\",\n                \"userId\": \"1632220593849894154\"\n            }\n        ],\n        \"labels\": [],\n        \"lists\": [\n            {\n                \"id\": \"1632367776783926573\",\n                \"createdAt\": \"2025-10-30T00:43:22.947Z\",\n                \"updatedAt\": null,\n                \"type\": \"archive\",\n                \"position\": null,\n                \"name\": null,\n                \"color\": null,\n                \"boardId\": \"1632367776565822763\"\n            },\n            {\n                \"id\": \"1632367776800703790\",\n                \"createdAt\": \"2025-10-30T00:43:22.948Z\",\n                \"updatedAt\": null,\n                \"type\": \"trash\",\n                \"position\": null,\n                \"name\": null,\n                \"color\": null,\n                \"boardId\": \"1632367776565822763\"\n            }\n        ],\n        \"cards\": [],\n        \"cardMemberships\": [],\n        \"cardLabels\": [],\n        \"taskLists\": [],\n        \"tasks\": [],\n        \"customFieldGroups\": [],\n        \"customFields\": [],\n        \"customFieldValues\": [],\n        \"users\": [\n            {\n                \"id\": \"1632220593849894154\",\n                \"createdAt\": \"2025-10-29T19:50:57.354Z\",\n                \"updatedAt\": \"2025-10-29T21:42:08.949Z\",\n                \"email\": \"danielabravo2308@gmail.com\",\n                \"role\": \"admin\",\n                \"name\": \"Daniela Bravo Rueda\",\n                \"username\": \"daniadmin\",\n                \"phone\": \"666666666\",\n                \"organization\": \"Jalasoft\",\n                \"language\": null,\n                \"subscribeToOwnCards\": true,\n                \"subscribeToCardWhenCommenting\": true,\n                \"turnOffRecentCardHighlighting\": false,\n                \"enableFavoritesByDefault\": false,\n                \"defaultEditorMode\": \"wysiwyg\",\n                \"defaultHomeView\": \"groupedProjects\",\n                \"defaultProjectsOrder\": \"byDefault\",\n                \"isSsoUser\": false,\n                \"isDeactivated\": false,\n                \"avatar\": null,\n                \"isDefaultAdmin\": false,\n                \"lockedFieldNames\": []\n            }\n        ],\n        \"projects\": [\n            {\n                \"id\": \"1632353966727628061\",\n                \"createdAt\": \"2025-10-30T00:15:56.655Z\",\n                \"updatedAt\": \"2025-10-30T00:15:56.692Z\",\n                \"name\": \"Development Project\",\n                \"description\": \"A project for developing new features...\",\n                \"backgroundType\": null,\n                \"backgroundGradient\": null,\n                \"isHidden\": false,\n                \"ownerProjectManagerId\": \"1632353966811514142\",\n                \"backgroundImageId\": null\n            }\n        ],\n        \"attachments\": []\n    }\n}"
+								}
+							]
+						},
+						{
+							"name": "/ actualizar tablero",
+							"request": {
+								"method": "PATCH",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6IjQ3YmQ1OGZlLWZmODQtNDgwMi05ZmQyLTgzYzYzZDJjMzNhNyJ9.eyJpYXQiOjE3NjE3Njc1NTksImV4cCI6MTc5MzMwMzU1OSwic3ViIjoiMTYzMjIyMDU5Mzg0OTg5NDE1NCJ9.jcl_4EIR2Q8SZhJa94-nDVgXDk_sTUS9eIMag2QK_3g",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"position\": 65536,\r\n    \"name\": \"Tablero Desarrollador\",\r\n    \"defaultView\": \"kanban\",\r\n    \"defaultCardType\": \"project\",\r\n    \"limitCardTypesToDefaultOne\": false,\r\n    \"alwaysDisplayCardCreator\": false,\r\n    \"expandTaskListsByDefault\": false,\r\n    \"isSubscribed\": true\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:3000/api/boards/{{ID_BOARD2}}",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"api",
+										"boards",
+										"{{ID_BOARD2}}"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "/ actualizar tablero",
+									"originalRequest": {
+										"method": "PATCH",
+										"header": [
+											{
+												"key": "Authorization",
+												"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6IjQ3YmQ1OGZlLWZmODQtNDgwMi05ZmQyLTgzYzYzZDJjMzNhNyJ9.eyJpYXQiOjE3NjE3Njc1NTksImV4cCI6MTc5MzMwMzU1OSwic3ViIjoiMTYzMjIyMDU5Mzg0OTg5NDE1NCJ9.jcl_4EIR2Q8SZhJa94-nDVgXDk_sTUS9eIMag2QK_3g",
+												"type": "text"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n    \"position\": 65536,\r\n    \"name\": \"Tablero Desarrollador\",\r\n    \"defaultView\": \"kanban\",\r\n    \"defaultCardType\": \"project\",\r\n    \"limitCardTypesToDefaultOne\": false,\r\n    \"alwaysDisplayCardCreator\": false,\r\n    \"expandTaskListsByDefault\": false,\r\n    \"isSubscribed\": true\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "http://localhost:3000/api/boards/{{ID_BOARD2}}",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"port": "3000",
+											"path": [
+												"api",
+												"boards",
+												"{{ID_BOARD2}}"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": null,
+									"header": [
+										{
+											"key": "X-Exit",
+											"value": "success"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json; charset=utf-8"
+										},
+										{
+											"key": "Content-Length",
+											"value": "316"
+										},
+										{
+											"key": "ETag",
+											"value": "W/\"13c-zLZlUZQpdHqe7AA73Tb5zATafoc\""
+										},
+										{
+											"key": "Vary",
+											"value": "Accept-Encoding"
+										},
+										{
+											"key": "Date",
+											"value": "Thu, 30 Oct 2025 00:54:54 GMT"
+										},
+										{
+											"key": "Connection",
+											"value": "keep-alive"
+										},
+										{
+											"key": "Keep-Alive",
+											"value": "timeout=5"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"item\": {\n        \"id\": \"1632372132920952111\",\n        \"createdAt\": \"2025-10-30T00:52:02.239Z\",\n        \"updatedAt\": \"2025-10-30T00:54:54.915Z\",\n        \"position\": 65536,\n        \"name\": \"Tablero Desarrollador\",\n        \"defaultView\": \"kanban\",\n        \"defaultCardType\": \"project\",\n        \"limitCardTypesToDefaultOne\": false,\n        \"alwaysDisplayCardCreator\": false,\n        \"projectId\": \"1632353966727628061\"\n    }\n}"
+								}
+							]
+						},
+						{
+							"name": "/ añadir miembros",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6IjQ3YmQ1OGZlLWZmODQtNDgwMi05ZmQyLTgzYzYzZDJjMzNhNyJ9.eyJpYXQiOjE3NjE3Njc1NTksImV4cCI6MTc5MzMwMzU1OSwic3ViIjoiMTYzMjIyMDU5Mzg0OTg5NDE1NCJ9.jcl_4EIR2Q8SZhJa94-nDVgXDk_sTUS9eIMag2QK_3g",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"userId\": \"1596567761373365308\",\r\n  \"role\": \"editor\",\r\n  \"canComment\": true\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:3000/api/boards/{{ID_BOARD2}}/board-memberships",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"api",
+										"boards",
+										"{{ID_BOARD2}}",
+										"board-memberships"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "/ añadir miembros user 1",
+									"originalRequest": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Authorization",
+												"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6IjQ3YmQ1OGZlLWZmODQtNDgwMi05ZmQyLTgzYzYzZDJjMzNhNyJ9.eyJpYXQiOjE3NjE3Njc1NTksImV4cCI6MTc5MzMwMzU1OSwic3ViIjoiMTYzMjIyMDU5Mzg0OTg5NDE1NCJ9.jcl_4EIR2Q8SZhJa94-nDVgXDk_sTUS9eIMag2QK_3g",
+												"type": "text"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n  \"userId\": \"1632223743000446231\",\r\n  \"role\": \"editor\",\r\n  \"canComment\": true\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "http://localhost:3000/api/boards/{{ID_BOARD2}}/board-memberships",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"port": "3000",
+											"path": [
+												"api",
+												"boards",
+												"{{ID_BOARD2}}",
+												"board-memberships"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": null,
+									"header": [
+										{
+											"key": "X-Exit",
+											"value": "success"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json; charset=utf-8"
+										},
+										{
+											"key": "Content-Length",
+											"value": "224"
+										},
+										{
+											"key": "ETag",
+											"value": "W/\"e0-vMyHOX8v7hpwJAUON4QTwLIpBm8\""
+										},
+										{
+											"key": "Vary",
+											"value": "Accept-Encoding"
+										},
+										{
+											"key": "Date",
+											"value": "Thu, 30 Oct 2025 01:01:06 GMT"
+										},
+										{
+											"key": "Connection",
+											"value": "keep-alive"
+										},
+										{
+											"key": "Keep-Alive",
+											"value": "timeout=5"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"item\": {\n        \"id\": \"1632376702019568948\",\n        \"createdAt\": \"2025-10-30T01:01:06.913Z\",\n        \"updatedAt\": null,\n        \"role\": \"editor\",\n        \"canComment\": null,\n        \"projectId\": \"1632353966727628061\",\n        \"boardId\": \"1632372132920952111\",\n        \"userId\": \"1632223743000446231\"\n    }\n}"
+								},
+								{
+									"name": "/ añadir miembros user 2",
+									"originalRequest": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Authorization",
+												"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6IjQ3YmQ1OGZlLWZmODQtNDgwMi05ZmQyLTgzYzYzZDJjMzNhNyJ9.eyJpYXQiOjE3NjE3Njc1NTksImV4cCI6MTc5MzMwMzU1OSwic3ViIjoiMTYzMjIyMDU5Mzg0OTg5NDE1NCJ9.jcl_4EIR2Q8SZhJa94-nDVgXDk_sTUS9eIMag2QK_3g",
+												"type": "text"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n  \"userId\": \"1596567761373365308\",\r\n  \"role\": \"editor\",\r\n  \"canComment\": true\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "http://localhost:3000/api/boards/{{ID_BOARD2}}/board-memberships",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"port": "3000",
+											"path": [
+												"api",
+												"boards",
+												"{{ID_BOARD2}}",
+												"board-memberships"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": null,
+									"header": [
+										{
+											"key": "X-Exit",
+											"value": "success"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json; charset=utf-8"
+										},
+										{
+											"key": "Content-Length",
+											"value": "224"
+										},
+										{
+											"key": "ETag",
+											"value": "W/\"e0-am04C50z6Xys9n6KWU84iaVahuM\""
+										},
+										{
+											"key": "Vary",
+											"value": "Accept-Encoding"
+										},
+										{
+											"key": "Date",
+											"value": "Thu, 30 Oct 2025 01:02:40 GMT"
+										},
+										{
+											"key": "Connection",
+											"value": "keep-alive"
+										},
+										{
+											"key": "Keep-Alive",
+											"value": "timeout=5"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"item\": {\n        \"id\": \"1632377483284186421\",\n        \"createdAt\": \"2025-10-30T01:02:40.046Z\",\n        \"updatedAt\": null,\n        \"role\": \"editor\",\n        \"canComment\": null,\n        \"projectId\": \"1632353966727628061\",\n        \"boardId\": \"1632372132920952111\",\n        \"userId\": \"1596567761373365308\"\n    }\n}"
+								}
+							]
+						},
+						{
+							"name": "/ elimina miembros",
+							"request": {
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6IjQ3YmQ1OGZlLWZmODQtNDgwMi05ZmQyLTgzYzYzZDJjMzNhNyJ9.eyJpYXQiOjE3NjE3Njc1NTksImV4cCI6MTc5MzMwMzU1OSwic3ViIjoiMTYzMjIyMDU5Mzg0OTg5NDE1NCJ9.jcl_4EIR2Q8SZhJa94-nDVgXDk_sTUS9eIMag2QK_3g",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "http://localhost:3000/api/board-memberships/{{ID_MIEMBRO1}}",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"api",
+										"board-memberships",
+										"{{ID_MIEMBRO1}}"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "/ elimina miembros user 1",
+									"originalRequest": {
+										"method": "DELETE",
+										"header": [
+											{
+												"key": "Authorization",
+												"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6IjQ3YmQ1OGZlLWZmODQtNDgwMi05ZmQyLTgzYzYzZDJjMzNhNyJ9.eyJpYXQiOjE3NjE3Njc1NTksImV4cCI6MTc5MzMwMzU1OSwic3ViIjoiMTYzMjIyMDU5Mzg0OTg5NDE1NCJ9.jcl_4EIR2Q8SZhJa94-nDVgXDk_sTUS9eIMag2QK_3g",
+												"type": "text"
+											}
+										],
+										"url": {
+											"raw": "http://localhost:3000/api/board-memberships/{{ID_MIEMBRO1}}",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"port": "3000",
+											"path": [
+												"api",
+												"board-memberships",
+												"{{ID_MIEMBRO1}}"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": null,
+									"header": [
+										{
+											"key": "X-Exit",
+											"value": "success"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json; charset=utf-8"
+										},
+										{
+											"key": "Content-Length",
+											"value": "224"
+										},
+										{
+											"key": "ETag",
+											"value": "W/\"e0-vMyHOX8v7hpwJAUON4QTwLIpBm8\""
+										},
+										{
+											"key": "Vary",
+											"value": "Accept-Encoding"
+										},
+										{
+											"key": "Date",
+											"value": "Thu, 30 Oct 2025 01:06:09 GMT"
+										},
+										{
+											"key": "Connection",
+											"value": "keep-alive"
+										},
+										{
+											"key": "Keep-Alive",
+											"value": "timeout=5"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"item\": {\n        \"id\": \"1632376702019568948\",\n        \"createdAt\": \"2025-10-30T01:01:06.913Z\",\n        \"updatedAt\": null,\n        \"role\": \"editor\",\n        \"canComment\": null,\n        \"projectId\": \"1632353966727628061\",\n        \"boardId\": \"1632372132920952111\",\n        \"userId\": \"1632223743000446231\"\n    }\n}"
+								}
+							]
+						},
+						{
+							"name": "/ actualizar miembros",
+							"request": {
+								"method": "PATCH",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6IjQ3YmQ1OGZlLWZmODQtNDgwMi05ZmQyLTgzYzYzZDJjMzNhNyJ9.eyJpYXQiOjE3NjE3Njc1NTksImV4cCI6MTc5MzMwMzU1OSwic3ViIjoiMTYzMjIyMDU5Mzg0OTg5NDE1NCJ9.jcl_4EIR2Q8SZhJa94-nDVgXDk_sTUS9eIMag2QK_3g",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"role\": \"editor\",\r\n  \"canComment\": true\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:3000/api/board-memberships/{{ID_MIEMBRO2}}",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"api",
+										"board-memberships",
+										"{{ID_MIEMBRO2}}"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "/ actualizar miembros",
+									"originalRequest": {
+										"method": "PATCH",
+										"header": [
+											{
+												"key": "Authorization",
+												"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6IjQ3YmQ1OGZlLWZmODQtNDgwMi05ZmQyLTgzYzYzZDJjMzNhNyJ9.eyJpYXQiOjE3NjE3Njc1NTksImV4cCI6MTc5MzMwMzU1OSwic3ViIjoiMTYzMjIyMDU5Mzg0OTg5NDE1NCJ9.jcl_4EIR2Q8SZhJa94-nDVgXDk_sTUS9eIMag2QK_3g",
+												"type": "text"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n  \"role\": \"editor\",\r\n  \"canComment\": true\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "http://localhost:3000/api/board-memberships/{{ID_MIEMBRO2}}",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"port": "3000",
+											"path": [
+												"api",
+												"board-memberships",
+												"{{ID_MIEMBRO2}}"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": null,
+									"header": [
+										{
+											"key": "X-Exit",
+											"value": "success"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json; charset=utf-8"
+										},
+										{
+											"key": "Content-Length",
+											"value": "246"
+										},
+										{
+											"key": "ETag",
+											"value": "W/\"f6-7MU2ZaXX3Pjw2ft/YUE0jrOIeM4\""
+										},
+										{
+											"key": "Vary",
+											"value": "Accept-Encoding"
+										},
+										{
+											"key": "Date",
+											"value": "Thu, 30 Oct 2025 01:10:28 GMT"
+										},
+										{
+											"key": "Connection",
+											"value": "keep-alive"
+										},
+										{
+											"key": "Keep-Alive",
+											"value": "timeout=5"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"item\": {\n        \"id\": \"1632377483284186421\",\n        \"createdAt\": \"2025-10-30T01:02:40.046Z\",\n        \"updatedAt\": \"2025-10-30T01:10:28.025Z\",\n        \"role\": \"editor\",\n        \"canComment\": null,\n        \"projectId\": \"1632353966727628061\",\n        \"boardId\": \"1632372132920952111\",\n        \"userId\": \"1596567761373365308\"\n    }\n}"
+								}
+							]
+						}
+					]
+				},
+				{
+					"name": "listas",
+					"item": [
+						{
+							"name": "/ crear lista",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6IjQ3YmQ1OGZlLWZmODQtNDgwMi05ZmQyLTgzYzYzZDJjMzNhNyJ9.eyJpYXQiOjE3NjE3Njc1NTksImV4cCI6MTc5MzMwMzU1OSwic3ViIjoiMTYzMjIyMDU5Mzg0OTg5NDE1NCJ9.jcl_4EIR2Q8SZhJa94-nDVgXDk_sTUS9eIMag2QK_3g",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"type\": \"active\",\r\n    \"position\": 6553,\r\n    \"name\": \"En progreso\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:3000/api/boards/{{ID_BOARD2}}/lists",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"api",
+										"boards",
+										"{{ID_BOARD2}}",
+										"lists"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "/ crear lista 1",
+									"originalRequest": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Authorization",
+												"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6IjQ3YmQ1OGZlLWZmODQtNDgwMi05ZmQyLTgzYzYzZDJjMzNhNyJ9.eyJpYXQiOjE3NjE3Njc1NTksImV4cCI6MTc5MzMwMzU1OSwic3ViIjoiMTYzMjIyMDU5Mzg0OTg5NDE1NCJ9.jcl_4EIR2Q8SZhJa94-nDVgXDk_sTUS9eIMag2QK_3g",
+												"type": "text"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n    \"type\": \"active\",\r\n    \"position\": 65536,\r\n    \"name\": \"POR HACER\"\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "http://localhost:3000/api/boards/{{ID_BOARD2}}/lists",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"port": "3000",
+											"path": [
+												"api",
+												"boards",
+												"{{ID_BOARD2}}",
+												"lists"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": null,
+									"header": [
+										{
+											"key": "X-Exit",
+											"value": "success"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json; charset=utf-8"
+										},
+										{
+											"key": "Content-Length",
+											"value": "190"
+										},
+										{
+											"key": "ETag",
+											"value": "W/\"be-3eDYticUoHVibBEAqlwixOUmeBs\""
+										},
+										{
+											"key": "Vary",
+											"value": "Accept-Encoding"
+										},
+										{
+											"key": "Date",
+											"value": "Thu, 30 Oct 2025 01:32:30 GMT"
+										},
+										{
+											"key": "Connection",
+											"value": "keep-alive"
+										},
+										{
+											"key": "Keep-Alive",
+											"value": "timeout=5"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"item\": {\n        \"id\": \"1632392504521262390\",\n        \"createdAt\": \"2025-10-30T01:32:30.693Z\",\n        \"updatedAt\": null,\n        \"type\": \"active\",\n        \"position\": 65536,\n        \"name\": \"POR HACER\",\n        \"color\": null,\n        \"boardId\": \"1632372132920952111\"\n    }\n}"
+								},
+								{
+									"name": "/ crear lista prueba",
+									"originalRequest": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Authorization",
+												"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6IjQ3YmQ1OGZlLWZmODQtNDgwMi05ZmQyLTgzYzYzZDJjMzNhNyJ9.eyJpYXQiOjE3NjE3Njc1NTksImV4cCI6MTc5MzMwMzU1OSwic3ViIjoiMTYzMjIyMDU5Mzg0OTg5NDE1NCJ9.jcl_4EIR2Q8SZhJa94-nDVgXDk_sTUS9eIMag2QK_3g",
+												"type": "text"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n    \"type\": \"active\",\r\n    \"position\": 65536,\r\n    \"name\": \"PRUEBA\"\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "http://localhost:3000/api/boards/{{ID_BOARD2}}/lists",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"port": "3000",
+											"path": [
+												"api",
+												"boards",
+												"{{ID_BOARD2}}",
+												"lists"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": null,
+									"header": [
+										{
+											"key": "X-Exit",
+											"value": "success"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json; charset=utf-8"
+										},
+										{
+											"key": "Content-Length",
+											"value": "187"
+										},
+										{
+											"key": "ETag",
+											"value": "W/\"bb-RB2wHWE6cxyniIbf0+6kMEWmr0A\""
+										},
+										{
+											"key": "Vary",
+											"value": "Accept-Encoding"
+										},
+										{
+											"key": "Date",
+											"value": "Thu, 30 Oct 2025 01:36:45 GMT"
+										},
+										{
+											"key": "Connection",
+											"value": "keep-alive"
+										},
+										{
+											"key": "Keep-Alive",
+											"value": "timeout=5"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"item\": {\n        \"id\": \"1632394641175217465\",\n        \"createdAt\": \"2025-10-30T01:36:45.427Z\",\n        \"updatedAt\": null,\n        \"type\": \"active\",\n        \"position\": 69632,\n        \"name\": \"PRUEBA\",\n        \"color\": null,\n        \"boardId\": \"1632372132920952111\"\n    }\n}"
+								},
+								{
+									"name": "/ crear lista 2",
+									"originalRequest": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Authorization",
+												"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6IjQ3YmQ1OGZlLWZmODQtNDgwMi05ZmQyLTgzYzYzZDJjMzNhNyJ9.eyJpYXQiOjE3NjE3Njc1NTksImV4cCI6MTc5MzMwMzU1OSwic3ViIjoiMTYzMjIyMDU5Mzg0OTg5NDE1NCJ9.jcl_4EIR2Q8SZhJa94-nDVgXDk_sTUS9eIMag2QK_3g",
+												"type": "text"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n    \"type\": \"active\",\r\n    \"position\": 65536,\r\n    \"name\": \"POR HACER\"\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "http://localhost:3000/api/boards/{{ID_BOARD2}}/lists",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"port": "3000",
+											"path": [
+												"api",
+												"boards",
+												"{{ID_BOARD2}}",
+												"lists"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": null,
+									"header": [
+										{
+											"key": "X-Exit",
+											"value": "success"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json; charset=utf-8"
+										},
+										{
+											"key": "Content-Length",
+											"value": "190"
+										},
+										{
+											"key": "ETag",
+											"value": "W/\"be-SkZA3yoEhlFtk+7TpBvN2PN5Eeo\""
+										},
+										{
+											"key": "Vary",
+											"value": "Accept-Encoding"
+										},
+										{
+											"key": "Date",
+											"value": "Thu, 30 Oct 2025 01:42:00 GMT"
+										},
+										{
+											"key": "Connection",
+											"value": "keep-alive"
+										},
+										{
+											"key": "Keep-Alive",
+											"value": "timeout=5"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"item\": {\n        \"id\": \"1632397287386776890\",\n        \"createdAt\": \"2025-10-30T01:42:00.884Z\",\n        \"updatedAt\": null,\n        \"type\": \"active\",\n        \"position\": 65536,\n        \"name\": \"POR HACER\",\n        \"color\": null,\n        \"boardId\": \"1632372132920952111\"\n    }\n}"
+								},
+								{
+									"name": "/ crear lista 3",
+									"originalRequest": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Authorization",
+												"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6IjQ3YmQ1OGZlLWZmODQtNDgwMi05ZmQyLTgzYzYzZDJjMzNhNyJ9.eyJpYXQiOjE3NjE3Njc1NTksImV4cCI6MTc5MzMwMzU1OSwic3ViIjoiMTYzMjIyMDU5Mzg0OTg5NDE1NCJ9.jcl_4EIR2Q8SZhJa94-nDVgXDk_sTUS9eIMag2QK_3g",
+												"type": "text"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n    \"type\": \"active\",\r\n    \"position\": 6553,\r\n    \"name\": \"En progreso\"\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "http://localhost:3000/api/boards/{{ID_BOARD2}}/lists",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"port": "3000",
+											"path": [
+												"api",
+												"boards",
+												"{{ID_BOARD2}}",
+												"lists"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": null,
+									"header": [
+										{
+											"key": "X-Exit",
+											"value": "success"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json; charset=utf-8"
+										},
+										{
+											"key": "Content-Length",
+											"value": "191"
+										},
+										{
+											"key": "ETag",
+											"value": "W/\"bf-DtpuOjh/iIFAhBZ2YrWZhsHMhpw\""
+										},
+										{
+											"key": "Vary",
+											"value": "Accept-Encoding"
+										},
+										{
+											"key": "Date",
+											"value": "Thu, 30 Oct 2025 03:05:36 GMT"
+										},
+										{
+											"key": "Connection",
+											"value": "keep-alive"
+										},
+										{
+											"key": "Keep-Alive",
+											"value": "timeout=5"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"item\": {\n        \"id\": \"1632439361331004744\",\n        \"createdAt\": \"2025-10-30T03:05:36.478Z\",\n        \"updatedAt\": null,\n        \"type\": \"active\",\n        \"position\": 6553,\n        \"name\": \"En progreso\",\n        \"color\": null,\n        \"boardId\": \"1632372132920952111\"\n    }\n}"
+								}
+							]
+						},
+						{
+							"name": "/ eliminar lista",
+							"request": {
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6IjQ3YmQ1OGZlLWZmODQtNDgwMi05ZmQyLTgzYzYzZDJjMzNhNyJ9.eyJpYXQiOjE3NjE3Njc1NTksImV4cCI6MTc5MzMwMzU1OSwic3ViIjoiMTYzMjIyMDU5Mzg0OTg5NDE1NCJ9.jcl_4EIR2Q8SZhJa94-nDVgXDk_sTUS9eIMag2QK_3g",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "http://localhost:3000/api/lists/{{ID_LIST}}",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"api",
+										"lists",
+										"{{ID_LIST}}"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "/ eliminar lista",
+									"originalRequest": {
+										"method": "DELETE",
+										"header": [
+											{
+												"key": "Authorization",
+												"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6IjQ3YmQ1OGZlLWZmODQtNDgwMi05ZmQyLTgzYzYzZDJjMzNhNyJ9.eyJpYXQiOjE3NjE3Njc1NTksImV4cCI6MTc5MzMwMzU1OSwic3ViIjoiMTYzMjIyMDU5Mzg0OTg5NDE1NCJ9.jcl_4EIR2Q8SZhJa94-nDVgXDk_sTUS9eIMag2QK_3g",
+												"type": "text"
+											}
+										],
+										"url": {
+											"raw": "http://localhost:3000/api/lists/{{ID_LIST}}",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"port": "3000",
+											"path": [
+												"api",
+												"lists",
+												"{{ID_LIST}}"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": null,
+									"header": [
+										{
+											"key": "X-Exit",
+											"value": "success"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json; charset=utf-8"
+										},
+										{
+											"key": "Content-Length",
+											"value": "214"
+										},
+										{
+											"key": "ETag",
+											"value": "W/\"d6-BtXI/izeI34NAt4gAlj+bbZHffo\""
+										},
+										{
+											"key": "Vary",
+											"value": "Accept-Encoding"
+										},
+										{
+											"key": "Date",
+											"value": "Thu, 30 Oct 2025 01:41:23 GMT"
+										},
+										{
+											"key": "Connection",
+											"value": "keep-alive"
+										},
+										{
+											"key": "Keep-Alive",
+											"value": "timeout=5"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"item\": {\n        \"id\": \"1632392504521262390\",\n        \"createdAt\": \"2025-10-30T01:32:30.693Z\",\n        \"updatedAt\": null,\n        \"type\": \"active\",\n        \"position\": 65536,\n        \"name\": \"POR HACER\",\n        \"color\": null,\n        \"boardId\": \"1632372132920952111\"\n    },\n    \"included\": {\n        \"cards\": []\n    }\n}"
+								}
+							]
+						},
+						{
+							"name": "/ obtener lista actual",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6IjQ3YmQ1OGZlLWZmODQtNDgwMi05ZmQyLTgzYzYzZDJjMzNhNyJ9.eyJpYXQiOjE3NjE3Njc1NTksImV4cCI6MTc5MzMwMzU1OSwic3ViIjoiMTYzMjIyMDU5Mzg0OTg5NDE1NCJ9.jcl_4EIR2Q8SZhJa94-nDVgXDk_sTUS9eIMag2QK_3g",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "http://localhost:3000/api/lists/{{ID_LIST2}}",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"api",
+										"lists",
+										"{{ID_LIST2}}"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "/ obtener lista actual",
+									"originalRequest": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Authorization",
+												"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6IjQ3YmQ1OGZlLWZmODQtNDgwMi05ZmQyLTgzYzYzZDJjMzNhNyJ9.eyJpYXQiOjE3NjE3Njc1NTksImV4cCI6MTc5MzMwMzU1OSwic3ViIjoiMTYzMjIyMDU5Mzg0OTg5NDE1NCJ9.jcl_4EIR2Q8SZhJa94-nDVgXDk_sTUS9eIMag2QK_3g",
+												"type": "text"
+											}
+										],
+										"url": {
+											"raw": "http://localhost:3000/api/lists/{{ID_LIST2}}",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"port": "3000",
+											"path": [
+												"api",
+												"lists",
+												"{{ID_LIST2}}"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": null,
+									"header": [
+										{
+											"key": "X-Exit",
+											"value": "success"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json; charset=utf-8"
+										},
+										{
+											"key": "Content-Length",
+											"value": "369"
+										},
+										{
+											"key": "ETag",
+											"value": "W/\"171-aoP4lyTNugc+8U6/R4GMssm3wXg\""
+										},
+										{
+											"key": "Vary",
+											"value": "Accept-Encoding"
+										},
+										{
+											"key": "Date",
+											"value": "Thu, 30 Oct 2025 01:47:49 GMT"
+										},
+										{
+											"key": "Connection",
+											"value": "keep-alive"
+										},
+										{
+											"key": "Keep-Alive",
+											"value": "timeout=5"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"item\": {\n        \"id\": \"1632397287386776890\",\n        \"createdAt\": \"2025-10-30T01:42:00.884Z\",\n        \"updatedAt\": null,\n        \"type\": \"active\",\n        \"position\": 65536,\n        \"name\": \"POR HACER\",\n        \"color\": null,\n        \"boardId\": \"1632372132920952111\"\n    },\n    \"included\": {\n        \"cards\": [],\n        \"cardMemberships\": [],\n        \"cardLabels\": [],\n        \"taskLists\": [],\n        \"tasks\": [],\n        \"customFieldGroups\": [],\n        \"customFields\": [],\n        \"customFieldValues\": [],\n        \"users\": [],\n        \"attachments\": []\n    }\n}"
+								}
+							]
+						},
+						{
+							"name": "/ actualizar lista actual",
+							"request": {
+								"method": "PATCH",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6IjQ3YmQ1OGZlLWZmODQtNDgwMi05ZmQyLTgzYzYzZDJjMzNhNyJ9.eyJpYXQiOjE3NjE3Njc1NTksImV4cCI6MTc5MzMwMzU1OSwic3ViIjoiMTYzMjIyMDU5Mzg0OTg5NDE1NCJ9.jcl_4EIR2Q8SZhJa94-nDVgXDk_sTUS9eIMag2QK_3g",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"boardId\": \"1357158568008091265\",\r\n  \"type\": \"active\",\r\n  \"position\": 65536,\r\n  \"name\": \"To Do\",\r\n  \"color\": \"lagoon-blue\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:3000/api/lists/{{ID_LIST2}}",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"api",
+										"lists",
+										"{{ID_LIST2}}"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "/ actualizar lista actual",
+									"originalRequest": {
+										"method": "PATCH",
+										"header": [
+											{
+												"key": "Authorization",
+												"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6IjQ3YmQ1OGZlLWZmODQtNDgwMi05ZmQyLTgzYzYzZDJjMzNhNyJ9.eyJpYXQiOjE3NjE3Njc1NTksImV4cCI6MTc5MzMwMzU1OSwic3ViIjoiMTYzMjIyMDU5Mzg0OTg5NDE1NCJ9.jcl_4EIR2Q8SZhJa94-nDVgXDk_sTUS9eIMag2QK_3g",
+												"type": "text"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n  \"boardId\": \"1357158568008091265\",\r\n  \"type\": \"active\",\r\n  \"position\": 65536,\r\n  \"name\": \"To Do\",\r\n  \"color\": \"lagoon-blue\"\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "http://localhost:3000/api/lists/{{ID_LIST2}}",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"port": "3000",
+											"path": [
+												"api",
+												"lists",
+												"{{ID_LIST2}}"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": null,
+									"header": [
+										{
+											"key": "X-Exit",
+											"value": "success"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json; charset=utf-8"
+										},
+										{
+											"key": "Content-Length",
+											"value": "217"
+										},
+										{
+											"key": "ETag",
+											"value": "W/\"d9-gZX0xJ4pC+S2QUFA4l9o0/jbn0k\""
+										},
+										{
+											"key": "Vary",
+											"value": "Accept-Encoding"
+										},
+										{
+											"key": "Date",
+											"value": "Thu, 30 Oct 2025 01:51:11 GMT"
+										},
+										{
+											"key": "Connection",
+											"value": "keep-alive"
+										},
+										{
+											"key": "Keep-Alive",
+											"value": "timeout=5"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"item\": {\n        \"id\": \"1632397287386776890\",\n        \"createdAt\": \"2025-10-30T01:42:00.884Z\",\n        \"updatedAt\": \"2025-10-30T01:51:11.643Z\",\n        \"type\": \"active\",\n        \"position\": 65536,\n        \"name\": \"To Do\",\n        \"color\": \"lagoon-blue\",\n        \"boardId\": \"1632372132920952111\"\n    }\n}"
+								}
+							]
+						}
+					]
+				},
+				{
+					"name": "tarjetas",
+					"item": [
+						{
+							"name": "/ crear tarjetas",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6IjQ3YmQ1OGZlLWZmODQtNDgwMi05ZmQyLTgzYzYzZDJjMzNhNyJ9.eyJpYXQiOjE3NjE3Njc1NTksImV4cCI6MTc5MzMwMzU1OSwic3ViIjoiMTYzMjIyMDU5Mzg0OTg5NDE1NCJ9.jcl_4EIR2Q8SZhJa94-nDVgXDk_sTUS9eIMag2QK_3g",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"type\": \"project\",\r\n  \"position\": 65536,\r\n  \"name\": \"Tercera Tarjeta\",\r\n  \"description\": \"Mi description tercera\",\r\n  \"dueDate\": \"2024-01-01T00:00:00.000Z\",\r\n  \"isDueCompleted\": false,\r\n  \"stopwatch\": {\r\n    \"startedAt\": \"2024-01-01T00:00:00.000Z\",\r\n    \"total\": 3600\r\n  }\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:3000/api/lists/{{ID_LIST2}}/cards",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"api",
+										"lists",
+										"{{ID_LIST2}}",
+										"cards"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "/ crear tarjetas 1",
+									"originalRequest": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Authorization",
+												"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6IjQ3YmQ1OGZlLWZmODQtNDgwMi05ZmQyLTgzYzYzZDJjMzNhNyJ9.eyJpYXQiOjE3NjE3Njc1NTksImV4cCI6MTc5MzMwMzU1OSwic3ViIjoiMTYzMjIyMDU5Mzg0OTg5NDE1NCJ9.jcl_4EIR2Q8SZhJa94-nDVgXDk_sTUS9eIMag2QK_3g",
+												"type": "text"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n  \"type\": \"project\",\r\n  \"position\": 65536,\r\n  \"name\": \"Primera Tarjeta\",\r\n  \"description\": \"Agregando descripcion\",\r\n  \"dueDate\": \"2024-01-01T00:00:00.000Z\",\r\n  \"isDueCompleted\": false,\r\n  \"stopwatch\": {\r\n    \"startedAt\": \"2024-01-01T00:00:00.000Z\",\r\n    \"total\": 3600\r\n  }\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "http://localhost:3000/api/lists/{{ID_LIST2}}/cards",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"port": "3000",
+											"path": [
+												"api",
+												"lists",
+												"{{ID_LIST2}}",
+												"cards"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": null,
+									"header": [
+										{
+											"key": "X-Exit",
+											"value": "success"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json; charset=utf-8"
+										},
+										{
+											"key": "Content-Length",
+											"value": "498"
+										},
+										{
+											"key": "ETag",
+											"value": "W/\"1f2-iN8g3dt8u32SEeJjE+SwyL3AR20\""
+										},
+										{
+											"key": "Vary",
+											"value": "Accept-Encoding"
+										},
+										{
+											"key": "Date",
+											"value": "Thu, 30 Oct 2025 02:02:39 GMT"
+										},
+										{
+											"key": "Connection",
+											"value": "keep-alive"
+										},
+										{
+											"key": "Keep-Alive",
+											"value": "timeout=5"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"item\": {\n        \"id\": \"1632407673230067003\",\n        \"createdAt\": \"2025-10-30T02:02:38.970Z\",\n        \"updatedAt\": null,\n        \"type\": \"project\",\n        \"position\": 65536,\n        \"name\": \"Primera Tarjeta\",\n        \"description\": \"Agregando descripcion\",\n        \"dueDate\": \"2024-01-01T00:00:00.000Z\",\n        \"stopwatch\": {\n            \"total\": 3600,\n            \"startedAt\": \"2024-01-01T00:00:00.000Z\"\n        },\n        \"commentsTotal\": 0,\n        \"listChangedAt\": \"2025-10-30T02:02:38.967Z\",\n        \"boardId\": \"1632372132920952111\",\n        \"listId\": \"1632397287386776890\",\n        \"creatorUserId\": \"1632220593849894154\",\n        \"prevListId\": null,\n        \"coverAttachmentId\": null\n    }\n}"
+								},
+								{
+									"name": "/ crear tarjetas 2",
+									"originalRequest": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Authorization",
+												"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6IjQ3YmQ1OGZlLWZmODQtNDgwMi05ZmQyLTgzYzYzZDJjMzNhNyJ9.eyJpYXQiOjE3NjE3Njc1NTksImV4cCI6MTc5MzMwMzU1OSwic3ViIjoiMTYzMjIyMDU5Mzg0OTg5NDE1NCJ9.jcl_4EIR2Q8SZhJa94-nDVgXDk_sTUS9eIMag2QK_3g",
+												"type": "text"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n  \"type\": \"project\",\r\n  \"position\": 65536,\r\n  \"name\": \"Segunda Tarjeta\",\r\n  \"description\": \"Mi segunda Tarjeta\",\r\n  \"dueDate\": \"2024-01-01T00:00:00.000Z\",\r\n  \"isDueCompleted\": false,\r\n  \"stopwatch\": {\r\n    \"startedAt\": \"2024-01-01T00:00:00.000Z\",\r\n    \"total\": 3600\r\n  }\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "http://localhost:3000/api/lists/{{ID_LIST2}}/cards",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"port": "3000",
+											"path": [
+												"api",
+												"lists",
+												"{{ID_LIST2}}",
+												"cards"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": null,
+									"header": [
+										{
+											"key": "X-Exit",
+											"value": "success"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json; charset=utf-8"
+										},
+										{
+											"key": "Content-Length",
+											"value": "495"
+										},
+										{
+											"key": "ETag",
+											"value": "W/\"1ef-FeMIW1FHCmkO9jpO+6De3VQsPAo\""
+										},
+										{
+											"key": "Vary",
+											"value": "Accept-Encoding"
+										},
+										{
+											"key": "Date",
+											"value": "Thu, 30 Oct 2025 02:03:50 GMT"
+										},
+										{
+											"key": "Connection",
+											"value": "keep-alive"
+										},
+										{
+											"key": "Keep-Alive",
+											"value": "timeout=5"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"item\": {\n        \"id\": \"1632408275775391038\",\n        \"createdAt\": \"2025-10-30T02:03:50.793Z\",\n        \"updatedAt\": null,\n        \"type\": \"project\",\n        \"position\": 81920,\n        \"name\": \"Segunda Tarjeta\",\n        \"description\": \"Mi segunda Tarjeta\",\n        \"dueDate\": \"2024-01-01T00:00:00.000Z\",\n        \"stopwatch\": {\n            \"total\": 3600,\n            \"startedAt\": \"2024-01-01T00:00:00.000Z\"\n        },\n        \"commentsTotal\": 0,\n        \"listChangedAt\": \"2025-10-30T02:03:50.791Z\",\n        \"boardId\": \"1632372132920952111\",\n        \"listId\": \"1632397287386776890\",\n        \"creatorUserId\": \"1632220593849894154\",\n        \"prevListId\": null,\n        \"coverAttachmentId\": null\n    }\n}"
+								},
+								{
+									"name": "/ crear tarjetas 3",
+									"originalRequest": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Authorization",
+												"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6IjQ3YmQ1OGZlLWZmODQtNDgwMi05ZmQyLTgzYzYzZDJjMzNhNyJ9.eyJpYXQiOjE3NjE3Njc1NTksImV4cCI6MTc5MzMwMzU1OSwic3ViIjoiMTYzMjIyMDU5Mzg0OTg5NDE1NCJ9.jcl_4EIR2Q8SZhJa94-nDVgXDk_sTUS9eIMag2QK_3g",
+												"type": "text"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n  \"type\": \"project\",\r\n  \"position\": 65536,\r\n  \"name\": \"Tercera Tarjeta\",\r\n  \"description\": \"Mi description tercera\",\r\n  \"dueDate\": \"2024-01-01T00:00:00.000Z\",\r\n  \"isDueCompleted\": false,\r\n  \"stopwatch\": {\r\n    \"startedAt\": \"2024-01-01T00:00:00.000Z\",\r\n    \"total\": 3600\r\n  }\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "http://localhost:3000/api/lists/{{ID_LIST2}}/cards",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"port": "3000",
+											"path": [
+												"api",
+												"lists",
+												"{{ID_LIST2}}",
+												"cards"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": null,
+									"header": [
+										{
+											"key": "X-Exit",
+											"value": "success"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json; charset=utf-8"
+										},
+										{
+											"key": "Content-Length",
+											"value": "499"
+										},
+										{
+											"key": "ETag",
+											"value": "W/\"1f3-9qQBJOwE8CVWu7qKxCbnEkCjjZ4\""
+										},
+										{
+											"key": "Vary",
+											"value": "Accept-Encoding"
+										},
+										{
+											"key": "Date",
+											"value": "Thu, 30 Oct 2025 02:04:30 GMT"
+										},
+										{
+											"key": "Connection",
+											"value": "keep-alive"
+										},
+										{
+											"key": "Keep-Alive",
+											"value": "timeout=5"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"item\": {\n        \"id\": \"1632408611747530049\",\n        \"createdAt\": \"2025-10-30T02:04:30.852Z\",\n        \"updatedAt\": null,\n        \"type\": \"project\",\n        \"position\": 73728,\n        \"name\": \"Tercera Tarjeta\",\n        \"description\": \"Mi description tercera\",\n        \"dueDate\": \"2024-01-01T00:00:00.000Z\",\n        \"stopwatch\": {\n            \"total\": 3600,\n            \"startedAt\": \"2024-01-01T00:00:00.000Z\"\n        },\n        \"commentsTotal\": 0,\n        \"listChangedAt\": \"2025-10-30T02:04:30.849Z\",\n        \"boardId\": \"1632372132920952111\",\n        \"listId\": \"1632397287386776890\",\n        \"creatorUserId\": \"1632220593849894154\",\n        \"prevListId\": null,\n        \"coverAttachmentId\": null\n    }\n}"
+								}
+							]
+						},
+						{
+							"name": "/ obtener tarjetas de una lista",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6IjQ3YmQ1OGZlLWZmODQtNDgwMi05ZmQyLTgzYzYzZDJjMzNhNyJ9.eyJpYXQiOjE3NjE3Njc1NTksImV4cCI6MTc5MzMwMzU1OSwic3ViIjoiMTYzMjIyMDU5Mzg0OTg5NDE1NCJ9.jcl_4EIR2Q8SZhJa94-nDVgXDk_sTUS9eIMag2QK_3g",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "http://localhost:3000/api/lists/{{ID_LIST2}}/cards",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"api",
+										"lists",
+										"{{ID_LIST2}}",
+										"cards"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "/ obtener tarjeta de una lista",
+									"originalRequest": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Authorization",
+												"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6IjQ3YmQ1OGZlLWZmODQtNDgwMi05ZmQyLTgzYzYzZDJjMzNhNyJ9.eyJpYXQiOjE3NjE3Njc1NTksImV4cCI6MTc5MzMwMzU1OSwic3ViIjoiMTYzMjIyMDU5Mzg0OTg5NDE1NCJ9.jcl_4EIR2Q8SZhJa94-nDVgXDk_sTUS9eIMag2QK_3g",
+												"type": "text"
+											}
+										],
+										"url": {
+											"raw": "http://localhost:3000/api/lists/{{ID_LIST2}}/cards",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"port": "3000",
+											"path": [
+												"api",
+												"lists",
+												"{{ID_LIST2}}",
+												"cards"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": null,
+									"header": [
+										{
+											"key": "X-Exit",
+											"value": "success"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json; charset=utf-8"
+										},
+										{
+											"key": "ETag",
+											"value": "W/\"90a-+KSdwCtG/0NIqXKj0nuHypkDQ30\""
+										},
+										{
+											"key": "Vary",
+											"value": "Accept-Encoding"
+										},
+										{
+											"key": "Content-Encoding",
+											"value": "gzip"
+										},
+										{
+											"key": "Date",
+											"value": "Thu, 30 Oct 2025 02:05:44 GMT"
+										},
+										{
+											"key": "Connection",
+											"value": "keep-alive"
+										},
+										{
+											"key": "Keep-Alive",
+											"value": "timeout=5"
+										},
+										{
+											"key": "Transfer-Encoding",
+											"value": "chunked"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"items\": [\n        {\n            \"id\": \"1632408611747530049\",\n            \"createdAt\": \"2025-10-30T02:04:30.852Z\",\n            \"updatedAt\": null,\n            \"type\": \"project\",\n            \"position\": 73728,\n            \"name\": \"Tercera Tarjeta\",\n            \"description\": \"Mi description tercera\",\n            \"dueDate\": \"2024-01-01T00:00:00.000Z\",\n            \"stopwatch\": {\n                \"total\": 3600,\n                \"startedAt\": \"2024-01-01T00:00:00.000Z\"\n            },\n            \"commentsTotal\": 0,\n            \"listChangedAt\": \"2025-10-30T02:04:30.849Z\",\n            \"boardId\": \"1632372132920952111\",\n            \"listId\": \"1632397287386776890\",\n            \"creatorUserId\": \"1632220593849894154\",\n            \"prevListId\": null,\n            \"coverAttachmentId\": null,\n            \"isSubscribed\": true\n        },\n        {\n            \"id\": \"1632408275775391038\",\n            \"createdAt\": \"2025-10-30T02:03:50.793Z\",\n            \"updatedAt\": null,\n            \"type\": \"project\",\n            \"position\": 81920,\n            \"name\": \"Segunda Tarjeta\",\n            \"description\": \"Mi segunda Tarjeta\",\n            \"dueDate\": \"2024-01-01T00:00:00.000Z\",\n            \"stopwatch\": {\n                \"total\": 3600,\n                \"startedAt\": \"2024-01-01T00:00:00.000Z\"\n            },\n            \"commentsTotal\": 0,\n            \"listChangedAt\": \"2025-10-30T02:03:50.791Z\",\n            \"boardId\": \"1632372132920952111\",\n            \"listId\": \"1632397287386776890\",\n            \"creatorUserId\": \"1632220593849894154\",\n            \"prevListId\": null,\n            \"coverAttachmentId\": null,\n            \"isSubscribed\": true\n        },\n        {\n            \"id\": \"1632407673230067003\",\n            \"createdAt\": \"2025-10-30T02:02:38.970Z\",\n            \"updatedAt\": null,\n            \"type\": \"project\",\n            \"position\": 65536,\n            \"name\": \"Primera Tarjeta\",\n            \"description\": \"Agregando descripcion\",\n            \"dueDate\": \"2024-01-01T00:00:00.000Z\",\n            \"stopwatch\": {\n                \"total\": 3600,\n                \"startedAt\": \"2024-01-01T00:00:00.000Z\"\n            },\n            \"commentsTotal\": 0,\n            \"listChangedAt\": \"2025-10-30T02:02:38.967Z\",\n            \"boardId\": \"1632372132920952111\",\n            \"listId\": \"1632397287386776890\",\n            \"creatorUserId\": \"1632220593849894154\",\n            \"prevListId\": null,\n            \"coverAttachmentId\": null,\n            \"isSubscribed\": true\n        }\n    ],\n    \"included\": {\n        \"cardMemberships\": [],\n        \"cardLabels\": [],\n        \"taskLists\": [],\n        \"tasks\": [],\n        \"customFieldGroups\": [],\n        \"customFields\": [],\n        \"customFieldValues\": [],\n        \"users\": [\n            {\n                \"id\": \"1632220593849894154\",\n                \"createdAt\": \"2025-10-29T19:50:57.354Z\",\n                \"updatedAt\": \"2025-10-29T21:42:08.949Z\",\n                \"email\": \"danielabravo2308@gmail.com\",\n                \"role\": \"admin\",\n                \"name\": \"Daniela Bravo Rueda\",\n                \"username\": \"daniadmin\",\n                \"phone\": \"666666666\",\n                \"organization\": \"Jalasoft\",\n                \"language\": null,\n                \"subscribeToOwnCards\": true,\n                \"subscribeToCardWhenCommenting\": true,\n                \"turnOffRecentCardHighlighting\": false,\n                \"enableFavoritesByDefault\": false,\n                \"defaultEditorMode\": \"wysiwyg\",\n                \"defaultHomeView\": \"groupedProjects\",\n                \"defaultProjectsOrder\": \"byDefault\",\n                \"isSsoUser\": false,\n                \"isDeactivated\": false,\n                \"avatar\": null,\n                \"isDefaultAdmin\": false,\n                \"lockedFieldNames\": []\n            }\n        ],\n        \"attachments\": []\n    }\n}"
+								}
+							]
+						},
+						{
+							"name": "/ eliminar tarjeta",
+							"request": {
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6IjQ3YmQ1OGZlLWZmODQtNDgwMi05ZmQyLTgzYzYzZDJjMzNhNyJ9.eyJpYXQiOjE3NjE3Njc1NTksImV4cCI6MTc5MzMwMzU1OSwic3ViIjoiMTYzMjIyMDU5Mzg0OTg5NDE1NCJ9.jcl_4EIR2Q8SZhJa94-nDVgXDk_sTUS9eIMag2QK_3g",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "http://localhost:3000/api/cards/{{ID_CARD1}}",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"api",
+										"cards",
+										"{{ID_CARD1}}"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "/ eliminar tarjeta",
+									"originalRequest": {
+										"method": "DELETE",
+										"header": [
+											{
+												"key": "Authorization",
+												"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6IjQ3YmQ1OGZlLWZmODQtNDgwMi05ZmQyLTgzYzYzZDJjMzNhNyJ9.eyJpYXQiOjE3NjE3Njc1NTksImV4cCI6MTc5MzMwMzU1OSwic3ViIjoiMTYzMjIyMDU5Mzg0OTg5NDE1NCJ9.jcl_4EIR2Q8SZhJa94-nDVgXDk_sTUS9eIMag2QK_3g",
+												"type": "text"
+											}
+										],
+										"url": {
+											"raw": "http://localhost:3000/api/cards/{{ID_CARD1}}",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"port": "3000",
+											"path": [
+												"api",
+												"cards",
+												"{{ID_CARD1}}"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": null,
+									"header": [
+										{
+											"key": "X-Exit",
+											"value": "success"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json; charset=utf-8"
+										},
+										{
+											"key": "Content-Length",
+											"value": "498"
+										},
+										{
+											"key": "ETag",
+											"value": "W/\"1f2-iN8g3dt8u32SEeJjE+SwyL3AR20\""
+										},
+										{
+											"key": "Vary",
+											"value": "Accept-Encoding"
+										},
+										{
+											"key": "Date",
+											"value": "Thu, 30 Oct 2025 02:17:17 GMT"
+										},
+										{
+											"key": "Connection",
+											"value": "keep-alive"
+										},
+										{
+											"key": "Keep-Alive",
+											"value": "timeout=5"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"item\": {\n        \"id\": \"1632407673230067003\",\n        \"createdAt\": \"2025-10-30T02:02:38.970Z\",\n        \"updatedAt\": null,\n        \"type\": \"project\",\n        \"position\": 65536,\n        \"name\": \"Primera Tarjeta\",\n        \"description\": \"Agregando descripcion\",\n        \"dueDate\": \"2024-01-01T00:00:00.000Z\",\n        \"stopwatch\": {\n            \"total\": 3600,\n            \"startedAt\": \"2024-01-01T00:00:00.000Z\"\n        },\n        \"commentsTotal\": 0,\n        \"listChangedAt\": \"2025-10-30T02:02:38.967Z\",\n        \"boardId\": \"1632372132920952111\",\n        \"listId\": \"1632397287386776890\",\n        \"creatorUserId\": \"1632220593849894154\",\n        \"prevListId\": null,\n        \"coverAttachmentId\": null\n    }\n}"
+								}
+							]
+						},
+						{
+							"name": "/ obtener tarjeta actual",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6IjQ3YmQ1OGZlLWZmODQtNDgwMi05ZmQyLTgzYzYzZDJjMzNhNyJ9.eyJpYXQiOjE3NjE3Njc1NTksImV4cCI6MTc5MzMwMzU1OSwic3ViIjoiMTYzMjIyMDU5Mzg0OTg5NDE1NCJ9.jcl_4EIR2Q8SZhJa94-nDVgXDk_sTUS9eIMag2QK_3g",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "http://localhost:3000/api/cards/{{ID_CARD2}}",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"api",
+										"cards",
+										"{{ID_CARD2}}"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "/ obtener tarjeta actual",
+									"originalRequest": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Authorization",
+												"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6IjQ3YmQ1OGZlLWZmODQtNDgwMi05ZmQyLTgzYzYzZDJjMzNhNyJ9.eyJpYXQiOjE3NjE3Njc1NTksImV4cCI6MTc5MzMwMzU1OSwic3ViIjoiMTYzMjIyMDU5Mzg0OTg5NDE1NCJ9.jcl_4EIR2Q8SZhJa94-nDVgXDk_sTUS9eIMag2QK_3g",
+												"type": "text"
+											}
+										],
+										"url": {
+											"raw": "http://localhost:3000/api/cards/{{ID_CARD2}}",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"port": "3000",
+											"path": [
+												"api",
+												"cards",
+												"{{ID_CARD2}}"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": null,
+									"header": [
+										{
+											"key": "X-Exit",
+											"value": "success"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json; charset=utf-8"
+										},
+										{
+											"key": "ETag",
+											"value": "W/\"50a-WXJwSfJIOQ9rVhILbQdrRComDWE\""
+										},
+										{
+											"key": "Vary",
+											"value": "Accept-Encoding"
+										},
+										{
+											"key": "Content-Encoding",
+											"value": "gzip"
+										},
+										{
+											"key": "Date",
+											"value": "Thu, 30 Oct 2025 02:21:55 GMT"
+										},
+										{
+											"key": "Connection",
+											"value": "keep-alive"
+										},
+										{
+											"key": "Keep-Alive",
+											"value": "timeout=5"
+										},
+										{
+											"key": "Transfer-Encoding",
+											"value": "chunked"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"item\": {\n        \"id\": \"1632408275775391038\",\n        \"createdAt\": \"2025-10-30T02:03:50.793Z\",\n        \"updatedAt\": null,\n        \"type\": \"project\",\n        \"position\": 81920,\n        \"name\": \"Segunda Tarjeta\",\n        \"description\": \"Mi segunda Tarjeta\",\n        \"dueDate\": \"2024-01-01T00:00:00.000Z\",\n        \"stopwatch\": {\n            \"total\": 3600,\n            \"startedAt\": \"2024-01-01T00:00:00.000Z\"\n        },\n        \"commentsTotal\": 0,\n        \"listChangedAt\": \"2025-10-30T02:03:50.791Z\",\n        \"boardId\": \"1632372132920952111\",\n        \"listId\": \"1632397287386776890\",\n        \"creatorUserId\": \"1632220593849894154\",\n        \"prevListId\": null,\n        \"coverAttachmentId\": null,\n        \"isSubscribed\": true\n    },\n    \"included\": {\n        \"cardMemberships\": [],\n        \"cardLabels\": [],\n        \"taskLists\": [],\n        \"tasks\": [],\n        \"customFieldGroups\": [],\n        \"customFields\": [],\n        \"customFieldValues\": [],\n        \"users\": [\n            {\n                \"id\": \"1632220593849894154\",\n                \"createdAt\": \"2025-10-29T19:50:57.354Z\",\n                \"updatedAt\": \"2025-10-29T21:42:08.949Z\",\n                \"email\": \"danielabravo2308@gmail.com\",\n                \"role\": \"admin\",\n                \"name\": \"Daniela Bravo Rueda\",\n                \"username\": \"daniadmin\",\n                \"phone\": \"666666666\",\n                \"organization\": \"Jalasoft\",\n                \"language\": null,\n                \"subscribeToOwnCards\": true,\n                \"subscribeToCardWhenCommenting\": true,\n                \"turnOffRecentCardHighlighting\": false,\n                \"enableFavoritesByDefault\": false,\n                \"defaultEditorMode\": \"wysiwyg\",\n                \"defaultHomeView\": \"groupedProjects\",\n                \"defaultProjectsOrder\": \"byDefault\",\n                \"isSsoUser\": false,\n                \"isDeactivated\": false,\n                \"avatar\": null,\n                \"isDefaultAdmin\": false,\n                \"lockedFieldNames\": []\n            }\n        ],\n        \"attachments\": []\n    }\n}"
+								}
+							]
+						},
+						{
+							"name": "/ añadir usuario",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6IjQ3YmQ1OGZlLWZmODQtNDgwMi05ZmQyLTgzYzYzZDJjMzNhNyJ9.eyJpYXQiOjE3NjE3Njc1NTksImV4cCI6MTc5MzMwMzU1OSwic3ViIjoiMTYzMjIyMDU5Mzg0OTg5NDE1NCJ9.jcl_4EIR2Q8SZhJa94-nDVgXDk_sTUS9eIMag2QK_3g",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"userId\": \"1596567761373365308\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:3000/api/cards/{{ID_CARD2}}/card-memberships",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"api",
+										"cards",
+										"{{ID_CARD2}}",
+										"card-memberships"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "/ añadir usuario",
+									"originalRequest": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Authorization",
+												"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6IjQ3YmQ1OGZlLWZmODQtNDgwMi05ZmQyLTgzYzYzZDJjMzNhNyJ9.eyJpYXQiOjE3NjE3Njc1NTksImV4cCI6MTc5MzMwMzU1OSwic3ViIjoiMTYzMjIyMDU5Mzg0OTg5NDE1NCJ9.jcl_4EIR2Q8SZhJa94-nDVgXDk_sTUS9eIMag2QK_3g",
+												"type": "text"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n  \"userId\": \"1596567761373365308\"\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "http://localhost:3000/api/cards/{{ID_CARD2}}/card-memberships",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"port": "3000",
+											"path": [
+												"api",
+												"cards",
+												"{{ID_CARD2}}",
+												"card-memberships"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": null,
+									"header": [
+										{
+											"key": "X-Exit",
+											"value": "success"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json; charset=utf-8"
+										},
+										{
+											"key": "Content-Length",
+											"value": "155"
+										},
+										{
+											"key": "ETag",
+											"value": "W/\"9b-5ZqUQoZQ9Q0ydJ6+uvDswwE7hrY\""
+										},
+										{
+											"key": "Vary",
+											"value": "Accept-Encoding"
+										},
+										{
+											"key": "Date",
+											"value": "Thu, 30 Oct 2025 02:49:58 GMT"
+										},
+										{
+											"key": "Connection",
+											"value": "keep-alive"
+										},
+										{
+											"key": "Keep-Alive",
+											"value": "timeout=5"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"item\": {\n        \"id\": \"1632431495157122372\",\n        \"createdAt\": \"2025-10-30T02:49:58.736Z\",\n        \"updatedAt\": null,\n        \"cardId\": \"1632408275775391038\",\n        \"userId\": \"1596567761373365308\"\n    }\n}"
+								}
+							]
+						},
+						{
+							"name": "/ eliminar usuario no funciona",
+							"request": {
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6IjQ3YmQ1OGZlLWZmODQtNDgwMi05ZmQyLTgzYzYzZDJjMzNhNyJ9.eyJpYXQiOjE3NjE3Njc1NTksImV4cCI6MTc5MzMwMzU1OSwic3ViIjoiMTYzMjIyMDU5Mzg0OTg5NDE1NCJ9.jcl_4EIR2Q8SZhJa94-nDVgXDk_sTUS9eIMag2QK_3g",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"userId\":\"1596567761373365308\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:3000/api/cards/{{ID_CARD2}}/card-memberships",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"api",
+										"cards",
+										"{{ID_CARD2}}",
+										"card-memberships"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "/ eliminar usuario",
+									"originalRequest": {
+										"method": "DELETE",
+										"header": [
+											{
+												"key": "Authorization",
+												"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6IjQ3YmQ1OGZlLWZmODQtNDgwMi05ZmQyLTgzYzYzZDJjMzNhNyJ9.eyJpYXQiOjE3NjE3Njc1NTksImV4cCI6MTc5MzMwMzU1OSwic3ViIjoiMTYzMjIyMDU5Mzg0OTg5NDE1NCJ9.jcl_4EIR2Q8SZhJa94-nDVgXDk_sTUS9eIMag2QK_3g",
+												"type": "text"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n    \"userId\":\"1596567761373365308\"\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "http://localhost:3000/api/cards/{{ID_CARD2}}/card-memberships",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"port": "3000",
+											"path": [
+												"api",
+												"cards",
+												"{{ID_CARD2}}",
+												"card-memberships"
+											]
+										}
+									},
+									"status": "Not Found",
+									"code": 404,
+									"_postman_previewlanguage": null,
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json; charset=utf-8"
+										},
+										{
+											"key": "Content-Length",
+											"value": "22"
+										},
+										{
+											"key": "ETag",
+											"value": "W/\"16-JUiRtDqjiucEgn8sNCbd3EesRQA\""
+										},
+										{
+											"key": "Vary",
+											"value": "Accept-Encoding"
+										},
+										{
+											"key": "Date",
+											"value": "Thu, 30 Oct 2025 03:03:47 GMT"
+										},
+										{
+											"key": "Connection",
+											"value": "keep-alive"
+										},
+										{
+											"key": "Keep-Alive",
+											"value": "timeout=5"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"code\": \"E_NOT_FOUND\"\n}"
+								}
+							]
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "/ obtener archivo docker-compose",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://raw.githubusercontent.com/plankanban/planka/master/docker-compose.yml",
+					"protocol": "https",
+					"host": [
+						"raw",
+						"githubusercontent",
+						"com"
+					],
+					"path": [
+						"plankanban",
+						"planka",
+						"master",
+						"docker-compose.yml"
+					]
+				},
+				"description": "Generated from cURL: curl -L https://raw.githubusercontent.com/plankanban/planka/master/docker-compose.yml -o docker-compose.yml\r\n"
+			},
+			"response": [
+				{
+					"name": "https://raw.githubusercontent.com/plankanban/planka/master/docker-compose.yml",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://raw.githubusercontent.com/plankanban/planka/master/docker-compose.yml",
+							"protocol": "https",
+							"host": [
+								"raw",
+								"githubusercontent",
+								"com"
+							],
+							"path": [
+								"plankanban",
+								"planka",
+								"master",
+								"docker-compose.yml"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": null,
+					"header": [
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Content-Length",
+							"value": "1837"
+						},
+						{
+							"key": "Cache-Control",
+							"value": "max-age=300"
+						},
+						{
+							"key": "Content-Security-Policy",
+							"value": "default-src 'none'; style-src 'unsafe-inline'; sandbox"
+						},
+						{
+							"key": "Content-Type",
+							"value": "text/plain; charset=utf-8"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"4031385be60f6872047d67971771d27de8af1772227ea8e6c7ad05a75a9df343\""
+						},
+						{
+							"key": "Strict-Transport-Security",
+							"value": "max-age=31536000"
+						},
+						{
+							"key": "X-Content-Type-Options",
+							"value": "nosniff"
+						},
+						{
+							"key": "X-Frame-Options",
+							"value": "deny"
+						},
+						{
+							"key": "X-XSS-Protection",
+							"value": "1; mode=block"
+						},
+						{
+							"key": "X-GitHub-Request-Id",
+							"value": "6C20:2D49F8:3904A3:47DA8E:68C17AC3"
+						},
+						{
+							"key": "Content-Encoding",
+							"value": "gzip"
+						},
+						{
+							"key": "Accept-Ranges",
+							"value": "bytes"
+						},
+						{
+							"key": "Date",
+							"value": "Wed, 10 Sep 2025 13:19:03 GMT"
+						},
+						{
+							"key": "Via",
+							"value": "1.1 varnish"
+						},
+						{
+							"key": "X-Served-By",
+							"value": "cache-lim-spjc1280027-LIM"
+						},
+						{
+							"key": "X-Cache",
+							"value": "MISS"
+						},
+						{
+							"key": "X-Cache-Hits",
+							"value": "0"
+						},
+						{
+							"key": "X-Timer",
+							"value": "S1757510344.591559,VS0,VE127"
+						},
+						{
+							"key": "Vary",
+							"value": "Authorization,Accept-Encoding"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						},
+						{
+							"key": "Cross-Origin-Resource-Policy",
+							"value": "cross-origin"
+						},
+						{
+							"key": "X-Fastly-Request-ID",
+							"value": "8061e8e567c6843926bf26cf16d513c1fe39afa1"
+						},
+						{
+							"key": "Expires",
+							"value": "Wed, 10 Sep 2025 13:24:03 GMT"
+						},
+						{
+							"key": "Source-Age",
+							"value": "0"
+						}
+					],
+					"cookie": [],
+					"body": "services:\n  planka:\n    image: ghcr.io/plankanban/planka:2.0.0-rc.4\n    restart: on-failure\n    volumes:\n      - favicons:/app/public/favicons\n      - user-avatars:/app/public/user-avatars\n      - background-images:/app/public/background-images\n      - attachments:/app/private/attachments\n    # Optionally override this to your user/group\n    # user: 1000:1000\n    # tmpfs:\n    #   - /app/.tmp:mode=770,uid=1000,gid=1000\n    ports:\n      - 3000:1337\n    environment:\n      - BASE_URL=http://localhost:3000\n      - DATABASE_URL=postgresql://postgres@postgres/planka\n\n      # Optionally store the database password in secrets:\n      # - DATABASE_URL=postgresql://postgres:$${DATABASE_PASSWORD}@postgres/planka\n      # - DATABASE_PASSWORD__FILE=/run/secrets/database_password\n      # And add the following to the service:\n      # secrets:\n      #   - database_password\n\n      - SECRET_KEY=notsecretkey\n      # Optionally store in secrets - then SECRET_KEY should not be set\n      # - SECRET_KEY__FILE=/run/secrets/secret_key\n\n      # - LOG_LEVEL=warn\n\n      # - TRUST_PROXY=true\n      # - MAX_UPLOAD_FILE_SIZE=\n      # - TOKEN_EXPIRES_IN=365 # In days\n\n      # related: https://github.com/knex/knex/issues/2354\n      # As knex does not pass query parameters from the connection string,\n      # we have to use environment variables in order to pass the desired values, e.g.\n      # - PGSSLMODE=<value>\n\n      # Configure knex to accept SSL certificates\n      # - KNEX_REJECT_UNAUTHORIZED_SSL_CERTIFICATE=false\n\n      # Used for per-board notifications\n      # - DEFAULT_LANGUAGE=en-US\n\n      # Do not comment out DEFAULT_ADMIN_EMAIL if you want to prevent this user from being edited/deleted\n      # - DEFAULT_ADMIN_EMAIL=demo@demo.demo\n      # - DEFAULT_ADMIN_PASSWORD=demo\n      # Optionally store in secrets - then DEFAULT_ADMIN_PASSWORD should not be set\n      # - DEFAULT_ADMIN_PASSWORD__FILE=/run/secrets/default_admin_password\n      # - DEFAULT_ADMIN_NAME=Demo Demo\n      # - DEFAULT_ADMIN_USERNAME=demo\n\n      # - INTERNAL_ACCESS_TOKEN=\n      # - STORAGE_LIMIT=\n      # - ACTIVE_USERS_LIMIT=\n\n      # Set to true to show more detailed authentication error messages.\n      # It should not be enabled without a rate limiter for security reasons.\n      # - SHOW_DETAILED_AUTH_ERRORS=false\n\n      # - S3_ENDPOINT=\n      # - S3_REGION=\n      # - S3_ACCESS_KEY_ID=\n      # - S3_SECRET_ACCESS_KEY=\n      # Optionally store in secrets - then S3_SECRET_ACCESS_KEY should not be set\n      # - S3_SECRET_ACCESS_KEY__FILE=/run/secrets/s3_secret_access_key\n      # - S3_BUCKET=\n      # - S3_FORCE_PATH_STYLE=true\n\n      # - OIDC_ISSUER=\n      # - OIDC_CLIENT_ID=\n      # - OIDC_CLIENT_SECRET=\n      # Optionally store in secrets - then OIDC_CLIENT_SECRET should not be set\n      # - OIDC_CLIENT_SECRET__FILE=/run/secrets/oidc_client_secret\n      # - OIDC_USE_OAUTH_CALLBACK=true\n      # - OIDC_ID_TOKEN_SIGNED_RESPONSE_ALG=\n      # - OIDC_USERINFO_SIGNED_RESPONSE_ALG=\n      # - OIDC_SCOPES=openid email profile\n      # - OIDC_RESPONSE_MODE=fragment\n      # - OIDC_USE_DEFAULT_RESPONSE_MODE=true\n      # - OIDC_ADMIN_ROLES=admin\n      # - OIDC_PROJECT_OWNER_ROLES=project_owner\n      # - OIDC_BOARD_USER_ROLES=board_user\n      # - OIDC_CLAIMS_SOURCE=userinfo\n      # - OIDC_EMAIL_ATTRIBUTE=email\n      # - OIDC_NAME_ATTRIBUTE=name\n      # - OIDC_USERNAME_ATTRIBUTE=preferred_username\n      # - OIDC_ROLES_ATTRIBUTE=groups\n      # - OIDC_IGNORE_USERNAME=true\n      # - OIDC_IGNORE_ROLES=true\n      # - OIDC_ENFORCED=true\n\n      # Email Notifications (https://nodemailer.com/smtp/)\n      # - SMTP_HOST=\n      # - SMTP_PORT=587\n      # - SMTP_NAME=\n      # - SMTP_SECURE=true\n      # - SMTP_USER=\n      # - SMTP_PASSWORD=\n      # Optionally store in secrets - then SMTP_PASSWORD should not be set\n      # - SMTP_PASSWORD__FILE=/run/secrets/smtp_password\n      # - SMTP_FROM=\"Demo Demo\" <demo@demo.demo>\n      # - SMTP_TLS_REJECT_UNAUTHORIZED=false\n\n      # Using Gravatar directly exposes user IPs and hashed emails to a third party (GDPR risk).\n      # Use a proxy you control for privacy, or leave commented out or empty to disable.\n      # - GRAVATAR_BASE_URL=https://www.gravatar.com/avatar/\n    depends_on:\n      postgres:\n        condition: service_healthy\n\n  postgres:\n    image: postgres:16-alpine\n    restart: on-failure\n    volumes:\n      - db-data:/var/lib/postgresql/data\n    environment:\n      - POSTGRES_DB=planka\n      - POSTGRES_HOST_AUTH_METHOD=trust\n    healthcheck:\n      test: [\"CMD-SHELL\", \"pg_isready -U postgres -d planka\"]\n      interval: 10s\n      timeout: 5s\n      retries: 5\n\nvolumes:\n  favicons:\n  user-avatars:\n  background-images:\n  attachments:\n  db-data:\n"
+				}
+			]
+		},
+		{
+			"name": "/ generar token",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\"emailOrUsername\":\"danielabravo2308@gmail.com\",\r\n\"password\":\"db8826267\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/api/access-tokens",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"access-tokens"
+					]
+				},
+				"description": "Generated from cURL: curl --location 'https://planka.dominio.com/api/access-tokens' \\\r\n--header 'Content-Type: application/json' \\\r\n--data '{\r\n\"emailOrUsername\":\"planka-user\",\r\n\"password\":\"planka-user-password\"\r\n}'"
+			},
+			"response": [
+				{
+					"name": "https://planka.dominio.com/api/access-tokens",
+					"originalRequest": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n\"emailOrUsername\":\"danielabravo2308@gmail.com\",\r\n\"password\":\"db8826267\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/api/access-tokens",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"access-tokens"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": null,
+					"header": [
+						{
+							"key": "X-Exit",
+							"value": "success"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "236"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"ec-lOutfpT9D6ZJLsk67zLCTuwtet0\""
+						},
+						{
+							"key": "Vary",
+							"value": "Accept-Encoding"
+						},
+						{
+							"key": "Date",
+							"value": "Wed, 10 Sep 2025 14:21:23 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"item\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6IjI0OGFjMjIwLWIwNjctNGIyZS05Y2JlLWYzNWU0NmMzMmNkMyJ9.eyJpYXQiOjE3NTc1MTQwODMsImV4cCI6MTc4OTA1MDA4Mywic3ViIjoiMTU5NjUxNjEyOTUzMzA2ODI4OSJ9.l2W9m6zRYXBqwz4E7TKUZcUdN_c2Yg38OK-LQzrh_Qw\"\n}"
+				}
+			]
+		}
+	]
+}

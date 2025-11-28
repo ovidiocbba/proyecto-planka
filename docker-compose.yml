@@ -1,0 +1,44 @@
+services:
+  planka:
+    image: ghcr.io/plankanban/planka:2.0.0-rc.4
+    restart: on-failure
+    ports:
+      - "3000:1337"
+    volumes:
+      - favicons:/app/public/favicons
+      - user-avatars:/app/public/user-avatars
+      - background-images:/app/public/background-images
+      - attachments:/app/private/attachments
+    environment:
+      - BASE_URL=http://localhost:3000
+      - DATABASE_URL=postgresql://postgres@postgres/planka
+      - SECRET_KEY=45708907e1b89a6c98b49f5b35d4f8285e719544e949a9511f104f5b185733fe65ba97cc17a2c894e0de8fd2c33479b69f55744061ca253c1f4cb2a14261e8e6
+
+      # Admin inicial
+      - DEFAULT_ADMIN_EMAIL=${USER_EMAIL}        # email del admin CI
+      - DEFAULT_ADMIN_PASSWORD=${USER_PASSWORD} # password del admin CI
+      - DEFAULT_ADMIN_USERNAME=Daniela Tester   # nombre del admin
+      - DEFAULT_ADMIN_NAME=Daniela Tester
+
+    depends_on:
+      postgres:
+        condition: service_healthy
+
+  postgres:
+    image: postgres:16-alpine
+    restart: on-failure
+    environment:
+      - POSTGRES_DB=planka
+      - POSTGRES_HOST_AUTH_METHOD=trust
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres -d planka"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+volumes:
+  favicons:
+  user-avatars:
+  background-images:
+  attachments:
+  db-data:
