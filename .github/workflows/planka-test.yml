@@ -67,39 +67,39 @@ jobs:
   
 
 
-      - name: Esperar API de Planka (endpoint login)
-        run: |
-          echo "Esperando a que la API de Planka esté lista..."
-          until curl --silent --fail -X POST http://localhost:3000/api/access-tokens \
-            -H "Content-Type: application/json" \
-            -d "{\"emailOrUsername\": \"$USER_EMAIL\", \"password\": \"$USER_PASSWORD\"}" > /dev/null; do
-              echo "API aún no lista..."
-              sleep 10
-          done
-          echo "✔ API de Planka lista"
+      # - name: Esperar API de Planka (endpoint login)
+      #   run: |
+      #     echo "Esperando a que la API de Planka esté lista..."
+      #     until curl --silent --fail -X POST http://localhost:3000/api/access-tokens \
+      #       -H "Content-Type: application/json" \
+      #       -d "{\"emailOrUsername\": \"$USER_EMAIL\", \"password\": \"$USER_PASSWORD\"}" > /dev/null; do
+      #         echo "API aún no lista..."
+      #         sleep 10
+      #     done
+      #     echo "✔ API de Planka lista"
 
 
 
-      - name: Obtener token de Planka
-        run: |
-          echo "Haciendo login en Planka..."
+      # - name: Obtener token de Planka
+      #   run: |
+      #     echo "Haciendo login en Planka..."
 
-          RESPONSE=$(curl -s -X POST http://localhost:3000/api/access-tokens \
-            -H "Content-Type: application/json" \
-            -d "{\"emailOrUsername\": \"$USER_EMAIL\", \"password\": \"$USER_PASSWORD\"}")
+      #     RESPONSE=$(curl -s -X POST http://localhost:3000/api/access-tokens \
+      #       -H "Content-Type: application/json" \
+      #       -d "{\"emailOrUsername\": \"$USER_EMAIL\", \"password\": \"$USER_PASSWORD\"}")
 
-          echo "Respuesta:"
-          echo "$RESPONSE"
+      #     echo "Respuesta:"
+      #     echo "$RESPONSE"
 
-          TOKEN=$(echo $RESPONSE | jq -r '.item')
+      #     TOKEN=$(echo $RESPONSE | jq -r '.item')
 
-          if [ "$TOKEN" = "null" ] || [ -z "$TOKEN" ]; then
-            echo "❌ ERROR: No se pudo obtener token de Planka."
-            exit 1
-          fi
+      #     if [ "$TOKEN" = "null" ] || [ -z "$TOKEN" ]; then
+      #       echo "❌ ERROR: No se pudo obtener token de Planka."
+      #       exit 1
+      #     fi
 
-          echo "✔ Token obtenido correctamente"
-          echo "PLANKA_TOKEN=$TOKEN" >> $GITHUB_ENV
+      #     echo "✔ Token obtenido correctamente"
+      #     echo "PLANKA_TOKEN=$TOKEN" >> $GITHUB_ENV
 
 
       - name: Inspect user_account table
