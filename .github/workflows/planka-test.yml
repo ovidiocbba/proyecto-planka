@@ -86,19 +86,12 @@ jobs:
           fi
 
 
-      - name: Generar Reporte de Pruebas
+      - name: Generar y publicar Allure Report
         uses: simple-elf/allure-report-action@master
         if: always()
         with:
-          gh_pages: report-allure
+          gh_pages: gh-pages 
+          github_token: ${{ secrets.GITHUB_TOKEN }}
           allure_results: reports/allure-results
           allure_history: allure-history
-
-      - name: Publicar Reporte de Pruebas
-        uses: peaceiris/actions-gh-pages@v3
-        if: always()
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./reports/allure-report
-          publish_branch: gh-pages
-   
+  
