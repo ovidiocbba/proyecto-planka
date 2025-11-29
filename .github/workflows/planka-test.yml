@@ -20,9 +20,6 @@ jobs:
       contents: write # To push a branch (gh_pages).
 
     steps:
-      - name: Checkout repository (full)
-        uses: actions/checkout@v4
-        
        # Hacer checkout de la rama daniela
       - name: Checkout code from daniela
         uses: actions/checkout@v4
@@ -88,10 +85,25 @@ jobs:
             pytest --disable-warnings -v --alluredir=reports/allure-results
           fi
 
-      - name: Generar Reporte de Pruebas
-        if: always()
-        uses: ./.github/actions/deploy_allure_report
+      - name: Obtener historial de gh-pages
+        uses: actions/checkout@v4
+        continue-on-error: true
         with:
-          allure_results_path: reports/allure-results
-          publish_name_branch: gh-pages
+          ref: gh-pages
+          path: gh-pages
+
+      - name: Generar reporte Allure
+        uses: simple-elf/allure-report-action@master
+        id: allure
+        with:
+          allure_results: reports/allure-results
+          gh_pages: gh-pages
+          allure_report: allure-report
+          allure_history: allure-history
+
+      - name: Publicar Reporte en GitHub Pages
+        uses: peaceiris/actions-gh-pages@v4
+        with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_branch: gh-pages
+          publish_dir: allure-history
