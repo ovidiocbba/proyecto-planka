@@ -85,13 +85,11 @@ jobs:
             pytest --disable-warnings -v --alluredir=reports/allure-results
           fi
 
-
       - name: Generar y publicar Allure Report
         uses: simple-elf/allure-report-action@master
         if: always()
         with:
-          gh_pages: gh-pages 
-          github_token: ${{ secrets.GITHUB_TOKEN }}
           allure_results: reports/allure-results
           allure_history: allure-history
-  
+          allure_report_branch: gh-pages
+          github_token: ${{ secrets.GITHUB_TOKEN }}
