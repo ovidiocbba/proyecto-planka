@@ -12,6 +12,12 @@ on:
         required: false
         default: ''
 
+  schedule:
+    # Scheduled the execution.
+    # Every day at 22:00 PM (Bolivia GTM-4).
+    # All the cron job in GitHub Actions is in UTC(1:00 AM).
+    - cron: '0 1 * * *'
+
 jobs:
   test:
     runs-on: ubuntu-latest
