@@ -20,6 +20,9 @@ jobs:
       contents: write # To push a branch (gh_pages).
 
     steps:
+      - name: Checkout repository (full)
+        uses: actions/checkout@v4
+        
        # Hacer checkout de la rama daniela
       - name: Checkout code from daniela
         uses: actions/checkout@v4
