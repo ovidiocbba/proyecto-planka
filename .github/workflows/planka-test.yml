@@ -129,8 +129,9 @@ jobs:
   publish-reports:
     runs-on: ubuntu-latest
     needs: run-tests
+
     permissions:
-    contents: write # To push a branch (gh_pages).
+      contents: write # To push a branch (gh_pages).
 
     steps:
       - name: Descargar resultados Allure
