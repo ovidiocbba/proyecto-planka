@@ -92,8 +92,7 @@ jobs:
           name: allure-results
           path: allure-results
           retention-days: 3
-
- publish-report:
+  publish-report:
     runs-on: ubuntu-latest
     needs: tests
     permissions:
