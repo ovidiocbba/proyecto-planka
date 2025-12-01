@@ -1,0 +1,9 @@
+DEBUG    urllib3.connectionpool:connectionpool.py:241 Starting new HTTP connection (1): localhost:3000
+DEBUG    urllib3.connectionpool:connectionpool.py:544 http://localhost:3000 "DELETE /api/cards/BDFGFNHsfdfdgdgfvdv HTTP/1.1" 400 368
+INFO     root:logger_helper.py:13 IP ADDRESS OR DOMAIN: localhost:3000
+DEBUG    root:logger_helper.py:14 REQUEST URL: http://localhost:3000/api/cards/BDFGFNHsfdfdgdgfvdv
+INFO     root:logger_helper.py:15 STATUS CODE: 400
+DEBUG    root:logger_helper.py:22 REQUEST HEADERS:
+{
+    "Authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6IjFjNjMxMGQyLTc2ZWQtNGJlOC1hMjIzLTBmYmVkNmEyZWY2OCJ9.eyJpYXQiOjE3NjQ1NTExNDEsImV4cCI6MTc5NjA4NzE0MSwic3ViIjoiMTY1NTU3MTYxNTEyOTI3MzM0NSJ9.2HP0eS4TX8Br4mbtpalBP0BWaX3P7t1snkMy_SCpRPE"
+}
