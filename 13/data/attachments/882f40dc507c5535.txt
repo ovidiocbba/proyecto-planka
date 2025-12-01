@@ -1,9 +1,0 @@
-DEBUG    urllib3.connectionpool:connectionpool.py:241 Starting new HTTP connection (1): localhost:3000
-DEBUG    urllib3.connectionpool:connectionpool.py:544 http://localhost:3000 "GET /api/projects HTTP/1.1" 401 81
-INFO     root:logger_helper.py:13 IP ADDRESS OR DOMAIN: localhost:3000
-DEBUG    root:logger_helper.py:14 REQUEST URL: http://localhost:3000/api/projects
-INFO     root:logger_helper.py:15 STATUS CODE: 401
-DEBUG    root:logger_helper.py:22 REQUEST HEADERS:
-{
-    "Authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9232-4"
-}
