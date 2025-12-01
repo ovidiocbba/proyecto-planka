@@ -108,7 +108,7 @@ jobs:
           path: reports/allure-results
 
       - name: Generar reporte Allure
-        uses: simple-elf/allure-report-action@v1.7
+        uses: simple-elf/allure-report-action@master
         id: allure
         with:
           allure_results: reports/allure-results
