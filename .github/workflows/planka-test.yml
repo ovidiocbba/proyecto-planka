@@ -101,21 +101,18 @@ jobs:
       contents: write # To push a branch (gh_pages).
 
     steps:
-      - name: Checkout código
-        uses: actions/checkout@v4
-
-      - name: Descargar artifact de Allure
-        uses: actions/download-artifact@v4
-        with:
-          name: allure-results
-          path: reports/allure-results
-
       - name: Checkout historial de gh-pages
         uses: actions/checkout@v4
         continue-on-error: true
         with:
           ref: gh-pages
           path: gh-pages
+
+      - name: Descargar artifact de Allure
+        uses: actions/download-artifact@v4
+        with:
+          name: allure-results
+          path: reports/allure-results
 
       - name: Generar reporte Allure
         uses: simple-elf/allure-report-action@master
