@@ -6,11 +6,19 @@ on:
     - main 
     - daniela
   workflow_dispatch:
-     inputs:
+    inputs:
       marker:
-        description: 'Marker de pytest a ejecutar (ej:smoke,functional_positive,functional_negative,regression,performance)'
+        type: choice
+        description: 'Selecciona el marker de Pytest a ejecutar'
         required: false
-        default: ''
+        default: 'all'
+        options:
+          - all
+          - smoke
+          - functional_positive
+          - functional_negative
+          - regression
+          - performance
 
   schedule:
     # Scheduled the execution.
@@ -80,7 +88,7 @@ jobs:
         run: |
           if [ -n "${{ github.event.inputs.marker }}" ]; then
             echo "Ejecutando pytest con marker: ${{ github.event.inputs.marker }}"
-            pytest --disable-warnings -v ${{ github.event.inputs.marker }} --alluredir=reports/allure-results
+            pytest --disable-warnings -v -m "${{ github.event.inputs.marker }}" --alluredir=reports/allure-results
           else
             echo "Ejecutando todos los tests"
             pytest --disable-warnings -v --alluredir=reports/allure-results
