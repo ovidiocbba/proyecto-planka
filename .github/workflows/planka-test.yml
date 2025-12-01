@@ -108,7 +108,7 @@ jobs:
         uses: actions/download-artifact@v4
         with:
           name: allure-results
-          path: allure-results
+          path: reports/allure-results
 
       - name: Checkout historial de gh-pages
         uses: actions/checkout@v4
