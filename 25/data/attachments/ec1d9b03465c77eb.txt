@@ -1,0 +1,35 @@
+DEBUG    urllib3.connectionpool:connectionpool.py:241 Starting new HTTP connection (1): localhost:3000
+DEBUG    urllib3.connectionpool:connectionpool.py:544 http://localhost:3000 "POST /api/lists/BDFGFNHsfdfdgdgfvdv/cards HTTP/1.1" 400 376
+INFO     root:logger_helper.py:13 IP ADDRESS OR DOMAIN: localhost:3000
+DEBUG    root:logger_helper.py:14 REQUEST URL: http://localhost:3000/api/lists/BDFGFNHsfdfdgdgfvdv/cards
+INFO     root:logger_helper.py:15 STATUS CODE: 400
+DEBUG    root:logger_helper.py:22 REQUEST HEADERS:
+{
+    "Authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6ImJmNGZlOGM2LWFmYWEtNGRkNi1iZmQyLWRlMTlhY2IwYWRlZCJ9.eyJpYXQiOjE3NjQ1NDg2ODksImV4cCI6MTc5NjA4NDY4OSwic3ViIjoiMTY1NTU1MTA0NzY2MzM1NDg4MSJ9.iQoZg2mDq2SyGINGFcjbBaBXNquFWNRGt3hGybCfeDs"
+}
+DEBUG    root:logger_helper.py:26 PAYLOAD REQUEST:
+{
+    "type": "project",
+    "position": 65536,
+    "name": "Tercera Tarjeta",
+    "description": "Mi description tercera",
+    "dueDate": "2024-01-01T00:00:00.000Z",
+    "isDueCompleted": false,
+    "stopwatch": {
+        "startedAt": "2024-01-01T00:00:00.000Z",
+        "total": 3600
+    }
+}
+INFO     card_fixture:conftest.py:18 Iniciando teardown: Eliminación de cards...
+DEBUG    urllib3.connectionpool:connectionpool.py:241 Starting new HTTP connection (1): localhost:3000
+DEBUG    urllib3.connectionpool:connectionpool.py:544 http://localhost:3000 "DELETE /api/cards/1655551268023698490 HTTP/1.1" 200 521
+INFO     card_fixture:conftest.py:26 Card eliminada correctamente: 1655551268023698490
+DEBUG    urllib3.connectionpool:connectionpool.py:241 Starting new HTTP connection (1): localhost:3000
+DEBUG    urllib3.connectionpool:connectionpool.py:544 http://localhost:3000 "DELETE /api/cards/1655551268401185852 HTTP/1.1" 200 521
+INFO     card_fixture:conftest.py:26 Card eliminada correctamente: 1655551268401185852
+DEBUG    urllib3.connectionpool:connectionpool.py:241 Starting new HTTP connection (1): localhost:3000
+DEBUG    urllib3.connectionpool:connectionpool.py:544 http://localhost:3000 "DELETE /api/cards/1655551268728341566 HTTP/1.1" 200 430
+INFO     card_fixture:conftest.py:26 Card eliminada correctamente: 1655551268728341566
+DEBUG    urllib3.connectionpool:connectionpool.py:241 Starting new HTTP connection (1): localhost:3000
+DEBUG    urllib3.connectionpool:connectionpool.py:544 http://localhost:3000 "DELETE /api/cards/1655551268912890944 HTTP/1.1" 200 428
+INFO     card_fixture:conftest.py:26 Card eliminada correctamente: 1655551268912890944
