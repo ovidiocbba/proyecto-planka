@@ -7,18 +7,31 @@ on:
     - daniela
   workflow_dispatch:
     inputs:
-      marker:
-        type: choice
-        description: 'Selecciona el marker de Pytest a ejecutar'
+      tipo_prueba:
+        description: "Selecciona el tipo de prueba:"
         required: false
-        default: 'all'
+        default: "all"
+        type: choice
         options:
           - all
           - smoke
+          - regression
           - functional_positive
           - functional_negative
-          - regression
           - performance
+          - equivalence_partition
+
+      modulo_evaluado:
+        description: "Selecciona el módulo a evaluar:"
+        required: false
+        default: "all"
+        type: choice
+        options:
+          - all
+          - project_management
+          - board
+          - list
+          - card
 
   schedule:
     # Scheduled the execution.
@@ -86,13 +99,52 @@ jobs:
 
       - name: Ejecutar tests con pytest y generar reporte Allure
         run: |
-          if [ -n "${{ github.event.inputs.marker }}" ]; then
-            echo "Ejecutando pytest con marker: ${{ github.event.inputs.marker }}"
-            pytest --disable-warnings -v -m "${{ github.event.inputs.marker }}" --alluredir=reports/allure-results
-          else
-            echo "Ejecutando todos los tests"
+          echo "=== Parámetros recibidos ==="
+          echo "Módulo evaluado : ${{ github.event.inputs.modulo_evaluado }}"
+          echo "Tipo de prueba   : ${{ github.event.inputs.tipo_prueba }}"
+          echo "============================"
+
+          pytest \
+            --disable-warnings -v \
+            tests/${{ github.event.inputs.modulo_evaluado }} \
+            -m "${{ github.event.inputs.tipo_prueba }}" \
+            --alluredir=reports/allure-results
+
+      - name: Ejecutar tests con pytest y generar reporte Allure
+        run: |
+          echo "=== Parámetros recibidos (workflow_dispatch) ==="
+          echo "Módulo : ${{ github.event.inputs.modulo_evaluado }}"
+          echo "Tipo   : ${{ github.event.inputs.tipo_prueba }}"
+          echo "============================================="
+
+          # Si viene del cron
+          if [[ "${{ github.event_name }}" == "schedule" ]]; then
             pytest --disable-warnings -v --alluredir=reports/allure-results
+            exit 0
           fi
+
+          # Tomar valores del dispatch
+          MODULO="${{ github.event.inputs.modulo_evaluado }}"
+          TIPO="${{ github.event.inputs.tipo_prueba }}"
+
+          # Construir comando pytest
+          PYTEST_CMD="pytest --disable-warnings -v --alluredir=reports/allure-results"
+
+          # Filtrar por módulo
+          if [[ "$MODULO" != "all" ]]; then
+            PYTEST_CMD="$PYTEST_CMD tests/$MODULO"
+          fi
+
+          # Filtrar por tipo
+          if [[ "$TIPO" != "all" ]]; then
+            PYTEST_CMD="$PYTEST_CMD -m \"$TIPO\""
+          fi
+
+          echo "=== Comando final de ejecución ==="
+          echo "$PYTEST_CMD"
+          echo "=================================="
+
+          eval $PYTEST_CMD
 
       - name: Subir resultados Allure como artifact
         uses: actions/upload-artifact@v4
