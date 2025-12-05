@@ -1,0 +1,3 @@
+2025-12-05 01:12:44,567 | INFO | project_fixture | Setup iniciado para creación de proyectos
+2025-12-05 01:12:44,581 | INFO | project_fixture | Iniciando teardown: Eliminación de proyectos...
+2025-12-05 01:12:44,605 | INFO | project_fixture | Proyecto eliminado correctamente: 1658474480629974224

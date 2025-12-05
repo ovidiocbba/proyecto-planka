@@ -1,0 +1,16 @@
+INFO     project_fixture:conftest.py:13 Setup iniciado para creación de proyectos
+DEBUG    urllib3.connectionpool:connectionpool.py:241 Starting new HTTP connection (1): localhost:3000
+DEBUG    urllib3.connectionpool:connectionpool.py:544 http://localhost:3000 "POST /api/projects HTTP/1.1" 400 239
+INFO     root:logger_helper.py:13 IP ADDRESS OR DOMAIN: localhost:3000
+DEBUG    root:logger_helper.py:14 REQUEST URL: http://localhost:3000/api/projects
+INFO     root:logger_helper.py:15 STATUS CODE: 400
+DEBUG    root:logger_helper.py:22 REQUEST HEADERS:
+{
+    "Authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6IjBjNzczNGZjLWZmYjEtNGEwMS05YjBlLWI2YjUzYmIyMDA1NCJ9.eyJpYXQiOjE3NjQ4OTcxNjAsImV4cCI6MTc5NjQzMzE2MCwic3ViIjoiMTY1ODQ3NDIzMDgxNzIyNzc3NyJ9.gu3RzRULOOPpD8HVUTRb7Z_PudGjan4Um4l2xk-3FU4"
+}
+DEBUG    root:logger_helper.py:26 PAYLOAD REQUEST:
+{
+    "type": "",
+    "name": "Proyecto Nuevo en tipo vacio"
+}
+INFO     project_fixture:conftest.py:33 No hay proyectos creados para eliminar.
