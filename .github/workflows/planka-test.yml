@@ -99,19 +99,6 @@ jobs:
 
       - name: Ejecutar tests con pytest y generar reporte Allure
         run: |
-          echo "=== Parámetros recibidos ==="
-          echo "Módulo evaluado : ${{ github.event.inputs.modulo_evaluado }}"
-          echo "Tipo de prueba   : ${{ github.event.inputs.tipo_prueba }}"
-          echo "============================"
-
-          pytest \
-            --disable-warnings -v \
-            tests/${{ github.event.inputs.modulo_evaluado }} \
-            -m "${{ github.event.inputs.tipo_prueba }}" \
-            --alluredir=reports/allure-results
-
-      - name: Ejecutar tests con pytest y generar reporte Allure
-        run: |
           echo "=== Parámetros recibidos (workflow_dispatch) ==="
           echo "Módulo : ${{ github.event.inputs.modulo_evaluado }}"
           echo "Tipo   : ${{ github.event.inputs.tipo_prueba }}"
