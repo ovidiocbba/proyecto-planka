@@ -132,7 +132,7 @@ jobs:
 
           # Filtrar por módulo
           if [[ "$MODULO" != "all" ]]; then
-            PYTEST_CMD="$PYTEST_CMD tests/$MODULO"
+            PYTEST_CMD="$PYTEST_CMD tests/api-planka/$MODULO"
           fi
 
           # Filtrar por tipo
