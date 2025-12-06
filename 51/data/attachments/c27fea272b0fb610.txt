@@ -1,0 +1,25 @@
+DEBUG    urllib3.connectionpool:connectionpool.py:241 Starting new HTTP connection (1): localhost:3000
+DEBUG    urllib3.connectionpool:connectionpool.py:544 http://localhost:3000 "POST /api/projects HTTP/1.1" 200 515
+INFO     fixture:conftest.py:39 Setup iniciado para creación de proyectos
+DEBUG    urllib3.connectionpool:connectionpool.py:241 Starting new HTTP connection (1): localhost:3000
+DEBUG    urllib3.connectionpool:connectionpool.py:544 http://localhost:3000 "POST /api/projects/1659235664958325844/boards HTTP/1.1" 200 535
+INFO     list_fixture:conftest.py:13 Setup iniciado para creación de listas
+DEBUG    urllib3.connectionpool:connectionpool.py:241 Starting new HTTP connection (1): localhost:3000
+DEBUG    urllib3.connectionpool:connectionpool.py:544 http://localhost:3000 "POST /api/boards/1659235665084154966/lists HTTP/1.1" 200 191
+INFO     root:logger_helper.py:13 IP ADDRESS OR DOMAIN: localhost:3000
+DEBUG    root:logger_helper.py:14 REQUEST URL: http://localhost:3000/api/boards/1659235665084154966/lists
+INFO     root:logger_helper.py:15 STATUS CODE: 200
+DEBUG    root:logger_helper.py:22 REQUEST HEADERS:
+{
+    "Authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6IjFmNWRiNWZiLTA4YWMtNGEwOS1iZGQ4LTg5YjVjMTU2NGViYSJ9.eyJpYXQiOjE3NjQ5ODc5MDMsImV4cCI6MTc5NjUyMzkwMywic3ViIjoiMTY1OTIzNTQ0MDc0NzYxMTEzNyJ9.ixbgwult8m3MZtLudKiNEESEfZC-K92veQ8lGX6B6f4"
+}
+DEBUG    root:logger_helper.py:26 PAYLOAD REQUEST:
+{
+    "type": "active",
+    "position": 6553,
+    "name": "IN PROGRESS"
+}
+INFO     list_fixture:conftest.py:17 Iniciando teardown: Eliminación de listas...
+DEBUG    urllib3.connectionpool:connectionpool.py:241 Starting new HTTP connection (1): localhost:3000
+DEBUG    urllib3.connectionpool:connectionpool.py:544 http://localhost:3000 "DELETE /api/lists/1659235665277092954 HTTP/1.1" 200 215
+INFO     list_fixture:conftest.py:24 Lista eliminada correctamente: 1659235665277092954
